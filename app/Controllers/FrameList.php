@@ -16,7 +16,7 @@ class FrameList extends BaseController
    
                if($data_action == "fetch_frame_list")
                {
-                   $response = $client->request('GET', 'http://3.135.210.176/frameapp/frames?startRow=0&numRows=200');
+                   $response = $client->request('GET', 'http://52.14.43.85/frameapp/frames?startRow=0&numRows=200');
                    $result= $response->getBody();
                    // $result = json_decode($result);
                   echo $result;
