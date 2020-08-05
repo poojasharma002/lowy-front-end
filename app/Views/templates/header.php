@@ -6,6 +6,9 @@
     <title></title>
     <!-- Bootstrap core CSS -->
     <?php 
+    ini_set('display_errors', '1');
+    ini_set('display_startup_errors', '1');
+    error_reporting(E_ALL);
 echo link_tag('assets/css/style.css');
 echo link_tag('assets/css/bootstrap.min.css');
 echo link_tag('assets/css/sticky-footer-navbar.css');
