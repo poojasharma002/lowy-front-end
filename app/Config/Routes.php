@@ -32,6 +32,8 @@ $routes->setAutoRoute(true);
 // route since we don't have to scan directories.
 $routes->get('/', 'Home::index');
 $routes->get('/adminShowAllFrames.action', 'FrameList::index');
+$routes->get('/frameAdminView.action', 'FrameDetails::index');
+$routes->get('/frameAdminEdit.action', 'FrameDetails::frame_get');
 /**
  * --------------------------------------------------------------------
  * Additional Routing

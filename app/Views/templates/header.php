@@ -6,10 +6,11 @@
     <title></title>
     <!-- Bootstrap core CSS -->
     <?php 
-    echo link_tag('assets/css/style.css');
+echo link_tag('assets/css/style.css');
 echo link_tag('assets/css/bootstrap.min.css');
 echo link_tag('assets/css/sticky-footer-navbar.css');
 echo link_tag('assets/css/dataTables.bootstrap4.min.css');
+echo script_tag("assets/js/jquery-3.5.1.js");
 ?>
 
 </head>
@@ -35,10 +36,10 @@ echo link_tag('assets/css/dataTables.bootstrap4.min.css');
        <!-- Nav tabs -->
   <ul class="nav nav-tabs" role="tablist">
     <li class="nav-item">
-      <a class="nav-link active"  data-toggle="tab" href="#frame_list">FRAME LIST</a>
+      <a class="nav-link active"  href="<?php echo base_url('adminShowAllFrames.action'); ?>">FRAME LIST</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link detail" data-toggle="tab" href="#details">DETAILS</a>
+      <a class="nav-link detail" href="<?php echo base_url('frameAdminView.action'); ?>">DETAILS</a>
     </li>
     <li class="nav-item">
       <a class="nav-link" data-toggle="tab" href="#img_missing">MISSING IMAGES</a>

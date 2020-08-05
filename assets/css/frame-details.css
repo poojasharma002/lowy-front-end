@@ -1,0 +1,169 @@
+.detailWapper {
+    width: auto;
+    background-color: #fff;
+    padding: 20px;
+    min-height: 550px;
+    text-align: left;
+    padding-right: 0;
+    /* vertical-align: top; */
+}
+
+table {
+    empty-cells: show;
+}
+
+body,
+table {
+    font-family: verdana;
+    font-size: 16px;
+}
+
+.bigImageViewer {
+    padding: 10px;
+}
+
+.frameImage img {
+    height: auto;
+    margin-top: 36px;
+    width: 500px;
+}
+
+.bigImageViewer img {
+    border: 1px black solid;
+}
+
+table .titleText {
+    font-family: sans-serif;
+    font-weight: bold;
+    font-size: 20pt;
+    color: gray;
+}
+
+.searchFrameWrapper,
+.alternativeImagesSelector .imageWrapper {
+    float: left;
+    margin: 7px;
+}
+
+.imageWrapper {
+    border: 1px black solid;
+    text-align: center;
+    font-weight: bold;
+    background-color: #DEE5DD;
+}
+
+.frameImage .alternativeImagesSelector img {
+    height: auto;
+    margin-top: 36px;
+    width: 151px;
+}
+
+.alternativeImagesSelector .selected {
+    border: 2px #5D775B solid;
+}
+
+.frameImage img {
+    height: auto;
+    margin-top: 36px;
+    width: 500px;
+}
+
+.bigImageViewer img {
+    border: 1px black solid;
+}
+
+.frameDetail {
+    width: 402px;
+    height: 100px;
+    float: left;
+}
+
+.detailheader {
+    width: auto;
+    padding: 10px;
+    font-weight: bold;
+    color: #000;
+    background-color: #B3CEAF;
+    text-align: center;
+    border: 1px solid #5D775B;
+    border-bottom: 0;
+}
+
+.framedetailtable {
+    width: 100%;
+    border-right: 1px solid #5D775B;
+}
+
+table.manageList tr.odd,
+table.framedetailtable tr.odd {
+    background-color: #DEE5DD;
+}
+
+table.manageList tr.even,
+table.framedetailtable tr.even {
+    background-color: white;
+}
+
+table.content td,
+table.content th {
+    padding: 5px;
+    border-left: 1px solid #5D775B;
+}
+
+.framedetailtable td {
+    padding: .3em;
+    font-size: 16px;
+}
+
+.summary {
+    border: 1px solid #5D775B;
+    height: 131px;
+    margin: 50px auto;
+    width: 400px;
+}
+
+.summaryheading {
+    width: auto;
+    padding: 10px;
+    text-align: center;
+    background-color: #DEE5DD;
+    font-weight: bold;
+}
+
+.summarydetails {
+    font-weight: bold;
+    margin-left: 70px;
+    margin-top: 16px;
+}
+
+#frameSold,
+#deleteUndelete {
+    background-color: #B3CEAF;
+    border: 2px solid #000000;
+    float: right;
+    text-align: center;
+    margin-bottom: 100px;
+    padding: .2em 1em;
+}
+
+#frameSold a,
+#frameSold a:hover,
+#deleteUndelete a,
+#deleteUndelete a:hover {
+    font-weight: normal;
+    color: #000;
+}
+
+table a {
+    color: #739670;
+    text-decoration: none;
+}
+.veryImportantText {
+    font-size: 30pt;
+    color: red;
+    text-decoration: underline;
+    text-align: center;
+}
+.frameSoldWrapper, .frameUnavaliableWrapper, table.frameSoldWrapper, table.titleText.frameSoldWrapper {
+    color: red;
+}

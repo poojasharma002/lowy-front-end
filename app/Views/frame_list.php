@@ -39,9 +39,7 @@
         </tfoot>
     </table>
     </div>
-    <div id="details" class="container tab-pane fade"><br>
-      <h3>Details</h3>
-        </div>
+    </div>
     <div id="img_missing" class="container tab-pane fade"><br>
       <h3>MISSING IMAGES</h3>
     </div>
@@ -51,7 +49,7 @@
     <div id="import" class="container tab-pane fade"><br>
       <h3>IMPORT</h3>
     </div>
-  </div>
+ 
 </div>
      
     </main>
@@ -71,7 +69,7 @@ $(document).ready(function(){
            var framelist= $.parseJSON(data)
            for(var i=0; i<framelist.length; i++){
                 t.row.add( [
-                    '<a href ="#" onclick="details(\''+framelist[i].id+'\',event);">'+framelist[i].inventoryNumber+'</a>',
+                    '<a href ="<?php echo base_url();?>/frameAdminView.action?id='+framelist[i].inventoryNumber+'" >'+framelist[i].inventoryNumber+'</a>',
                     framelist[i].description,
                     framelist[i].century,
                     framelist[i].countryCode,
@@ -90,15 +88,5 @@ $(document).ready(function(){
   }
   fetch_farme_list();
 });
-function details(id,e){
-    e.preventDefault();
-    $(".nav-link").removeClass("active");
-    $(".tab-pane").removeClass("active");
-    $(".tab-pane").removeClass("show");
-    $('.detail').addClass("active");
-    $('#details').addClass("active");
-    $('#details').addClass("show");
-    
-}
 </script>
    

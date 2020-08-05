@@ -8,7 +8,6 @@
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
      <?php 
-    echo script_tag("assets/js/jquery-3.5.1.js");
     echo script_tag("assets/js/popper.min.js");
     echo script_tag("assets/js/bootstrap.min.js");
     echo script_tag("assets/js/datatables.min.js");
