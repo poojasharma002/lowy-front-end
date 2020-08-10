@@ -16,7 +16,7 @@ $(document).ready(function(){
         }
     })
     $.ajax({
-        url:origin+"/lowy-front-end/FrameDetails/multiDropdown",
+        url:origin+"/FrameDetails/multiDropdown",
         method:"POST",
         data:{data_action:'fetch_dropdown_list', value:'ornament', id:inventoryNumber},
         success:function(data){
