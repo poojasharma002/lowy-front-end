@@ -2,13 +2,16 @@
 
 class FrameList extends BaseController
 {
-    
+// show all Frame Inventory Details   
 	public function index()
 	{
        echo view('frame_list');
-	}
+   }
+   
+   // function for fetch Frame inventory details 
      public function action(){
          try{
+            $baseURI = baseURI();
             $client = \Config\Services::curlrequest();
             if($this->request->getPost('data_action'))
             {
@@ -16,7 +19,7 @@ class FrameList extends BaseController
    
                if($data_action == "fetch_frame_list")
                {
-                   $response = $client->request('GET', 'http://52.14.43.85/frameapp/frames?startRow=0&numRows=200');
+                   $response = $client->request('GET', ''.$baseURI.'frames?startRow=0&numRows=200');
                    $result= $response->getBody();
                    // $result = json_decode($result);
                   echo $result;

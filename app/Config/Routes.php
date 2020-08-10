@@ -34,6 +34,7 @@ $routes->get('/', 'Home::index');
 $routes->get('/adminShowAllFrames.action', 'FrameList::index');
 $routes->get('/frameAdminView.action', 'FrameDetails::index');
 $routes->get('/frameAdminEdit.action', 'FrameDetails::frame_get');
+$routes->post('/frameAdminEdit.action', 'FrameDetails::frame_edit');
 /**
  * --------------------------------------------------------------------
  * Additional Routing

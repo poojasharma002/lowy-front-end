@@ -1,17 +1,12 @@
 <?php  echo view('templates/header');
 echo link_tag('assets/css/frame-details.css'); 
+echo link_tag('assets/css/ui-dropdown.css'); 
+echo script_tag("assets/js/bundle.min.js");
+echo script_tag("assets/js/ui-drowpdown.js");
 ?>
-<script>
-$(document).ready(function(){  
-  $(".nav-link").removeClass("active");
-    $(".tab-pane").removeClass("active");
-    $(".tab-pane").removeClass("show");
-    $('.detail').addClass("active");
-    $('#details').addClass("active");
-    $('#details').addClass("show");
-   });
-</script>
+<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"  crossorigin="anonymous">
 <!-- Tab panes -->
+<?= \Config\Services::validation()->listErrors(); ?>
 <div class="tab-content">
     <div id="details" class="container tab-pane fade"><br>
         <div class="row">
@@ -41,7 +36,7 @@ $(document).ready(function(){
                         </table>
                         <br>
                         <div class="alternativeImagesSelector">
-                            <div class="imageWrapper"
+                         <div class="imageWrapper"
                                 onclick="javascript:window.open('resources/images/showAdminFrameNormal.action?frameId=0035','default');return false; ">
                                 <img src="<?php echo base_url('assets/img/frame.png');?>" alt="default"
                                     class="selected">
@@ -54,7 +49,8 @@ $(document).ready(function(){
             </div>
             <div class="col-4">
                 <div class="frameDetail">
-                    <form id="frameAdminEdit" name="frameAdminEdit" action="/frameAdminEdit.action" method="GET">
+                    <form id="frameAdminEdit" name="frameAdminEdit" action="<?php echo base_url('frameAdminEdit.action');?>" method="POST">
+                    <?= csrf_field() ?>
                         <div class="detailheader">
                             <span class="<?php if($frameDetails->deleted ==true){echo 'frameSoldWrapper frameUnavaliableWrapper';} ?>">
                                 Inventory # <?= $frameDetails->inventoryNumber ?>
@@ -107,55 +103,31 @@ $(document).ready(function(){
         </tr>
         <tr class="odd">
             <td class="first title">Style</td> 
-            <td class="last"><select name="styleLookups" id="styleLookupables" multiple="" style="display: none;">
-            <?php
-            for($i=0; $i<count($style); $i++){?> 
-            <option value="<?php echo $style[$i]->id; ?>" <?php for($j=0; $j<count($frameDetails->styles); $j++){if($style[$i]->id==$frameDetails->styles[$j]){$slectedStyleTitle=$slectedStyleTitle.' '.$style[$i]->title;?> selected="selected" <?php } }?> ><?php echo $style[$i]->title?></option>';
-           <?php } ?>
-</select><span class="ui-dropdownchecklist-wrapper" style="display: inline-block; cursor: default;">
-<span class="ui-dropdownchecklist" tabindex="0" style="display: inline-block;">
-<span class="ui-dropdownchecklist-text" title="" style="display: inline-block; overflow: hidden; width: 222px;"><?php echo  $slectedStyleTitle; ?>
-</span></span></span>
+            <td class="last">
+                <span class="autocomplete-select-style"></span>
 <input type="hidden" id="__multiselect_styleLookupables" name="__multiselect_styleLookups" value="">
+
 </td>
         </tr>
         <tr class="even">
             <td class="first title">Ornament</td>
-            <td class="last"><select name="ornamentLookups" id="ornamentLookupables" multiple="" style="display: none;">
-            <?php for($i=0; $i<count($ornament); $i++){?> 
-            <option value="<?php echo $ornament[$i]->id; ?>" <?php for($j=0; $j<count($frameDetails->ornaments); $j++){  if($ornament[$i]->id==$frameDetails->ornaments[$j]){$slectedOrnamentTitle=$slectedOrnamentTitle.' '.$ornament[$i]->title;?> selected="selected" <?php } }?> ><?php echo $ornament[$i]->title?></option>';
-           <?php } ?>
-    </select><span class="ui-dropdownchecklist-wrapper" style="display: inline-block; cursor: default;"><span class="ui-dropdownchecklist" tabindex="0" style="display: inline-block;">
-    <span class="ui-dropdownchecklist-text" title="<?php echo $slectedOrnamentTitle; ?>" style="display: inline-block; overflow: hidden; width: 161px;"><?php echo $slectedOrnamentTitle; ?></span>
-    </span></span>
+            <td class="last">
+            <span class="autocomplete-select-ornament"></span>
 <input type="hidden" id="__multiselect_ornamentLookupables" name="__multiselect_ornamentLookups" value="">
 </td>
         </tr>
         <tr class="odd">
     <td class="first title">Colors</td>       
-    <td class="last"><select name="colorLookups" id="colorLookupables" multiple="" style="display: none;">
-    <?php for($i=0; $i<count($color); $i++){?> 
-            <option value="<?php echo $color[$i]->id; ?>" <?php for($j=0; $j<count($frameDetails->colors); $j++){ if($color[$i]->id==$frameDetails->colors[$j]){ $slectedColorTitle=$slectedColorTitle.' '.$color[$i]->title;?> selected="selected" <?php } }?> ><?php echo $color[$i]->title;?></option>';
-           <?php } ?>
-
-</select><span class="ui-dropdownchecklist-wrapper" style="display: inline-block; cursor: default;">
-<span class="ui-dropdownchecklist" tabindex="0" style="display: inline-block;">
-<span class="ui-dropdownchecklist-text" title="<?php echo $slectedColorTitle; ?>" style="display: inline-block; overflow: hidden; width: 172px;"><?php echo $slectedColorTitle; ?></span>
-</span></span>
+    <td class="last">
+    <span class="autocomplete-select-color"></span>
 <input type="hidden" id="__multiselect_colorLookupables" name="__multiselect_colorLookups" value="">
 </td>
         </tr>
         <tr class="even">
             <td class="first title">Corners</td>
                 
-            <td class="last"><select name="cornerLookups" id="cornerLookupables" multiple="" style="display: none;">
-            <?php for($i=0; $i<count($corners); $i++){?> 
-            <option value="<?php echo $corners[$i]->id; ?>" <?php for($j=0; $j<count($frameDetails->corners); $j++){ if($corners[$i]->id==$frameDetails->corners[$j]){ $slectedCornersTitle=$slectedCornersTitle.' '.$corners[$i]->title;?> selected="selected" <?php } } ?> ><?php echo $corners[$i]->title;?></option>';
-           <?php } ?>
-           </select><span class="ui-dropdownchecklist-wrapper" style="display: inline-block; cursor: default;"><span class="ui-dropdownchecklist" tabindex="0" style="display: inline-block;">
-           <span class="ui-dropdownchecklist-text" title="<?php echo $slectedCornersTitle;?>" style="display: inline-block; overflow: hidden; width: 168px;"><?php echo $slectedCornersTitle;?></span>
-           </span></span>
-<input type="hidden" id="__multiselect_cornerLookupables" name="__multiselect_cornerLookups" value="">
+            <td class="last"><span class="autocomplete-select-corners"></span>
+<input type="hidden" id="__multiselect_cornersLookupables" name="__multiselect_cornerLookups" value="">
 </td>
         </tr>
         <tr class="odd">
@@ -234,7 +206,8 @@ $(document).ready(function(){
      </tbody></table>
      <div style="border-top: 0pt none; border-bottom: 1px solid rgb(93, 119, 91); text-align: right;" class="detailheader">
         <input type="hidden" name="mode" value="edit" id="frameAdminSave_mode">
-        <input type="hidden" name="id" value="<?php echo $frameDetails->id; ?>" id="frameAdminSave_id">
+        <input type="hidden" name="priceUpdate" value="<?php echo $frameDetails->priceUpdate; ?>" id="priceUpdate">
+         <input type="hidden" name="id" value="<?php echo $frameDetails->id; ?>" id="frameAdminSave_id">
         <input type="hidden" name="inventoryNumber" value="<?php echo $frameDetails->inventoryNumber; ?>" id="frameAdminSave_inventoryNumber">
         <input type="image" alt="Сancel" src="<?php echo base_url('assets/img/reset.jpg');?>" id="frameAdminSave_frameAdminCancel" name="action:frameAdminCancel" value="Сancel" class="buttonlink">
 
@@ -275,6 +248,18 @@ $(document).ready(function(){
      
     </main>
     </br>
+ <script>
+$(document).ready(function(){ 
+    var style= $('#styleLookupables').val();
+    $('#__multiselect_styleLookupables').val(style);
+    var ornament= $('#ornamentLookupables').val();
+    $('#__multiselect_ornamentLookupables').val(ornament);
+    var color= $('#colorLookupables').val();
+    $('#__multiselect_colorLookupables').val(color);
+    var corner= $('#cornerLookupables').val();
+    $('#__multiselect_cornerLookupables').val(corner);
+   });
+</script>
     <?php 
     // echo view('templates/footer');
     ?>

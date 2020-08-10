@@ -1,13 +1,15 @@
 <?php namespace App\Controllers;
-
+use CodeIgniter\HTTP\IncomingRequest;
 class FrameDetails extends BaseController
 {
-   	public function index()
+  // function for particuler inventory no deatils .
+ 	public function index()
 	{
         try{
-              if($_GET['id']!=''){
+                $baseURI = baseURI();
+                if($_GET['id']!=''){
                 $client = \Config\Services::curlrequest();
-                $response = $client->request('GET', 'http://52.14.43.85/frameapp/frames/'.$_GET['id'].'');
+                $response = $client->request('GET', ''.$baseURI.'frames/'.$_GET['id'].'');
                 $result= $response->getBody();
                  $result = json_decode($result);
                  echo view('frame_details', ['frameDetails' => $result]);
@@ -18,46 +20,146 @@ class FrameDetails extends BaseController
         }catch (Error $e){
 
            }
-	}
+  }
+  // function for Edit frame Deatils show
      public function frame_get(){
          try{
+            $baseURI = baseURI();
             $client = \Config\Services::curlrequest();
-            $response = $client->request('GET', 'http://52.14.43.85/frameapp/frames/'.$_GET['id'].'');
+            $response = $client->request('GET', ''.$baseURI.'frames/'.$_GET['id'].'');
             $result= $response->getBody();
             $result = json_decode($result);
-            $countryResponse = $client->request('GET', 'http://52.14.43.85/frameapp/reference/country');
+            $countryResponse = $client->request('GET', ''.$baseURI.'reference/country');
             $countryResult= $countryResponse->getBody();
             $countryResult = json_decode($countryResult);
-            $makerResponse = $client->request('GET', 'http://52.14.43.85/frameapp/reference/maker');
+            $makerResponse = $client->request('GET', ''.$baseURI.'reference/maker');
             $makerResult= $makerResponse->getBody();
             $makerResult = json_decode($makerResult);
-            $colorResponse = $client->request('GET', 'http://52.14.43.85/frameapp/reference/color');
-            $colorResult= $colorResponse->getBody();
-            $colorResult = json_decode($colorResult);
-            $cornersResponse = $client->request('GET', 'http://52.14.43.85/frameapp/reference/corners');
-            $cornersResult= $cornersResponse->getBody();
-            $cornersResult = json_decode($cornersResult);
-            $styleResponse = $client->request('GET', 'http://52.14.43.85/frameapp/reference/style');
-            $styleResult= $styleResponse->getBody();
-            $styleResult = json_decode($styleResult);
-            $ornamentResponse = $client->request('GET', 'http://52.14.43.85/frameapp/reference/ornament');
-            $ornamentResult= $ornamentResponse->getBody();
-            $ornamentResult = json_decode($ornamentResult);
-            $buildingResponse = $client->request('GET', 'http://52.14.43.85/frameapp/reference/building');
+            $buildingResponse = $client->request('GET', ''.$baseURI.'reference/building');
             $buildingResult= $buildingResponse->getBody();
             $buildingResult = json_decode($buildingResult);
-            $sourceResponse = $client->request('GET', 'http://52.14.43.85/frameapp/reference/source');
+            $sourceResponse = $client->request('GET', ''.$baseURI.'reference/source');
             $sourceResult= $sourceResponse->getBody();
             $sourceResult = json_decode($sourceResult);
                      
-             echo view('frame_details_edit', ['frameDetails' => $result, 'country' =>$countryResult, 'style'=> $styleResult,
-                       'maker'=>$makerResult, 'color'=>$colorResult, 'corners'=>$cornersResult, 'ornament'=>$ornamentResult,
-                       'building'=>$buildingResult,'source'=>$sourceResult]);
+             echo view('frame_details_edit', ['frameDetails' => $result, 'country' =>$countryResult,
+                       'maker'=>$makerResult, 'building'=>$buildingResult,'source'=>$sourceResult]);
          } catch (Error $e){
 
          }
        
      }
+
+    //  function for edit frame details.
+     public function frame_edit(){
+      try{
+          if ($this->request->getMethod() === 'post')
+            {
+            
+              $baseURI = baseURI();
+              $todaydate = date('Y-m-d');
+              $data= '{
+              "id": "'.$this->request->getPost('id').'",
+              "inventoryNumber":"'.$this->request->getPost('inventoryNumber').'",
+              "pairId":"'.$this->request->getPost('pairInventoryNumber').'", 
+              "consigned": "'.$this->request->getPost('consigned').'",
+              "century": "'.$this->request->getPost('century').'",
+              "countryId":"'.$this->request->getPost('countryLookup').'",
+              "makerId": "'.$this->request->getPost('makerLookup').'",
+              "sourceId": "'.$this->request->getPost('sourceLookup').'",
+              "styles": ['.$this->request->getPost('__multiselect_styleLookups').'],
+              "ornaments": ['.$this->request->getPost('__multiselect_ornamentLookups').'],
+              "colors": ['.$this->request->getPost('__multiselect_colorLookups').'],
+              "corners": ['.$this->request->getPost('__multiselect_cornerLookups').'], 
+              "frameWidth": "'.$this->request->getPost('frameWidth').'",
+              "sightHeight": "'.$this->request->getPost('sightHeight').'", 
+              "sightWidth":"'.$this->request->getPost('sightWidth').'", 
+              "priceUpdate":"'.$this->request->getPost('priceUpdate').'" ,
+              "purchaseDate": "'.$this->request->getPost('purchaseDateAsString').'",
+              "purchasePrice": "'.$this->request->getPost('purchasePrice').'", 
+              "sellingPrice": "'.$this->request->getPost('sellingPrice').'",
+              "status": 0, 
+              "lastModified": "'.$todaydate.'",
+              "deleted": 0, 
+              "location": "'.$this->request->getPost('locationDescription').'", 
+              "buildingId": "'.$this->request->getPost('locationBuildingLookup').'", 
+              "note": "'.$this->request->getPost('locationInternalNotes').'",
+              "defaultimageattribute":"'.$this->request->getPost('defaultImageAttribute').'" 
+                }';
+                $curl = curl_init();
+                curl_setopt_array($curl, array(
+                CURLOPT_URL => "".$baseURI."frames/".$this->request->getPost('inventoryNumber')."",
+                CURLOPT_RETURNTRANSFER => true,
+                CURLOPT_ENCODING => "",
+                CURLOPT_MAXREDIRS => 10,
+                CURLOPT_TIMEOUT => 30,
+                CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+                CURLOPT_CUSTOMREQUEST => "PUT",
+                CURLOPT_POSTFIELDS => $data,
+                CURLOPT_HTTPHEADER => array(
+                  "cache-control: no-cache",
+                  "content-type: application/json"
+                ),
+              ));
+                $response = curl_exec($curl);
+                $err = curl_error($curl);
+                $httpcode = curl_getinfo($curl, CURLINFO_HTTP_CODE);
+                curl_close($curl);
+                if($httpcode=="200"){
+                  $inventoryNo=$this->request->getPost('inventoryNumber');
+                  $client = \Config\Services::curlrequest();
+                  $response = $client->request('GET', ''.$baseURI.'frames/'.$inventoryNo.'');
+                  $result= $response->getBody();
+                   $result = json_decode($result);
+                   echo view('frame_details', ['frameDetails' => $result, 'status_code'=>$httpcode]);
+                }
+                }
+      } catch (Error $e){
+
+      }
+     
+
+      }
+// function for fetch multi select dropdwoun values.
+      public function multiDropdown(){
+        try{
+          $baseURI = baseURI();
+          $client = \Config\Services::curlrequest();
+          if($this->request->getPost('data_action'))
+          {
+             $data_action= $this->request->getPost('data_action');
+             $dropdwonValue= $this->request->getPost('value');
+             $inventoryNo= $this->request->getPost('id');
+             if($data_action == "fetch_dropdown_list")
+             {
+                 $responseDropdown = $client->request('GET', ''.$baseURI.'reference/'.$dropdwonValue.'');
+                 $resultDropdown= $responseDropdown->getBody();
+                 $response = $client->request('GET', ''.$baseURI.'frames/'.$inventoryNo.'');
+                 $result= $response->getBody();
+                $result = json_decode($result);
+                if( $dropdwonValue!='corners'){
+                  $dropdownVarible=$dropdwonValue.'s';
+                }else{ $dropdownVarible=$dropdwonValue;}
+                
+                 $dropdownSelectedValueArr=$result->$dropdownVarible;
+                 $dropdownSelectedValue=array();
+                 for($j=0; $j<count($dropdownSelectedValueArr); $j++){
+                  array_push($dropdownSelectedValue,"".$dropdownSelectedValueArr[$j]."");
+                 }
+                $dropdownOption=array();
+                 $resultDropdown = json_decode($resultDropdown);
+                for($i=0; $i<count($resultDropdown); $i++){
+                  array_push($dropdownOption, array("label"=>$resultDropdown[$i]->title,"value"=>"".$resultDropdown[$i]->id."",));
+                 
+                }
+                $results=[$dropdownSelectedValue,$dropdownOption,"dropdownListName"=>$dropdwonValue];
+                 echo json_encode( $results);
+             }
+          }
+      } catch (Error $e){
+
+      }
+      }
 	//--------------------------------------------------------------------
 
 }

@@ -1,5 +1,9 @@
 <?php  echo view('templates/header');
-echo link_tag('assets/css/frame-details.css'); ?>
+echo link_tag('assets/css/frame-details.css'); 
+echo link_tag('https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css'); 
+echo link_tag('assets/css/animate.min.css'); 
+echo script_tag('assets/js/notification.js');
+?>
 <script>
 $(document).ready(function(){  
   $(".nav-link").removeClass("active");
@@ -8,13 +12,15 @@ $(document).ready(function(){
     $('.detail').addClass("active");
     $('#details').addClass("active");
     $('#details').addClass("show");
+    createAlert('Opps!','Something went wrong','Plaese Contact to administrative.','danger',true,true,'errorMessages');
+    createAlert('','Edit Frame Details!','Frame Details Update Successfully!.','success',true,true,'successMessages');
    });
 </script>
 <?php 
 if(empty($frameDetails)){?>
     <div class="tab-content">
     <div id="details" class="container tab-pane fade"><br>
-    <p> Please select inventory Number *.</p>
+    <p>Inventory number is not specified.</p>
     </div>
     </div>
 
@@ -62,8 +68,9 @@ if(empty($frameDetails)){?>
                     </div>
                 </div>
             </div>
-            <div class="col-4">
-                <div class="frameDetail">
+            <div class="col-4"><?php if($status_code == "200"){echo '<div id="successMessages"></div>';}else if($status_code!="200" && !empty($status_code)){echo '<div id="errorMessages"></div>';}?>
+           
+               <div class="frameDetail">
                     <form id="frameAdminEdit" name="frameAdminEdit" action="<?php echo base_url('frameAdminEdit.action');?>" method="GET">
                         <div class="detailheader">
                             <span class="<?php if($frameDetails->deleted ==true){echo 'frameSoldWrapper frameUnavaliableWrapper';} ?>">
