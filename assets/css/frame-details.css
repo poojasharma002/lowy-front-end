@@ -188,3 +188,44 @@ table a {
   .alert .fa {
     margin-right:.3em;
   }
+  .setbottomborder {
+    border-bottom: 1px solid #5D775B;
+    margin-top: -40px;
+}
+.pagecontrol {
+    width: auto;
+    background-color: #B1CEAF;
+    padding: 0px;
+    border-top: 1px solid #5D775B;
+    border-left: 1px solid #5D775B;
+    border-right: 1px solid #5D775B;
+    height: 37px;
+}
+.detailnavigator {
+    width: 340px;
+    margin-top: 3px;
+    height: 100%;
+    float: right;
+    text-align: left;
+}
+.detailnavigator .pager {
+    float: left;
+    width: 100px;
+    /* margin-top: 5px; */
+}
+.detailnavigator form input {
+    font-size: 14px;
+}
+.detailnavigator .pager a {
+    color: #000;
+}
+.inputsubmit {
+    background-color: #DEE5DD;
+    height: 2em;
+    margin-left: 5px;
+    border: 1px solid #5D775B;
+}
+
+.col-8 {
+       max-width: 60.999999% !important;
+}

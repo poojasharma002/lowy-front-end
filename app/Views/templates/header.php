@@ -45,7 +45,7 @@ echo script_tag("assets/js/jquery-3.5.1.js");
       <a class="nav-link detail" href="<?php echo base_url('frameAdminView.action'); ?>">DETAILS</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" data-toggle="tab" href="#img_missing">MISSING IMAGES</a>
+      <a class="nav-link missingImages"  href="<?php echo base_url('imagesSyncNoImages.action'); ?>">MISSING IMAGES</a>
     </li>
     <li class="nav-item">
       <a class="nav-link" data-toggle="tab" href="#categories">CATEGORIES</a>

@@ -68,8 +68,14 @@ $(document).ready(function(){
           $('#cover-spin').hide(0); 
            var framelist= $.parseJSON(data)
            for(var i=0; i<framelist.length; i++){
+            var numlength = framelist[i].inventoryNumber.toString().length;
+                 if(numlength==1){var imgNo='L000'+framelist[i].inventoryNumber; 
+                 }else if(numlength==2){ var imgNo='L00'+framelist[i].inventoryNumber;  
+                 }else if(numlength==3){ var imgNo='L0'+framelist[i].inventoryNumber; 
+                 }else if(numlength>=4){ var imgNo='L'+framelist[i].inventoryNumber;  
+                }
                 t.row.add( [
-                    '<a href ="<?php echo base_url();?>/frameAdminView.action?id='+framelist[i].inventoryNumber+'" >'+framelist[i].inventoryNumber+'</a>',
+                    '<a href ="<?php echo base_url();?>/frameAdminView.action?id='+framelist[i].inventoryNumber+'" >'+imgNo+'</a>',
                     framelist[i].description,
                     framelist[i].century,
                     framelist[i].countryCode,

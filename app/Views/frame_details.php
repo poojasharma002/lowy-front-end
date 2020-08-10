@@ -30,6 +30,25 @@ if(empty($frameDetails)){?>
 <!-- Tab panes -->
 <div class="tab-content">
     <div id="details" class="container tab-pane fade"><br>
+    <div class="row">
+    <div class="col-12">
+    <div class="pagecontrol setbottomborder">
+        <div class="detailnavigator">
+            <form id="frameAdminView" name="frameAdminView" action="<?php echo base_url('frameAdminView.action');?>" method="GET">
+                  <div class="pager">
+                        <a id="frameAdminView_" href="<?php echo base_url('frameAdminView.action?id=0015');?>">&lt; previous</a>
+                </div>
+                <input type="text" name="id" value="<?= $invNo ?>" id="frameAdminView_id" style="width: 50px; float: left;"><input type="submit" id="frameAdminView_0" value="Show" class="inputsubmit" style="float:left;">
+
+                <div class="pager" style="text-align: center;">
+                    
+                        <a id="frameAdminView_" href="<?php echo base_url('frameAdminView.action?id=0018');?>">next &gt;</a>
+                </div>
+            </form>
+        </div>
+    </div>
+    </div>
+    </div>
         <div class="row">
             <div class="col-8">
                 <div class="frameImage">
@@ -43,13 +62,13 @@ if(empty($frameDetails)){?>
                             <tbody>
                                 <tr>
                                     <td align="center">
-                                        <img src="<?php echo base_url('assets/img/frame.png');?>">
+                                        <img src='<?php echo $imgUrl; ?>'>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td align="right" class="titleText">
                                         <span class="<?php if($frameDetails->deleted ==true){echo 'frameSoldWrapper frameUnavaliableWrapper';} ?>">
-                                            L00<?= $frameDetails->inventoryNumber ?>
+                                            <?= $imgNo ?>
                                         </span>
                                     </td>
                                 </tr>
@@ -58,8 +77,8 @@ if(empty($frameDetails)){?>
                         <br>
                         <div class="alternativeImagesSelector">
                             <div class="imageWrapper"
-                                onclick="javascript:window.open('resources/images/showAdminFrameNormal.action?frameId=0035','default');return false; ">
-                                <img src="<?php echo base_url('assets/img/frame.png');?>" alt="default"
+                                onclick="javascript:window.open('<?php echo $imgUrl; ?>','default');return false; ">
+                                <img src="<?php echo $imgUrl; ?>" alt="default"
                                     class="selected">
                                 <br>
                                 Variant: default
@@ -74,7 +93,7 @@ if(empty($frameDetails)){?>
                     <form id="frameAdminEdit" name="frameAdminEdit" action="<?php echo base_url('frameAdminEdit.action');?>" method="GET">
                         <div class="detailheader">
                             <span class="<?php if($frameDetails->deleted ==true){echo 'frameSoldWrapper frameUnavaliableWrapper';} ?>">
-                                Inventory # <?= $frameDetails->inventoryNumber ?>
+                                Inventory # <?= $invNo ?>
                             </span>
                         </div>
                         <table class="framedetailtable content" cellpadding="2" cellspacing="0" width="100%" border="0">
@@ -170,7 +189,7 @@ if(empty($frameDetails)){?>
                         <div class="summaryheading">Summary:</div>
                         <div class="summarydetails">
                             <span class="<?php if($frameDetails->deleted ==true){echo 'frameSoldWrapper frameUnavaliableWrapper';} ?>">
-                            <?= $frameDetails->inventoryNumber ?>
+                            <?= $imgNo ?>
                             </span>
                             <br>
                             19CFRRGDCCC612ST42X35/12<br>

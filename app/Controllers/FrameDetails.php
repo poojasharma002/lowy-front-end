@@ -11,8 +11,15 @@ class FrameDetails extends BaseController
                 $client = \Config\Services::curlrequest();
                 $response = $client->request('GET', ''.$baseURI.'frames/'.$_GET['id'].'');
                 $result= $response->getBody();
-                 $result = json_decode($result);
-                 echo view('frame_details', ['frameDetails' => $result]);
+                $result = json_decode($result);
+                $numlength = strlen((string)$_GET['id']);
+                 if($numlength==1){ $imgNo='L000'.$_GET['id']; $invNo='000'.$_GET['id'];
+                 }elseif($numlength==2){ $imgNo='L00'.$_GET['id']; $invNo='00'.$_GET['id'];
+                 }elseif($numlength==3){ $imgNo='L0'.$_GET['id']; $invNo='0'.$_GET['id'];
+                 }elseif($numlength>=4){ $imgNo='L'.$_GET['id']; $invNo=$_GET['id'];
+                }
+                $imgUrl=$baseURI.'/images/frames/web/'.$imgNo;
+                echo view('frame_details', ['frameDetails' => $result, 'imgUrl'=>$imgUrl, 'imgNo'=>$imgNo, 'invNo'=>$invNo]);
               } else{
                 echo view('frame_details');
               } 
