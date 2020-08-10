@@ -15,10 +15,11 @@ hooks:
     - location: scripts/stop_server
       timeout: 300
       runas: root
-  permissions:
-    - object: /var/www/html
-      owner: ec2-user
-      mode: 777
-      type:
-        - directory
+permissions:
+  - object: /var/www/html
+    pattern: "**"
+    owner: ec2-user
+    mode: 777
+    type:
+      - file
 
