@@ -48,9 +48,16 @@ class FrameDetails extends BaseController
             $sourceResponse = $client->request('GET', ''.$baseURI.'reference/source');
             $sourceResult= $sourceResponse->getBody();
             $sourceResult = json_decode($sourceResult);
-                     
+            $numlength = strlen((string)$_GET['id']);
+            if($numlength==1){ $imgNo='L000'.$_GET['id']; $invNo='000'.$_GET['id'];
+            }elseif($numlength==2){ $imgNo='L00'.$_GET['id']; $invNo='00'.$_GET['id'];
+            }elseif($numlength==3){ $imgNo='L0'.$_GET['id']; $invNo='0'.$_GET['id'];
+            }elseif($numlength>=4){ $imgNo='L'.$_GET['id']; $invNo=$_GET['id'];
+           }
+           $imgUrl=$baseURI.'/images/frames/web/'.$imgNo;         
              echo view('frame_details_edit', ['frameDetails' => $result, 'country' =>$countryResult,
-                       'maker'=>$makerResult, 'building'=>$buildingResult,'source'=>$sourceResult]);
+                       'maker'=>$makerResult, 'building'=>$buildingResult,'source'=>$sourceResult,
+                       'imgUrl'=>$imgUrl, 'imgNo'=>$imgNo, 'invNo'=>$invNo]);
          } catch (Error $e){
 
          }

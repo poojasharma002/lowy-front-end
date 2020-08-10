@@ -22,13 +22,13 @@ echo script_tag("assets/js/ui-drowpdown.js");
                             <tbody>
                                 <tr>
                                     <td align="center">
-                                        <img src="<?php echo base_url('assets/img/frame.png');?>">
+                                        <img src="<?php echo $imgUrl; ?>">
                                     </td>
                                 </tr>
                                 <tr>
                                     <td align="right" class="titleText">
                                         <span class="<?php if($frameDetails->deleted ==true){echo 'frameSoldWrapper frameUnavaliableWrapper';} ?>">
-                                            L00<?= $frameDetails->inventoryNumber ?>
+                                        <?= $imgNo ?>
                                         </span>
                                     </td>
                                 </tr>
@@ -37,8 +37,8 @@ echo script_tag("assets/js/ui-drowpdown.js");
                         <br>
                         <div class="alternativeImagesSelector">
                          <div class="imageWrapper"
-                                onclick="javascript:window.open('resources/images/showAdminFrameNormal.action?frameId=0035','default');return false; ">
-                                <img src="<?php echo base_url('assets/img/frame.png');?>" alt="default"
+                                onclick="javascript:window.open('<?php echo $imgUrl; ?>','default');return false; ">
+                                <img src="<?php echo $imgUrl; ?>" alt="default"
                                     class="selected">
                                 <br>
                                 Variant: default
@@ -53,7 +53,7 @@ echo script_tag("assets/js/ui-drowpdown.js");
                     <?= csrf_field() ?>
                         <div class="detailheader">
                             <span class="<?php if($frameDetails->deleted ==true){echo 'frameSoldWrapper frameUnavaliableWrapper';} ?>">
-                                Inventory # <?= $frameDetails->inventoryNumber ?>
+                                Inventory #  <?= $invNo ?>
                             </span>
                         </div>
                         <table class="framedetailtable content" cellpadding="2" cellspacing="0" width="100%" border="0">
@@ -219,7 +219,7 @@ echo script_tag("assets/js/ui-drowpdown.js");
                         <div class="summaryheading">Summary:</div>
                         <div class="summarydetails">
                             <span class="<?php if($frameDetails->deleted ==true){echo 'frameSoldWrapper frameUnavaliableWrapper';} ?>">
-                                L00<?= $frameDetails->inventoryNumber ?>
+                            <?= $imgNo ?>
                             </span>
                             <br>
                             19CFRRGDCCC612ST42X35/12<br>
