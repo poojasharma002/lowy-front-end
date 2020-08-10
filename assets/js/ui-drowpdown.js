@@ -8,7 +8,7 @@ $(document).ready(function(){
        var inventoryNumber =$('#frameAdminSave_inventoryNumber').val();
        var origin   = window.location.origin;
         $.ajax({
-          url:origin+"/lowy-front-end/FrameDetails/multiDropdown",
+          url:origin+"/FrameDetails/multiDropdown",
           method:"POST",
           data:{data_action:'fetch_dropdown_list', value:'style', id:inventoryNumber},
           success:function(data){
@@ -24,7 +24,7 @@ $(document).ready(function(){
       }
   })
   $.ajax({
-    url:origin+"/lowy-front-end/FrameDetails/multiDropdown",
+    url:origin+"/FrameDetails/multiDropdown",
     method:"POST",
     data:{data_action:'fetch_dropdown_list', value:'color', id:inventoryNumber},
     success:function(data){
@@ -32,7 +32,7 @@ $(document).ready(function(){
   }
 })
 $.ajax({
-    url:origin+"/lowy-front-end/FrameDetails/multiDropdown",
+    url:origin+"/FrameDetails/multiDropdown",
     method:"POST",
     data:{data_action:'fetch_dropdown_list', value:'corners', id:inventoryNumber},
     success:function(data){
