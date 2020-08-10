@@ -9,6 +9,25 @@ echo script_tag("assets/js/ui-drowpdown.js");
 <?= \Config\Services::validation()->listErrors(); ?>
 <div class="tab-content">
     <div id="details" class="container tab-pane fade"><br>
+    <div class="row">
+    <div class="col-12">
+    <div class="pagecontrol setbottomborder">
+        <div class="detailnavigator">
+            <form id="frameAdminView" name="frameAdminView" action="<?php echo base_url('frameAdminView.action');?>" method="GET">
+                  <div class="pager">
+                        <a id="frameAdminView_" href="<?php echo base_url('frameAdminView.action?id=0015');?>">&lt; previous</a>
+                </div>
+                <input type="text" name="id" value="<?= $invNo ?>" id="frameAdminView_id" style="width: 50px; float: left;"><input type="submit" id="frameAdminView_0" value="Show" class="inputsubmit" style="float:left;">
+
+                <div class="pager" style="text-align: center;">
+                    
+                        <a id="frameAdminView_" href="<?php echo base_url('frameAdminView.action?id=0018');?>">next &gt;</a>
+                </div>
+            </form>
+        </div>
+    </div>
+    </div>
+    </div>
         <div class="row">
             <div class="col-8">
                 <div class="frameImage">
