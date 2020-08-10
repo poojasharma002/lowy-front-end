@@ -22,4 +22,10 @@ permissions:
     mode: 777
     type:
       - file
+  - object: /var/www/html
+    pattern: "**"
+    owner: ec2-user
+    mode: 777
+    type:
+      - directory
 
