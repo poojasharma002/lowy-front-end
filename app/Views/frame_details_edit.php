@@ -80,15 +80,15 @@ echo script_tag("assets/js/ui-drowpdown.js");
             <td class="first title">Century</td>
             <td class="last">
                 <select name="century" id="frameAdminSave_century">
-    <option value=""></option>
-    <option value="14">C14</option>
-    <option value="15">C15</option>
-    <option value="16">C16</option>
-    <option value="17">C17</option>
-    <option value="18">C18</option>
-    <option value="19" selected="selected">C19</option>
-    <option value="20">C20</option>
-    <option value="21">C21</option>
+    <option value="" ></option>
+    <option value="14" <?php if($frameDetails->century =="14"){echo 'selected="selected"';}?>>C14</option>
+    <option value="15" <?php if($frameDetails->century =="15"){echo 'selected="selected"';}?>>C15</option>
+    <option value="16" <?php if($frameDetails->century =="16"){echo 'selected="selected"';}?>>C16</option>
+    <option value="17" <?php if($frameDetails->century =="17"){echo 'selected="selected"';}?>>C17</option>
+    <option value="18" <?php if($frameDetails->century =="18"){echo 'selected="selected"';}?>>C18</option>
+    <option value="19" <?php if($frameDetails->century =="19"){echo 'selected="selected"';}?>>C19</option>
+    <option value="20" <?php if($frameDetails->century =="20"){echo 'selected="selected"';}?>>C20</option>
+    <option value="21" <?php if($frameDetails->century =="21"){echo 'selected="selected"';}?>>C21</option>
 </select>
 
             </td>

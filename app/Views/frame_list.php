@@ -39,19 +39,7 @@
         </tfoot>
     </table>
     </div>
-    </div>
-    <div id="img_missing" class="container tab-pane fade"><br>
-      <h3>MISSING IMAGES</h3>
-    </div>
-    <div id="categories" class="container tab-pane fade"><br>
-      <h3>CATEGORIES</h3>
-    </div>
-    <div id="import" class="container tab-pane fade"><br>
-      <h3>IMPORT</h3>
-    </div>
- 
-</div>
-     
+    </div>   
     </main>
    <?php echo view('templates/footer');?>
 <script type="text/javascript" language="javascript">

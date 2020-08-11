@@ -36,6 +36,9 @@ $routes->get('/frameAdminView.action', 'FrameDetails::index');
 $routes->get('/frameAdminEdit.action', 'FrameDetails::frame_get');
 $routes->post('/frameAdminEdit.action', 'FrameDetails::frame_edit');
 $routes->get('/imagesSyncNoImages.action', 'MissingImages::index');
+$routes->get('/adminManageLookupablesView.action', 'Categories::index');
+$routes->post('/adminManageLookupablesSave.action', 'Categories::add_save');
+$routes->get('/imagesSyncImport.action', 'ImageImport::index');
 /**
  * --------------------------------------------------------------------
  * Additional Routing

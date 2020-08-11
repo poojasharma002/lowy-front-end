@@ -72,3 +72,28 @@ top: 48%;
 .checkboxvalue{
 margin-top: 31px;
 }
+table a:hover {
+    font-weight: bold;
+}
+
+#successMessages, #errorMessages {
+    position: fixed;
+    bottom: 15px;
+    right: 15px;
+    width: 30%;
+  }
+  
+  .alert {
+    position: relative;
+  }
+  
+  .alert .close {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    font-size: 1em;
+  }
+  
+  .alert .fa {
+    margin-right:.3em;
+  }

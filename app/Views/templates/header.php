@@ -25,7 +25,7 @@ echo script_tag("assets/js/jquery-3.5.1.js");
           <div class="collapse navbar-collapse" id="navbarCollapse">
           <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-              <a class="nav-link" href="#">
+              <a class="nav-link" href="<?php echo base_url(); ?>">
                   <img border="0" src="<?php echo base_url('assets/img/logo-admin.jpg');?>">
                 </a>
             </li>
@@ -48,10 +48,10 @@ echo script_tag("assets/js/jquery-3.5.1.js");
       <a class="nav-link missingImages"  href="<?php echo base_url('imagesSyncNoImages.action'); ?>">MISSING IMAGES</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" data-toggle="tab" href="#categories">CATEGORIES</a>
+      <a class="nav-link categories"  href="<?php echo base_url('adminManageLookupablesView.action'); ?>">CATEGORIES</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" data-toggle="tab" href="#import">IMPORT</a>
+      <a class="nav-link import"  href="<?php echo base_url('imagesSyncImport.action'); ?>">IMPORT</a>
     </li>
   </ul>
   <br>

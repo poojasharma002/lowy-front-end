@@ -1,0 +1,63 @@
+table.frameProperties {
+    border: 3px double #5D775B;
+}
+table {
+    empty-cells: show;
+}
+body, table {
+    font-family: verdana;
+    font-size: 16px;
+}
+table.frameProperties .odd {
+    background-color: white;
+}
+table.frameProperties tr.selected td, table.frameProperties tr.selected td a {
+    background-color: #739670;
+    color: white;
+}
+table.frameProperties td.first {
+    border-left: none;
+}
+table.frameProperties td {
+    border: #5D775B dotted 1px;
+}
+table.frameProperties td.last {
+    border-right: none;
+}
+table.frameProperties td {
+    border: #5D775B dotted 1px;
+}
+table.frameProperties .even, table.frameProperties th {
+    background-color: #DEE5DD;
+}
+.buttonlink {
+       border: none 0px;
+}
+table a:hover {
+    font-weight: bold;
+}
+.setbottomborder {
+    border-bottom: 1px solid #5D775B;
+}
+.pagecontrol {
+    width: auto;
+    background-color: #B1CEAF;
+    /* padding: 10px; */
+    border-top: 1px solid #5D775B;
+    border-left: 1px solid #5D775B;
+    border-right: 1px solid #5D775B;
+    height: 46px;
+}
+.tablenavigator {
+    width: 350px;
+    height: 100%;
+    float: right;
+    text-align: left;
+    margin-right: 7px;
+}
+.paginator, .headerBlock {
+    /* background: burlywood; */
+    /* border-top: 2px chocolate solid; */
+    margin-top: 7px;
+    margin-bottom: 7px;
+}

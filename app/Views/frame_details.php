@@ -3,6 +3,7 @@ echo link_tag('assets/css/frame-details.css');
 echo link_tag('https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css'); 
 echo link_tag('assets/css/animate.min.css'); 
 echo script_tag('assets/js/notification.js');
+echo  $status_code;
 ?>
 <script>
 $(document).ready(function(){  
@@ -20,6 +21,25 @@ $(document).ready(function(){
 if(empty($frameDetails)){?>
     <div class="tab-content">
     <div id="details" class="container tab-pane fade"><br>
+    <div class="row">
+    <div class="col-12">
+    <div class="pagecontrol setbottomborder">
+        <div class="detailnavigator">
+            <form id="frameAdminView" name="frameAdminView" action="<?php echo base_url('frameAdminView.action');?>" method="GET">
+                  <div class="pager">
+                        <a id="frameAdminView_" href="<?php echo base_url('frameAdminView.action?id=0015');?>">&lt; previous</a>
+                </div>
+                <input type="text" name="id" value="<?= $invNo ?>" id="frameAdminView_id" style="width: 50px; float: left;"><input type="submit" id="frameAdminView_0" value="Show" class="inputsubmit" style="float:left;">
+
+                <div class="pager" style="text-align: center;">
+                    
+                        <a id="frameAdminView_" href="<?php echo base_url('frameAdminView.action?id=0018');?>">next &gt;</a>
+                </div>
+            </form>
+        </div>
+    </div>
+    </div>
+    </div>
     <p>Inventory number is not specified.</p>
     </div>
     </div>
