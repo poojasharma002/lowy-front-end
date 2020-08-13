@@ -125,7 +125,15 @@ class FrameDetails extends BaseController
                   $response = $client->request('GET', ''.$baseURI.'frames/'.$inventoryNo.'');
                   $result= $response->getBody();
                    $result = json_decode($result);
-                   echo view('frame_details', ['frameDetails' => $result, 'status_code'=>$httpcode]);
+                   $numlength = strlen((string)$inventoryNo);
+                    if($numlength==1){ $imgNo='L000'.$inventoryNo; $invNo='000'.$inventoryNo;
+                    }elseif($numlength==2){ $imgNo='L00'.$inventoryNo; $invNo='00'.$inventoryNo;
+                    }elseif($numlength==3){ $imgNo='L0'.$inventoryNo; $invNo='0'.$inventoryNo;
+                    }elseif($numlength>=4){ $imgNo='L'.$inventoryNo; $invNo=$inventoryNo;
+                  }
+                  $imgUrl=$baseURI.'/images/frames/web/'.$imgNo;   
+                   echo view('frame_details', ['frameDetails' => $result, 'status_code'=>$httpcode,
+                             'imgUrl'=>$imgUrl, 'imgNo'=>$imgNo, 'invNo'=>$invNo]);
                 }
                 }
       } catch (Error $e){
