@@ -1,9 +1,15 @@
 <?php  echo view('templates/header');
 echo link_tag('assets/css/frame-details.css'); 
 echo link_tag('assets/css/ui-dropdown.css'); 
+echo link_tag('assets/css/confirm-modal.css'); 
 echo script_tag("assets/js/bundle.min.js");
 echo script_tag("assets/js/ui-drowpdown.js");
 ?>
+<script>
+    $(document).ready(function(){
+        $("#myModal").modal('show');
+    });
+</script>
 <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"  crossorigin="anonymous">
 <!-- Tab panes -->
 <?= \Config\Services::validation()->listErrors(); ?>
@@ -227,7 +233,7 @@ echo script_tag("assets/js/ui-drowpdown.js");
         <input type="hidden" name="mode" value="edit" id="frameAdminSave_mode">
         <input type="hidden" name="priceUpdate" value="<?php echo $frameDetails->priceUpdate; ?>" id="priceUpdate">
          <input type="hidden" name="id" value="<?php echo $frameDetails->id; ?>" id="frameAdminSave_id">
-        <input type="hidden" name="inventoryNumber" value="<?php echo $frameDetails->inventoryNumber; ?>" id="frameAdminSave_inventoryNumber">
+        <input type="hidden" name="inventoryNumber" value="<?= $invNo ?>" id="frameAdminSave_inventoryNumber">
         <input type="image" alt="Сancel" src="<?php echo base_url('assets/img/reset.jpg');?>" id="frameAdminSave_frameAdminCancel" name="action:frameAdminCancel" value="Сancel" class="buttonlink">
 
         <input type="image" alt="Save" src="<?php echo base_url('assets/img/save.jpg');?>" id="frameAdminSave_0" value="Save" class="buttonlink">
@@ -241,8 +247,13 @@ echo script_tag("assets/js/ui-drowpdown.js");
                             <?= $imgNo ?>
                             </span>
                             <br>
+                            <?php if($frameDetails->inventoryNumber==0){
+
+                            }else{?>
                             19CFRRGDCCC612ST42X35/12<br>
                             AM0589T58P20T
+                           <?php }?>
+                           
                         </div>
                     </div>
                     <div id="frameSold">
@@ -267,18 +278,28 @@ echo script_tag("assets/js/ui-drowpdown.js");
      
     </main>
     </br>
- <script>
-$(document).ready(function(){ 
-    var style= $('#styleLookupables').val();
-    $('#__multiselect_styleLookupables').val(style);
-    var ornament= $('#ornamentLookupables').val();
-    $('#__multiselect_ornamentLookupables').val(ornament);
-    var color= $('#colorLookupables').val();
-    $('#__multiselect_colorLookupables').val(color);
-    var corner= $('#cornerLookupables').val();
-    $('#__multiselect_cornerLookupables').val(corner);
-   });
-</script>
-    <?php 
-    // echo view('templates/footer');
+<!-- Modal HTML -->
+<div id="myModal" class="modal fade" data-backdrop="static" data-keyboard="false">
+	<div class="modal-dialog modal-confirm">
+		<div class="modal-content">
+			<div class="modal-header flex-column">				
+				<h4 class="modal-title w-100">Are you sure?</h4>	
+                <!-- <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button> -->
+			</div>
+			<div class="modal-body">
+				<p>Couldn't load frame with inventory number [<?= $invNo ?>]. You can create a new one.</p>
+			</div>
+			<div class="modal-footer justify-content-center">
+				<a href="<?php echo base_url('frameAdminView.action'); ?>" class="btn btn-secondary" >No</a>
+				<button type="button" class="btn btn-success" data-dismiss="modal">Yes</button>
+			</div>
+		</div>
+	</div>
+</div>
+<?php 
+    echo script_tag("assets/js/popper.min.js");
+    echo script_tag("assets/js/bootstrap.min.js");
+    echo script_tag("assets/js/datatables.min.js");
+     echo script_tag("assets/js/dataTables.bootstrap4.min.js");
     ?>
+ </body></html>

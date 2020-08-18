@@ -17,7 +17,6 @@ class Categories extends BaseController
          {
             $data_action= $this->request->getPost('data_action');
             $lookupValue= $this->request->getPost('value');
-
             if($data_action == "get_reference_data")
             {
               $response = $client->request('GET', ''.$baseURI.'reference/'.$lookupValue.'');

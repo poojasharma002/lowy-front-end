@@ -12,14 +12,36 @@ class FrameDetails extends BaseController
                 $response = $client->request('GET', ''.$baseURI.'frames/'.$_GET['id'].'');
                 $result= $response->getBody();
                 $result = json_decode($result);
+                if($result->inventoryNumber!=0){
                 $numlength = strlen((string)$_GET['id']);
                  if($numlength==1){ $imgNo='L000'.$_GET['id']; $invNo='000'.$_GET['id'];
                  }elseif($numlength==2){ $imgNo='L00'.$_GET['id']; $invNo='00'.$_GET['id'];
                  }elseif($numlength==3){ $imgNo='L0'.$_GET['id']; $invNo='0'.$_GET['id'];
-                 }elseif($numlength>=4){ $imgNo='L'.$_GET['id']; $invNo=$_GET['id'];
-                }
+                 }elseif($numlength>=4){ $imgNo='L'.$_GET['id']; $invNo=$_GET['id']; }
                 $imgUrl=$baseURI.'/images/frames/web/'.$imgNo;
                 echo view('frame_details', ['frameDetails' => $result, 'imgUrl'=>$imgUrl, 'imgNo'=>$imgNo, 'invNo'=>$invNo]);
+              }else{
+                $countryResponse = $client->request('GET', ''.$baseURI.'reference/country');
+                $countryResult= $countryResponse->getBody();
+                $countryResult = json_decode($countryResult);
+                $makerResponse = $client->request('GET', ''.$baseURI.'reference/maker');
+                $makerResult= $makerResponse->getBody();
+                $makerResult = json_decode($makerResult);
+                $buildingResponse = $client->request('GET', ''.$baseURI.'reference/building');
+                $buildingResult= $buildingResponse->getBody();
+                $buildingResult = json_decode($buildingResult);
+                $sourceResponse = $client->request('GET', ''.$baseURI.'reference/source');
+                $sourceResult= $sourceResponse->getBody();
+                $sourceResult = json_decode($sourceResult);
+                $numlength = strlen((string)$_GET['id']);
+                if($numlength==1){ $imgNo='L000'.$_GET['id']; $invNo='000'.$_GET['id'];
+                }elseif($numlength==2){ $imgNo='L00'.$_GET['id']; $invNo='00'.$_GET['id'];
+                }elseif($numlength==3){ $imgNo='L0'.$_GET['id']; $invNo='0'.$_GET['id'];
+                }elseif($numlength>=4){ $imgNo='L'.$_GET['id']; $invNo=$_GET['id'];   }
+               $imgUrl=$baseURI.'/images/frames/web/'.$imgNo;
+               echo view('frame_details_edit', ['frameDetails' => $result, 'country' =>$countryResult,
+               'maker'=>$makerResult, 'building'=>$buildingResult,'source'=>$sourceResult,'imgUrl'=>$imgUrl, 'imgNo'=>$imgNo, 'invNo'=>$invNo]);
+              }
               } else{
                 echo view('frame_details');
               } 
