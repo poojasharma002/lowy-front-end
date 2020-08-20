@@ -7,7 +7,9 @@ echo script_tag("assets/js/ui-drowpdown.js");
 ?>
 <script>
     $(document).ready(function(){
+        if(<?php echo $frameDetails->inventoryNumber; ?>==0){
         $("#myModal").modal('show');
+        }
     });
 </script>
 <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"  crossorigin="anonymous">
@@ -20,15 +22,7 @@ echo script_tag("assets/js/ui-drowpdown.js");
     <div class="pagecontrol setbottomborder">
         <div class="detailnavigator">
             <form id="frameAdminView" name="frameAdminView" action="<?php echo base_url('frameAdminView.action');?>" method="GET">
-                  <div class="pager">
-                        <a id="frameAdminView_" href="<?php echo base_url('frameAdminView.action?id=0015');?>">&lt; previous</a>
-                </div>
-                <input type="text" name="id" value="<?= $invNo ?>" id="frameAdminView_id" style="width: 50px; float: left;"><input type="submit" id="frameAdminView_0" value="Show" class="inputsubmit" style="float:left;">
-
-                <div class="pager" style="text-align: center;">
-                    
-                        <a id="frameAdminView_" href="<?php echo base_url('frameAdminView.action?id=0018');?>">next &gt;</a>
-                </div>
+            <input type="text" name="id" value="<?= $invNo ?>" id="frameAdminView_id" style="width: 50px; float: left;"><input type="submit" id="frameAdminView_0" value="Show" class="inputsubmit" style="float:left;">
             </form>
         </div>
     </div>

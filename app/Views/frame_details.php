@@ -3,6 +3,7 @@ echo link_tag('assets/css/frame-details.css');
 echo link_tag('https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css'); 
 echo link_tag('assets/css/animate.min.css'); 
 echo script_tag('assets/js/notification.js');
+
 ?>
 <script>
 $(document).ready(function(){  
@@ -25,15 +26,7 @@ if(empty($frameDetails)){?>
     <div class="pagecontrol setbottomborder">
         <div class="detailnavigator">
             <form id="frameAdminView" name="frameAdminView" action="<?php echo base_url('frameAdminView.action');?>" method="GET">
-                  <div class="pager">
-                        <a id="frameAdminView_" href="<?php echo base_url('frameAdminView.action?id=0015');?>">&lt; previous</a>
-                </div>
-                <input type="text" name="id" value="<?= $invNo ?>" id="frameAdminView_id" style="width: 50px; float: left;"><input type="submit" id="frameAdminView_0" value="Show" class="inputsubmit" style="float:left;">
-
-                <div class="pager" style="text-align: center;">
-                    
-                        <a id="frameAdminView_" href="<?php echo base_url('frameAdminView.action?id=0018');?>">next &gt;</a>
-                </div>
+                  <input type="text" name="id" value="<?= $invNo ?>" id="frameAdminView_id" style="width: 50px; float: left;"><input type="submit" id="frameAdminView_0" value="Show" class="inputsubmit" style="float:left;">
             </form>
         </div>
     </div>
@@ -43,8 +36,40 @@ if(empty($frameDetails)){?>
     </div>
     </div>
 
-<?php die();}
-
+<?php die();}?>
+<?php 
+  $styles='';
+  for($i=0; $i<count($frameDetails->styles); $i++){
+   if($i==0){
+        $styles=$frameDetails->styles[$i]->title;
+    }elseif($i>0){
+        $styles= $styles.', '.$frameDetails->styles[$i]->title;
+    } 
+} 
+    $ornaments='';
+    for($i=0; $i<count($frameDetails->ornaments); $i++){
+       if($i==0){
+            $ornaments=$frameDetails->ornaments[$i]->title;
+        }elseif($i>0){
+            $ornaments= $ornaments.', '.$frameDetails->ornaments[$i]->title;
+        } 
+    }
+    $colors='';
+    for($i=0; $i<count($frameDetails->colors); $i++){
+       if($i==0){
+            $colors=$frameDetails->colors[$i]->title;
+        }elseif($i>0){
+            $colors= $colors.', '.$frameDetails->colors[$i]->title;
+        } 
+    } 
+    $corners='';
+    for($i=0; $i<count($frameDetails->corners); $i++){
+       if($i==0){
+            $corners=$frameDetails->corners[$i]->title;
+        }elseif($i>0){
+            $corners= $corners.', '.$frameDetails->corners[$i]->title;
+        } 
+    }           
 ?>
 <!-- Tab panes -->
 <div class="tab-content">
@@ -54,15 +79,7 @@ if(empty($frameDetails)){?>
     <div class="pagecontrol setbottomborder">
         <div class="detailnavigator">
             <form id="frameAdminView" name="frameAdminView" action="<?php echo base_url('frameAdminView.action');?>" method="GET">
-                  <div class="pager">
-                        <a id="frameAdminView_" href="<?php echo base_url('frameAdminView.action?id=0015');?>">&lt; previous</a>
-                </div>
                 <input type="text" name="id" value="<?= $invNo ?>" id="frameAdminView_id" style="width: 50px; float: left;"><input type="submit" id="frameAdminView_0" value="Show" class="inputsubmit" style="float:left;">
-
-                <div class="pager" style="text-align: center;">
-                    
-                        <a id="frameAdminView_" href="<?php echo base_url('frameAdminView.action?id=0018');?>">next &gt;</a>
-                </div>
             </form>
         </div>
     </div>
@@ -123,11 +140,11 @@ if(empty($frameDetails)){?>
                                 </tr>
                                 <tr class="even">
                                     <td class="">Country</td>
-                                    <td class=""></td>
+                                    <td class=""><?= $frameDetails->countryName ?></td>
                                 </tr>
                                 <tr class="odd">
                                     <td class="first title">Maker</td>
-                                    <td class="last"></td>
+                                    <td class="last"><?= $frameDetails->makerName ?></td>
                                 </tr>
                                 <tr class="even">
                                     <td class="first title">Pair</td>
@@ -135,20 +152,20 @@ if(empty($frameDetails)){?>
                                 </tr>
                                 <tr class="odd">
                                     <td class="first title">Style</td>
-                                    <td class="last"></td>
+                                    <td class="last"><?= $styles ?></td>
                                 </tr>
                                 <tr class="even">
                                     <td class="first title">Ornament</td>
-                                    <td class="last"></td>
+                                    <td class="last"><?= $ornaments ?></td>
 
                                 </tr>
                                 <tr class="odd">
                                     <td class="first title">Colors</td>
-                                    <td class="last"> </td>
+                                    <td class="last"><?= $colors ?> </td>
                                 </tr>
                                 <tr class="even">
                                     <td class="first title">Corners</td>
-                                    <td class="last"></td>
+                                    <td class="last"><?= $corners ?></td>
                                 </tr>
                                 <tr class="odd">
                                     <td class="first title">Width</td>
@@ -160,11 +177,15 @@ if(empty($frameDetails)){?>
                                 </tr>
                                 <tr class="odd">
                                     <td class="first title">Source</td>
-                                    <td class="last"></td>
+                                    <td class="last"><?= $frameDetails->sourceName ?></td>
                                 </tr>
                                 <tr class="even">
                                     <td class="first title">Third Party</td>
-                                    <td class="last"></td>
+                                    <td class="last">
+                                    <?php 
+                                    if($frameDetails->consigned==0){ echo 'None';}
+                                    elseif($frameDetails->consigned==1){echo 'Consigned';}
+                                    elseif($frameDetails->consigned==2){echo 'Partnered';} ?></td>
                                 </tr>
                                 <tr class="odd">
                                     <td class="first title">Purchase Date</td>
@@ -184,7 +205,7 @@ if(empty($frameDetails)){?>
                                 </tr>
                                 <tr class="odd">
                                     <td class="first title">Building</td>
-                                    <td class="last"></td>
+                                    <td class="last"><?= $frameDetails->buildingName ?></td>
                                 </tr>
                                 <tr class="even">
                                     <td class="first title">Last Modified</td>

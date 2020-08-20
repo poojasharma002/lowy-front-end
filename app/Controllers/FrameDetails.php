@@ -188,7 +188,7 @@ class FrameDetails extends BaseController
                  $dropdownSelectedValueArr=$result->$dropdownVarible;
                  $dropdownSelectedValue=array();
                  for($j=0; $j<count($dropdownSelectedValueArr); $j++){
-                  array_push($dropdownSelectedValue,"".$dropdownSelectedValueArr[$j]."");
+                  array_push($dropdownSelectedValue,"".$dropdownSelectedValueArr[$j]->id."");
                  }
                 $dropdownOption=array();
                  $resultDropdown = json_decode($resultDropdown);

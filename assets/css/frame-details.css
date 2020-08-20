@@ -182,7 +182,8 @@ table a {
     height: 37px;
 }
 .detailnavigator {
-    width: 340px;
+    /* width: 340px; */
+    width: 140px;
     margin-top: 3px;
     height: 100%;
     float: right;

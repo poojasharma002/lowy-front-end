@@ -40,7 +40,7 @@ $(document).ready(function(){
         <tbody>
            <tr>
            <td>1</td>
-           <td style="width: 275px;"><img src="http://18.189.188.149/frameapp//images/frames/web/L0010" width="200"> <span class="frameSoldWrapper" style="margin-left: 75px;">0010</span></td>
+           <td style="width: 275px;"><img src="http://18.222.155.57/frameapp//images/frames/web/L0010" width="200"> <span class="frameSoldWrapper" style="margin-left: 75px;">0010</span></td>
            <td><div class="summarydetails">
                             <span class="frameSoldWrapper">L0010</span>
                             <br>
@@ -51,7 +51,7 @@ $(document).ready(function(){
            </tr>
            <tr>
            <td>2</td>
-           <td style="width: 275px;"><img src="http://18.189.188.149/frameapp//images/frames/web/L0010" width="200"> <span class="frameSoldWrapper" style="margin-left: 75px;">0011</span></td>
+           <td style="width: 275px;"><img src="http://18.222.155.57/frameapp//images/frames/web/L0010" width="200"> <span class="frameSoldWrapper" style="margin-left: 75px;">0011</span></td>
            <td><div class="summarydetails">
                             <span class="frameSoldWrapper">L0011</span>
                             <br>
