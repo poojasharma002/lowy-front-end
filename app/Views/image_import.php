@@ -1,5 +1,7 @@
-<?php  echo view('templates/header'); 
-?>
+<?php  echo view('templates/header');
+echo link_tag('https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css'); 
+echo link_tag('assets/css/animate.min.css'); 
+echo script_tag('assets/js/notification.js');?>
 <script>
 $(document).ready(function(){  
   $(".nav-link").removeClass("active");
@@ -24,6 +26,9 @@ $(document).ready(function(){
 </style>
  <!-- Tab panes -->
  <div class="tab-content">
+ <div id="cover-spin" class=""><strong class="loading-text">Please Wait...</strong></div>
+ <div id="successMessages"></div>
+ <div id="errorMessages"></div>
     <div id="import" class="container tab-pane fade"><br>
         <h3 style="text-align: center;">List of new images:</h3>
         <div style="text-align: center;"><button >Import All On Page</button></div>
@@ -38,28 +43,28 @@ $(document).ready(function(){
             </tr>
         </thead>
         <tbody>
-           <tr>
-           <td>1</td>
-           <td style="width: 275px;"><img src="http://18.222.155.57/frameapp//images/frames/web/L0010" width="200"> <span class="frameSoldWrapper" style="margin-left: 75px;">0010</span></td>
+        <?php 
+        for($i=0; $i<count($importImageList);$i++){
+         $numlength = strlen((string)$importImageList[$i]->inventoryNumber);
+                if($numlength==1){ $imgNo='L000'.$importImageList[$i]->inventoryNumber; $invNo='000'.$importImageList[$i]->inventoryNumber;
+                }elseif($numlength==2){ $imgNo='L00'.$importImageList[$i]->inventoryNumber; $invNo='00'.$importImageList[$i]->inventoryNumber;
+                }elseif($numlength==3){ $imgNo='L0'.$importImageList[$i]->inventoryNumber; $invNo='0'.$importImageList[$i]->inventoryNumber;
+                }elseif($numlength>=4){ $imgNo='L'.$importImageList[$i]->inventoryNumber; $invNo=$importImageList[$i]->inventoryNumber;   }?>
+        <tr>
+           <td><?= $importImageList[$i]->sequenceNumber;?></td>
+           <td style="width: 275px;"><img src="<?= $baseUri; ?>/images/frames/web/<?= $imgNo ?>" width="200"> <span class="frameSoldWrapper" style="margin-left: 75px;"><?= $invNo; ?></span></td>
            <td><div class="summarydetails">
-                            <span class="frameSoldWrapper">L0010</span>
+                            <span class="frameSoldWrapper"><?= $imgNo; ?></span>
                             <br>
-                            19CFRRGDCCC612ST42X35/12<br>
-                            AM0589T58P20T                           
+                            <?= $importImageList[$i]->summaryString;?>
+                            <!-- 19CFRRGDCCC612ST42X35/12<br>
+                            AM0589T58P20T                            -->
                         </div></td>
-           <td><button>Import</button></td>
+           <td><button onclick="importImage(<?= $invNo; ?>);">Import</button></td>
            </tr>
-           <tr>
-           <td>2</td>
-           <td style="width: 275px;"><img src="http://18.222.155.57/frameapp//images/frames/web/L0010" width="200"> <span class="frameSoldWrapper" style="margin-left: 75px;">0011</span></td>
-           <td><div class="summarydetails">
-                            <span class="frameSoldWrapper">L0011</span>
-                            <br>
-                            19CFRRGDCCC612ST42X35/12<br>
-                            AM0589T58P20T                           
-                        </div></td>
-           <td><button>Import</button></td>
-           </tr>
+           
+        <?php }?>
+           
         </tbody>
         
     </table>
@@ -67,3 +72,22 @@ $(document).ready(function(){
  </div>
  </main>
    <?php echo view('templates/footer');?>
+   <script type="text/javascript" language="javascript">
+  function importImage(invNo){
+    console.log(invNo);
+    $('#cover-spin').show(0);
+     $.ajax({
+        url:"<?php echo base_url(); ?>/ImageImport/action",
+        method:"POST",
+        data:{data_action:'import_image', inventoryNumber:invNo},
+        success:function(data){
+          $('#cover-spin').hide(0); 
+          //  var framelist= $.parseJSON(data)
+          // createAlert('Opps!','Something went wrong','Plaese Contact to administrative.','danger',true,true,'errorMessages');
+           createAlert('','Edit Frame Details!','Frame Details Update Successfully!.','success',true,true,'successMessages');
+           console.log(data);
+        }
+  })
+  }
+
+</script>
