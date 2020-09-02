@@ -1,40 +1,52 @@
-$(document).ready(function(){  
-    $(".nav-link").removeClass("active");
-      $(".tab-pane").removeClass("active");
-      $(".tab-pane").removeClass("show");
-      $('.detail').addClass("active");
-      $('#details').addClass("active");
-      $('#details').addClass("show");
-       var inventoryNumber =$('#frameAdminSave_inventoryNumber').val();
+$(document).ready(function(){
+   var centurySelectedValue=$('#__multiselect_centuryLookupables').val();
+   var centuryData='{"0":null,"1":[{"label":"C14","value":"14"},{"label":"C15","value":"15"},{"label":"C16","value":"16"},{"label":"C17","value":"17"},{"label":"C18","value":"18"},{"label":"C19","value":"19"},{"label":"C20","value":"20"},{"label":"C21","value":"21"}],"dropdownListName":"century"}';
+    dropdownList(centuryData);
        var origin   = window.location.origin;
+       $.ajax({
+        url:origin+"/FrameSearch/multiDropdown",
+        method:"POST",
+        data:{data_action:'fetch_dropdown_list', value:'country'},
+        success:function(data){
+        dropdownList(data);
+      }
+  })
+  $.ajax({
+    url:origin+"/FrameSearch/multiDropdown",
+    method:"POST",
+    data:{data_action:'fetch_dropdown_list', value:'maker'},
+    success:function(data){
+    dropdownList(data);
+  }
+})
         $.ajax({
-          url:origin+"/FrameDetails/multiDropdown",
+          url:origin+"/FrameSearch/multiDropdown",
           method:"POST",
-          data:{data_action:'fetch_dropdown_list', value:'style', id:inventoryNumber},
+          data:{data_action:'fetch_dropdown_list', value:'style'},
           success:function(data){
           dropdownList(data);
         }
     })
     $.ajax({
-        url:origin+"/FrameDetails/multiDropdown",
+        url:origin+"/FrameSearch/multiDropdown",
         method:"POST",
-        data:{data_action:'fetch_dropdown_list', value:'ornament', id:inventoryNumber},
+        data:{data_action:'fetch_dropdown_list', value:'ornament'},
         success:function(data){
           dropdownList(data);
       }
   })
   $.ajax({
-    url:origin+"/FrameDetails/multiDropdown",
+    url:origin+"/FrameSearch/multiDropdown",
     method:"POST",
-    data:{data_action:'fetch_dropdown_list', value:'color', id:inventoryNumber},
+    data:{data_action:'fetch_dropdown_list', value:'color'},
     success:function(data){
       dropdownList(data);
   }
 })
 $.ajax({
-    url:origin+"/FrameDetails/multiDropdown",
+    url:origin+"/FrameSearch/multiDropdown",
     method:"POST",
-    data:{data_action:'fetch_dropdown_list', value:'corners', id:inventoryNumber},
+    data:{data_action:'fetch_dropdown_list', value:'corners'},
     success:function(data){
       dropdownList(data);
   }
@@ -73,6 +85,25 @@ $.ajax({
     $('#__multiselect_colorLookupables').val(color);
     var corner= $('#cornerLookupables').val();
     $('#__multiselect_cornerLookupables').val(corner);
+
+    $('#framesView_0').on('click',function(){
+        var centurySelectedValue=$('#__multiselect_centuryLookupables').val();
+        // $.session.set('centurySelectedValue', centurySelectedValue);
+        var searchData=[];
+        searchData.push({'century':centurySelectedValue});
+        // console.log(JSON.stringify(searchData));
+        var origin   = window.location.origin;
+        $.ajax({
+         url:origin+"/FrameSearch/search",
+         method:"POST",
+         data:{data_action:'fetch_all_frame_searching', value:JSON.stringify(searchData)},
+         success:function(data){
+         var centurySelectedValue= $.parseJSON(data);
+          console.log(centurySelectedValue[0].century);
+         
+       }
+   })
+    });
 
      });
     

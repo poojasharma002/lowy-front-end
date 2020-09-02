@@ -1,7 +1,9 @@
 <?php  echo view('templates/header');
 echo link_tag('https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css'); 
-echo link_tag('assets/css/animate.min.css'); 
-echo script_tag('assets/js/notification.js');?>
+// echo link_tag('assets/css/animate.min.css'); 
+echo script_tag('assets/js/notification.js');
+echo link_tag('assets/css/jquery-confirm.min.css'); 
+echo script_tag('assets/js/jquery-confirm.min.js');?>
 <script>
 $(document).ready(function(){  
   $(".nav-link").removeClass("active");
@@ -19,6 +21,10 @@ $(document).ready(function(){
 .frameSoldWrapper{
   font-weight: 700;
 }
+#successMessages, #errorMessages{
+  z-index:1;
+}
+
 .table td  {
     vertical-align: middle;
     border: none;
@@ -31,7 +37,7 @@ $(document).ready(function(){
  <div id="errorMessages"></div>
     <div id="import" class="container tab-pane fade"><br>
         <h3 style="text-align: center;">List of new images:</h3>
-        <div style="text-align: center;"><button >Import All On Page</button></div>
+        <div style="text-align: center;"><button onclick="importAllImage();">Import All On Page</button></div>
         </br>
         <table id="example" class="table table-striped table-bordered" style="width:100%">
         <thead style="display:none;">
@@ -52,7 +58,7 @@ $(document).ready(function(){
                 }elseif($numlength>=4){ $imgNo='L'.$importImageList[$i]->inventoryNumber; $invNo=$importImageList[$i]->inventoryNumber;   }?>
         <tr>
            <td><?= $importImageList[$i]->sequenceNumber;?></td>
-           <td style="width: 275px;"><img src="<?= $baseUri; ?>/images/frames/web/<?= $imgNo ?>" width="200"> <span class="frameSoldWrapper" style="margin-left: 75px;"><?= $invNo; ?></span></td>
+           <td style="width: 275px;"><img src="<?= $baseUri; ?>images/frames/web-tmp/<?= $imgNo ?>" width="200"> <span class="frameSoldWrapper" style="margin-left: 75px;"><?= $invNo; ?></span></td>
            <td><div class="summarydetails">
                             <span class="frameSoldWrapper"><?= $imgNo; ?></span>
                             <br>
@@ -71,23 +77,81 @@ $(document).ready(function(){
         </div>
  </div>
  </main>
-   <?php echo view('templates/footer');?>
+  <?php echo view('templates/footer');?>
    <script type="text/javascript" language="javascript">
   function importImage(invNo){
-    console.log(invNo);
-    $('#cover-spin').show(0);
-     $.ajax({
-        url:"<?php echo base_url(); ?>/ImageImport/action",
-        method:"POST",
-        data:{data_action:'import_image', inventoryNumber:invNo},
-        success:function(data){
-          $('#cover-spin').hide(0); 
-          //  var framelist= $.parseJSON(data)
-          // createAlert('Opps!','Something went wrong','Plaese Contact to administrative.','danger',true,true,'errorMessages');
-           createAlert('','Edit Frame Details!','Frame Details Update Successfully!.','success',true,true,'successMessages');
-           console.log(data);
+    $.confirm({
+    title: 'Import Image?',
+    content: 'You Want to import this Image.',
+    autoClose: 'no|8000',
+    buttons: {
+      yes: {
+            text: 'Yes',
+            action: function () {
+                  console.log();
+                  $('#cover-spin').show(0);
+                    $.ajax({
+                        url:"<?php echo base_url(); ?>/ImageImport/action",
+                        method:"POST",
+                        data:{data_action:'import_image', inventoryNumber:invNo},
+                        success:function(data){
+                          $('#cover-spin').hide(0);
+                          jQuery(".page-item.active .page-link").css('z-index','0'); 
+                          var importImage= $.parseJSON(data)
+                          
+                          if(importImage[0].importStatus=='Imported'){
+                            createAlert('','Import Image!','Frame image import Successfully!.','success',true,true,'successMessages');
+                          }else{
+                            createAlert('Opps!','Something went wrong','Frame image not found.','danger',true,true,'errorMessages');
+                          }
+                        }
+                  })
+            }
+        },
+        no: function () {
+            // $.alert('action is canceled');
         }
-  })
+    }
+});
+    
+  }
+
+  function importAllImage(){
+    $.confirm({
+    title: 'Are you sure?',
+    content: 'You Want to import All Images.',
+    autoClose: 'no|8000',
+    buttons: {
+      yes: {
+            text: 'Yes',
+            action: function () {
+                  console.log();
+                  $('#cover-spin').show(0);
+                    $.ajax({
+                        url:"<?php echo base_url(); ?>/ImageImport/AllImageImport",
+                        method:"POST",
+                        data:{data_action:'importAll_image'},
+                        success:function(data){
+                          console.log(data);
+                          $('#cover-spin').hide(0);
+                          jQuery(".page-item.active .page-link").css('z-index','0'); 
+                          var importImage= $.parseJSON(data)
+                          
+                          if(importImage[0].importStatus=='Imported'){
+                            createAlert('','Import Images!','Frame images import Successfully!.','success',true,true,'successMessages');
+                          }else{
+                            createAlert('Opps!','Something went wrong','Frame images not found.','danger',true,true,'errorMessages');
+                          }
+                        }
+                  })
+            }
+        },
+        no: function () {
+            // $.alert('action is canceled');
+        }
+    }
+});
+    
   }
 
 </script>

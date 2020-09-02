@@ -23,7 +23,7 @@ echo link_tag('assets/css/style.css');
   <ul>
       <li>
           
-          <a href="/framesView.action">Search</a>
+          <a href="<?php echo base_url('framesSearch.action'); ?>">Search</a>
       </li>
       <li>
           
