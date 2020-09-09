@@ -40,10 +40,9 @@ class FrameSearch extends BaseController
                    }
 
                    $data=['searchResult'=>array_filter($results), 'baseUri'=>$baseURI,'totalRecords'=>$totalRecords];
-                   $data = json_encode($data);
-                  //  
+                   $data = json_encode($data); 
                    print_r($data);
-                  // echo 'hi';
+                 
                }
             }
          } catch (Error $e){
