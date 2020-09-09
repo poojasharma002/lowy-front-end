@@ -17,13 +17,33 @@ class FrameSearch extends BaseController
             {
                $data_action= $this->request->getPost('data_action');
                $searchValue= $this->request->getPost('value');
-               print_r($searchValue);
+               $page= $this->request->getPost('page');
                if($data_action == "fetch_all_frame_searching")
-               {
-                  //  $response = $client->request('GET', ''.$baseURI.'frames?startRow=0&numRows=200');
-                  //  $result= $response->getBody();
-                   // $result = json_decode($result);
-                  // print_r('hi');
+               {  
+                  $searchValue=json_decode($searchValue);
+                  $query='';
+                  $num=count($searchValue);
+                      foreach($searchValue[0] as $key=>$value)
+                           {
+                                 $query=$query.$key.'='.$value.'&';
+                             
+                           }
+                  $query=rtrim($query, "&");
+                   $response = $client->request('GET', ''.$baseURI.'/search?'.$query.'');
+                   $result= $response->getBody();
+                   $result = json_decode($result);
+                   $totalRecords=count($result);
+                   $results=array();
+                   for($i=$page; $i<($page+6);$i++){
+                        array_push($results,$result[$i]);
+                    
+                   }
+
+                   $data=['searchResult'=>array_filter($results), 'baseUri'=>$baseURI,'totalRecords'=>$totalRecords];
+                   $data = json_encode($data);
+                  //  
+                   print_r($data);
+                  // echo 'hi';
                }
             }
          } catch (Error $e){
@@ -31,7 +51,37 @@ class FrameSearch extends BaseController
          }
        
      }
-	//--------------------------------------------------------------------
+  //--------------------------------------------------------------------
+
+   // function for searching Frame by inventory number 
+   public function searchByInventoryNumber(){
+    try{
+       $baseURI = baseURI();
+       $client = \Config\Services::curlrequest();
+       if($this->request->getPost('data_action'))
+       {
+          $data_action= $this->request->getPost('data_action');
+          $searchValue= $this->request->getPost('value');
+          if($data_action == "fetch_frame_searching")
+          {  
+            $query=ltrim($searchValue, "L");
+              $response = $client->request('GET', ''.$baseURI.'frames/'.$query.'');
+              $result= $response->getBody();
+              $result = json_decode($result);
+              $data=['inventoryNumber'=>$result->inventoryNumber, 'baseUri'=>$baseURI,'totalRecords'=>1];
+              $data = json_encode($data);
+               print_r($data);
+              // echo 'hi';
+          }
+       }
+    } catch (Error $e){
+
+    }
+  
+}
+//--------------------------------------------------------------------
+  
+
 // function for fetch multi select dropdwoun values.
 public function multiDropdown(){
     try{

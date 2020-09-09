@@ -1,0 +1,87 @@
+#gallery img{
+  height: 360px;
+}
+#gallery p a {
+  color: #788B75;
+  text-decoration: none;
+  font-family: verdana;
+  font-size: 20px;
+  margin-left: 10px;
+}
+#imageGrid{
+  margin-bottom: 25px;
+}
+.carousel-item {
+  display:block !important;
+
+}
+#loadMore{
+  text-align: center;
+    margin-bottom: 70px;
+    margin-top: 30px;
+}
+
+#loadMoreSearch{
+  height: 56px;
+  color: #AF8B73;
+  border-color: #2f4a27;
+  font-size: 20px;
+  font-weight: bold;
+  width: 228px;
+}
+
+#fancybox-title-under {
+  /* background-color: #000000; */
+  border: 0;
+  margin-left: -11px;
+  margin-right: -11px;
+  color: #FFFFFF;
+  height: 64px;
+  margin-top: -10px;
+  padding: 5px 10px;
+  width: auto;
+  color: #788B75;
+  font-size: 18px;
+  margin-bottom: 30px;
+}
+/* rotate Frame */
+
+.ui-dialog .ui-dialog-content {
+  border: 0;
+  padding: .5em 1em;
+  background: none;
+  overflow: auto;
+  zoom: 1;
+}
+.ui-widget-content {
+  border: 1px solid #aaaaaa/*{borderColorContent}*/;
+  color: #222222/*{fcContent}; */;
+}
+.ui-widget {
+  font-family: Verdana,Arial,sans-serif/*{ffDefault}*/;
+  font-size: 1.1em/*{fsDefault}*/;
+}
+.cutPerSide {
+  border: 1px solid #ccc;
+  margin: 5px;
+  padding: 10px;
+  width: 440px;
+}
+#rotateFrame .controls {
+  float: right;
+  margin-top: 10px;
+  margin-right: 30px;
+}
+.ui-widget input, .ui-widget select, .ui-widget textarea, .ui-widget button {
+  font-family: Verdana,Arial,sans-serif/*{ffDefault}*/;
+  font-size: 1em;
+}
+.cutPerSide label {
+  font-weight: bold;
+}
+#myModalLabel {
+  color: black;
+}
+#rotateFramePopup{
+  cursor: move;
+}
