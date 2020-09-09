@@ -85,3 +85,6 @@
 #rotateFramePopup{
   cursor: move;
 }
+#loadMore{
+  display: none;
+}
