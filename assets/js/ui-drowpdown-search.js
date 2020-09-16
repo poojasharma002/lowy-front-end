@@ -116,6 +116,7 @@ $.ajax({
 
 // function for load more Frame
     $("#loadMoreSearch").on('click',function(){
+      $('#framesView_searchType').val('');
       var centurySelectedValue=$('#__multiselect_centuryLookupables').val();
       var makerSelectedValue=$('#__multiselect_makerLookupables').val();
       var countrySelectedValue=$('#__multiselect_countryLookupables').val();
@@ -191,6 +192,14 @@ $.ajax({
 
     // function for searching by inventory number 
     $('#searchByInvNo').on('click', function(){
+      $('#framesView_minPrice').val('');
+      $('#framesView_maxPrice').val('');
+      $('#framesView_sizeMouldingWidthMinInt').val('');$('#framesView_sizeMouldingWidthMinFract').val('');
+      $('#framesView_sizeMouldingWidthMaxInt').val('');$('#framesView_sizeMouldingWidthMaxFract').val('');
+      $('#framesView_sizeSightHeightMinInt').val('');$('#framesView_sizeSightHeightMinFract').val('');
+      $('#framesView_sizeSightHeightMaxInt').val('');$('#framesView_sizeSightHeightMaxFract').val('');
+      $('#framesView_sizeSightWidthMinInt').val('');$('#framesView_sizeSightWidthMinFract').val('');
+      $('#framesView_sizeSightWidthMaxInt').val('');$('#framesView_sizeSightWidthMaxFract').val('');
       var searchType=$('#framesView_searchType').val();
       $('#cover-spin').show(0);
       var origin   = window.location.origin;
@@ -235,6 +244,7 @@ $.ajax({
 
      // function for search filter according to arigin, style, size, price, sold, missing, image
    function searchingAttributes(){
+    $('#framesView_searchType').val('');
       var centurySelectedValue=$('#__multiselect_centuryLookupables').val();
       var makerSelectedValue=$('#__multiselect_makerLookupables').val();
       var countrySelectedValue=$('#__multiselect_countryLookupables').val();
@@ -314,15 +324,14 @@ $.ajax({
  })
 }
 
-     function openImgPopup(imgno,uri,inventoryNumber){
-      $( ".modal-body" ).empty();
-      $( ".modal-footer" ).empty();
-      $('.modal-body').append('<div class="zoom-area">'+
-      '<div class="large"></div>'+
-      '<img class="small" id="pic" src="'+uri+'images/frames/web/'+imgno+'" alt="'+imgno+'">'+
-      '</div>');
-      $('#modal-footer').append(' <div id="fancybox-title-under"> <a target="_blank" href="'+uri+'images/frames/web/'+imgno+'"> [Print]</a> <div style="float:left;">'+imgno+'&nbsp;</div> <a class="doRotate" href="#" data-toggle="modal" data-target="#rotateFramePopup" titledata="'+imgno+'">[Edit]</a> <a target="_blank" href="'+uri+'images/frames/web/'+imgno+'"> [E-mail]</a> <div id="lb-'+imgno+'" style="float:right;text-align:right;">18CFRRGDCCC838ST56/34X43/58 <br> LP0188T052P313H16</div> </div>')
-    $('#exampleModal').modal('show');
-     imageZoom();
-     }
-    
+function openImgPopup(imgno,uri,inventoryNumber){
+  $( "#modal-body" ).empty();
+  $( "#modal-footer" ).empty();
+  $('#modal-body').append('<div class="zoom-area">'+
+  '<div class="large"></div>'+
+  '<img class="small" id="pic" src="'+uri+'images/frames/web/'+imgno+'" alt="'+imgno+'">'+
+  '</div>');
+  $('#modal-footer').append(' <div id="fancybox-title-under"> <a target="_blank" href="'+uri+'images/frames/web/'+imgno+'"> [Print]</a> <div style="float:left;">'+imgno+'&nbsp;</div> <a class="doRotate" href="#" data-toggle="modal" data-target="#rotateFramePopup" titledata="'+imgno+'">[Edit]</a> <a target="_blank" href="'+uri+'images/frames/web/'+imgno+'"> [E-mail]</a> <div id="lb-'+imgno+'" style="float:right;text-align:right;">18CFRRGDCCC838ST56/34X43/58 <br> LP0188T052P313H16</div> </div>')
+$('#exampleModal').modal('show');
+ imageZoom();
+ }

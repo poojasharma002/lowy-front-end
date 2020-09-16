@@ -385,7 +385,7 @@ This part is straight out of Bootstrap docs. Just a carousel inside a modal.
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <div class="modal-body">
+      <div class="modal-body" id="modal-body">
          
       </div>
       <div class="modal-footer" id="modal-footer">
@@ -432,7 +432,7 @@ This part is straight out of Bootstrap docs. Just a carousel inside a modal.
             </form>
         </div>
       </div>
-      <div class="modal-footer" id="">
+      <div class="modal-footer">
      
       </div>
     </div>
