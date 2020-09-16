@@ -181,7 +181,7 @@ $.ajax({
       '<img class="w-100" src="'+SelectedValue.baseUri+'images/frames/web/'+imgInventoryNumber+'" alt="'+imgInventoryNumber+'" onclick="openImgPopup(\''+imgInventoryNumber+'\', \''+SelectedValue.baseUri+'\', \''+inventoryNumber+'\');" data-slide-to="0" border="0">'+
       '<p><input type="checkbox" name="cartFramesChanges" value="'+inventoryNumber+'" id="box'+imgInventoryNumber+'">'+
          '<input type="hidden" id="__checkbox_box'+imgInventoryNumber+'" name="__checkbox_cartFramesChanges" value="'+inventoryNumber+'">'+ 
-      '<span class=""><a id="framesAddToCartForm_" href="#" class="checkit">'+imgInventoryNumber+'</a></span></p></div>');       
+      '<span class=""><a id="framesAddToCartForm_" href="'+origin+'/frameAdminView.action?id='+inventoryNumber+'" target="_blank" class="checkit">'+imgInventoryNumber+'</a></span></p></div>');       
        }
     
       //  console.log(SelectedValue.searchResult);
@@ -215,7 +215,7 @@ $.ajax({
       '<img class="w-100" src="'+SelectedValue.baseUri+'images/frames/web/'+imgInventoryNumber+'" alt="'+imgInventoryNumber+'" onclick="openImgPopup(\''+imgInventoryNumber+'\', \''+SelectedValue.baseUri+'\', \''+inventoryNumber+'\');" data-slide-to="0" border="0">'+
       '<p><input type="checkbox" name="cartFramesChanges" value="'+inventoryNumber+'" id="box'+imgInventoryNumber+'">'+
          '<input type="hidden" id="__checkbox_box'+imgInventoryNumber+'" name="__checkbox_cartFramesChanges" value="'+inventoryNumber+'">'+ 
-      '<span class=""><a id="framesAddToCartForm_" href="#" class="checkit">'+imgInventoryNumber+'</a></span></p></div>');
+      '<span class=""><a id="framesAddToCartForm_" href="'+origin+'/frameAdminView.action?id='+inventoryNumber+'" target="_blank" class="checkit">'+imgInventoryNumber+'</a></span></p></div>');
        }else{
         $('#gallery').append('<div class="col-12 col-sm-6 col-lg-4" id="imageGrid">'+
         '<h2>NO Frame Found</h2>'+
@@ -302,7 +302,7 @@ $.ajax({
       '<img class="w-100" src="'+SelectedValue.baseUri+'images/frames/web/'+imgInventoryNumber+'" alt="'+imgInventoryNumber+'" onclick="openImgPopup(\''+imgInventoryNumber+'\', \''+SelectedValue.baseUri+'\', \''+inventoryNumber+'\');" data-slide-to="0" border="0">'+
       '<p><input type="checkbox" name="cartFramesChanges" value="'+inventoryNumber+'" id="box'+imgInventoryNumber+'">'+
          '<input type="hidden" id="__checkbox_box'+imgInventoryNumber+'" name="__checkbox_cartFramesChanges" value="'+inventoryNumber+'">'+ 
-      '<span class=""><a id="framesAddToCartForm_" href="#" class="checkit">'+imgInventoryNumber+'</a></span></p></div>');       
+      '<span class=""><a id="framesAddToCartForm_" href="'+origin+'/frameAdminView.action?id='+inventoryNumber+'" target="_blank" class="checkit">'+imgInventoryNumber+'</a></span></p></div>');       
        }
          }else{
         $('#gallery').append('<div class="col-12 col-sm-6 col-lg-4" id="imageGrid">'+
@@ -315,11 +315,11 @@ $.ajax({
 }
 
      function openImgPopup(imgno,uri,inventoryNumber){
-      $( "#carousel-inner" ).empty();
+      $( ".modal-body" ).empty();
       $( ".modal-footer" ).empty();
-      $('#carousel-inner').append('<div class="carousel-item zoom-area">'+
-      '<img class="d-block w-100 small" id="pic" src="'+uri+'images/frames/web/'+imgno+'" alt="'+imgno+'" >'+
+      $('.modal-body').append('<div class="zoom-area">'+
       '<div class="large"></div>'+
+      '<img class="small" id="pic" src="'+uri+'images/frames/web/'+imgno+'" alt="'+imgno+'">'+
       '</div>');
       $('#modal-footer').append(' <div id="fancybox-title-under"> <a target="_blank" href="'+uri+'images/frames/web/'+imgno+'"> [Print]</a> <div style="float:left;">'+imgno+'&nbsp;</div> <a class="doRotate" href="#" data-toggle="modal" data-target="#rotateFramePopup" titledata="'+imgno+'">[Edit]</a> <a target="_blank" href="'+uri+'images/frames/web/'+imgno+'"> [E-mail]</a> <div id="lb-'+imgno+'" style="float:right;text-align:right;">18CFRRGDCCC838ST56/34X43/58 <br> LP0188T052P313H16</div> </div>')
     $('#exampleModal').modal('show');

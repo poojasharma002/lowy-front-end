@@ -1,14 +1,21 @@
-/* Created by Rohan Hapani */
+
 *
 		{
 			margin: 0;
 			padding: 0;
 		}
+		.zoom-area
+		{
+			/* width: 400px; */
+			/* margin: 50px auto; */
+			position: relative;
+			cursor: none
+		}
 		/* for create magnify glass */
 		.large
 		{
-			width: 200px;
-			height: 200px;
+			width: 175px;
+			height: 175px;
 			position: absolute;
 			border-radius: 100%;
 		
@@ -23,4 +30,7 @@
 		.small
 		{
 			display: block;
+			width: 430px;
+			height: 500px;
+			margin-left: 18px;
 		}

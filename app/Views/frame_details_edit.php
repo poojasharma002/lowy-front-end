@@ -228,7 +228,7 @@ echo script_tag("assets/js/ui-drowpdown.js");
         <input type="hidden" name="priceUpdate" value="<?php echo $frameDetails->priceUpdate; ?>" id="priceUpdate">
          <input type="hidden" name="id" value="<?php echo $frameDetails->id; ?>" id="frameAdminSave_id">
         <input type="hidden" name="inventoryNumber" value="<?= $invNo ?>" id="frameAdminSave_inventoryNumber">
-        <input type="image" alt="Сancel" src="<?php echo base_url('assets/img/reset.jpg');?>" id="frameAdminSave_frameAdminCancel" name="action:frameAdminCancel" value="Сancel" class="buttonlink">
+        <input type="button" src="<?php echo base_url('assets/img/reset.jpg');?>" onClick="window.location.reload();" id="reset_bt">
 
         <input type="image" alt="Save" src="<?php echo base_url('assets/img/save.jpg');?>" id="frameAdminSave_0" value="Save" class="buttonlink">
 

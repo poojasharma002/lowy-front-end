@@ -2,9 +2,8 @@
 function imageZoom()
 		{
 			var sub_width = 0;
-			var sub_height = 0;
-		 	$(".large").css("background","url('" + $(".small").attr("src") + "') no-repeat");
-
+			var sub_height =0;
+		 	$(".large").css("background","url('" + $(".small").attr("src") + "') no-repeat,rgb(255, 255, 255)");
 			$(".zoom-area").mousemove(function(e){
 				if(!sub_width && !sub_height)
 				{

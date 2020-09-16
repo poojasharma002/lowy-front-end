@@ -386,10 +386,7 @@ This part is straight out of Bootstrap docs. Just a carousel inside a modal.
         </button>
       </div>
       <div class="modal-body">
-        <div  class="carousel slide">
-          <div  id="carousel-inner">
-          </div>
-        </div>
+         
       </div>
       <div class="modal-footer" id="modal-footer">
      
