@@ -44,43 +44,24 @@
    <?php echo view('templates/footer');?>
 <script type="text/javascript" language="javascript">
 $(document).ready(function(){  
- 
-  var t = $('#example').DataTable();
-  function fetch_farme_list(){
-    $('#cover-spin').show(0);
-     $.ajax({
-        url:"<?php echo base_url(); ?>/FrameList/action",
-        method:"POST",
-        data:{data_action:'fetch_frame_list'},
-        success:function(data){
-          $('#cover-spin').hide(0); 
-           var framelist= $.parseJSON(data)
-           for(var i=0; i<framelist.length; i++){
-            var numlength = framelist[i].inventoryNumber.toString().length;
-                 if(numlength==1){var imgNo='L000'+framelist[i].inventoryNumber; 
-                 }else if(numlength==2){ var imgNo='L00'+framelist[i].inventoryNumber;  
-                 }else if(numlength==3){ var imgNo='L0'+framelist[i].inventoryNumber; 
-                 }else if(numlength>=4){ var imgNo='L'+framelist[i].inventoryNumber;  
-                }
-                t.row.add( [
-                    '<a href ="<?php echo base_url();?>/frameAdminView.action?id='+framelist[i].inventoryNumber+'" >'+imgNo+'</a>',
-                    framelist[i].description,
-                    framelist[i].century,
-                    framelist[i].countryCode,
-                    framelist[i].frameWidth,
-                    framelist[i].sightHeight,
-                    framelist[i].sightWidth,
-                    framelist[i].purchaseDate,
-                    framelist[i].pairId,
-                    framelist[i].buildingName,
-                    framelist[i].locationName
-
-        ] ).draw( false );
-            }
-        }
-  })
-  }
-  fetch_farme_list();
+    $('#example').DataTable( {
+		"processing": true,
+		"serverSide": false,
+		"ajax": "./results.json",
+		"columns"     :     [  
+                {     "data"     :     "inventoryNumber"},  
+                {     "data"     :     "description"},
+				{     "data"     :     "century"},
+				{     "data"     :     "countryCode"},
+				{     "data"     :     "frameWidth"},
+				{     "data"     :     "sightHeight"},
+				{     "data"     :     "sightWidth"},
+				{     "data"     :     "purchaseDate"},
+				{     "data"     :     "pairId"},
+				{     "data"     :     "buildingName"},
+				{     "data"     :     "locationName"}
+           ]  
+	} );
 });
 </script>
    
