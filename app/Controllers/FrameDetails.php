@@ -156,6 +156,9 @@ class FrameDetails extends BaseController
                   $imgUrl=$baseURI.'/images/frames/web/'.$imgNo;   
                    echo view('frame_details', ['frameDetails' => $result, 'status_code'=>$httpcode,
                              'imgUrl'=>$imgUrl, 'imgNo'=>$imgNo, 'invNo'=>$invNo]);
+                  require_once(APPPATH.'Controllers/FrameList.php');
+                  $aObj = new FrameList();
+                  $aObj->json_create();
                 }
                 }
       } catch (Error $e){
