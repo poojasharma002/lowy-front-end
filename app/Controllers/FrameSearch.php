@@ -25,7 +25,9 @@ class FrameSearch extends BaseController
                   $num=count($searchValue);
                       foreach($searchValue[0] as $key=>$value)
                            {
+                              if($value!=""){
                                  $query=$query.$key.'='.$value.'&';
+                              }
                              
                            }
                   $query=rtrim($query, "&");
