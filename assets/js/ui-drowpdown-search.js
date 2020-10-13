@@ -23,7 +23,7 @@ $(document).ready(function(){
     }
   })
   // call seraching on serach page load
-  searchingAttributes();
+   searchingAttributes();
   // all function for search dropdown 
     $('#__multiselect_centuryLookupables').val(sessionStorage['centurySelectedValue']);
    var centurySelectedValue=$('#__multiselect_centuryLookupables').val();
@@ -117,6 +117,7 @@ $.ajax({
 // function for load more Frame
     $("#loadMoreSearch").on('click',function(){
       $('#framesView_searchType').val('');
+      var artworkId=$('#artworkId').val();
       var centurySelectedValue=$('#__multiselect_centuryLookupables').val();
       var makerSelectedValue=$('#__multiselect_makerLookupables').val();
       var countrySelectedValue=$('#__multiselect_countryLookupables').val();
@@ -178,11 +179,17 @@ $.ajax({
         }else if(inventoryNumberCount==3){ imgInventoryNumber='L0'+SelectedValue.searchResult[i].inventoryNumber; inventoryNumber='0'+SelectedValue.searchResult[i].inventoryNumber;
         }else if(inventoryNumberCount>=4){ imgInventoryNumber='L'+SelectedValue.searchResult[i].inventoryNumber; inventoryNumber=SelectedValue.searchResult[i].inventoryNumber;
        }
+       if(artworkId!=''){
+        var imgSrc=SelectedValue.baseUri+'images/frames/'+imgInventoryNumber+'/'+artworkId;
+         
+       }else{
+        var imgSrc=SelectedValue.baseUri+'images/frames/web/'+imgInventoryNumber;
+       }
         $('#gallery').append('<div class="col-12 col-sm-6 col-lg-4" id="imageGrid">'+
-      '<img class="w-100" src="'+SelectedValue.baseUri+'images/frames/web/'+imgInventoryNumber+'" alt="'+imgInventoryNumber+'" onclick="openImgPopup(\''+imgInventoryNumber+'\', \''+SelectedValue.baseUri+'\', \''+inventoryNumber+'\');" data-slide-to="0" border="0">'+
+      '<img class="w-100" src="'+imgSrc+'" alt="'+imgInventoryNumber+'" onclick="openImgPopup(\''+imgInventoryNumber+'\', \''+SelectedValue.baseUri+'\', \''+inventoryNumber+'\');" data-slide-to="0" border="0">'+
       '<p><input type="checkbox" name="cartFramesChanges" value="'+inventoryNumber+'" id="box'+imgInventoryNumber+'">'+
          '<input type="hidden" id="__checkbox_box'+imgInventoryNumber+'" name="__checkbox_cartFramesChanges" value="'+inventoryNumber+'">'+ 
-      '<span class=""><a id="framesAddToCartForm_" href="'+origin+'/frameAdminView.action?id='+inventoryNumber+'" target="_blank" class="checkit">'+imgInventoryNumber+'</a></span></p></div>');       
+         '<span class=""><a id="framesAddToCartForm_" href="'+origin+'/frameAdminView.action?id='+inventoryNumber+'" target="_blank" class="checkit">'+imgInventoryNumber+'</a></span></p></div>');
        }
     
       //  console.log(SelectedValue.searchResult);
@@ -191,7 +198,7 @@ $.ajax({
     });
 
     // function for searching by inventory number 
-    $('#searchByInvNo').on('click', function(){
+      $('#searchByInvNo').on('click', function(){
       $('#framesView_minPrice').val('');
       $('#framesView_maxPrice').val('');
       $('#framesView_sizeMouldingWidthMinInt').val('');$('#framesView_sizeMouldingWidthMinFract').val('');
@@ -200,7 +207,15 @@ $.ajax({
       $('#framesView_sizeSightHeightMaxInt').val('');$('#framesView_sizeSightHeightMaxFract').val('');
       $('#framesView_sizeSightWidthMinInt').val('');$('#framesView_sizeSightWidthMinFract').val('');
       $('#framesView_sizeSightWidthMaxInt').val('');$('#framesView_sizeSightWidthMaxFract').val('');
+      var artworkId=$('#artworkId').val();
       var searchType=$('#framesView_searchType').val();
+      if($.isNumeric(searchType)==false){
+        var check= searchType.split('L');
+            if(check[0]!='L' && $.isNumeric(check[1])==false){
+              createAlert('','','Plaese Enter valid Inventory Number. Ex.(L0004,L0123 etc.)','danger',true,true,'errorMessages');
+              return;
+            }
+          }     
       $('#cover-spin').show(0);
       var origin   = window.location.origin;
       $.ajax({
@@ -219,12 +234,17 @@ $.ajax({
         }else if(inventoryNumberCount==2){ imgInventoryNumber='L00'+SelectedValue.inventoryNumber; inventoryNumber='00'+SelectedValue.inventoryNumber;
         }else if(inventoryNumberCount==3){ imgInventoryNumber='L0'+SelectedValue.inventoryNumber; inventoryNumber='0'+SelectedValue.inventoryNumber;
         }else if(inventoryNumberCount>=4){ imgInventoryNumber='L'+SelectedValue.inventoryNumber; inventoryNumber=SelectedValue.inventoryNumber;}
-       
+        if(artworkId!=''){
+          var imgSrc=SelectedValue.baseUri+'images/frames/'+imgInventoryNumber+'/'+artworkId;
+           
+         }else{
+          var imgSrc=SelectedValue.baseUri+'images/frames/web/'+imgInventoryNumber;
+         }
         $('#gallery').append('<div class="col-12 col-sm-6 col-lg-4" id="imageGrid">'+
-      '<img class="w-100" src="'+SelectedValue.baseUri+'images/frames/web/'+imgInventoryNumber+'" alt="'+imgInventoryNumber+'" onclick="openImgPopup(\''+imgInventoryNumber+'\', \''+SelectedValue.baseUri+'\', \''+inventoryNumber+'\');" data-slide-to="0" border="0">'+
+      '<img class="w-100" src="'+imgSrc+'" alt="'+imgInventoryNumber+'" onclick="openImgPopup(\''+imgInventoryNumber+'\', \''+SelectedValue.baseUri+'\', \''+inventoryNumber+'\');" data-slide-to="0" border="0">'+
       '<p><input type="checkbox" name="cartFramesChanges" value="'+inventoryNumber+'" id="box'+imgInventoryNumber+'">'+
          '<input type="hidden" id="__checkbox_box'+imgInventoryNumber+'" name="__checkbox_cartFramesChanges" value="'+inventoryNumber+'">'+ 
-      '<span class=""><a id="framesAddToCartForm_" href="'+origin+'/frameAdminView.action?id='+inventoryNumber+'" target="_blank" class="checkit">'+imgInventoryNumber+'</a></span></p></div>');
+         '<span class=""><a id="framesAddToCartForm_" href="'+origin+'/frameAdminView.action?id='+inventoryNumber+'" target="_blank" class="checkit">'+imgInventoryNumber+'</a></span></p></div>');
        }else{
         $('#gallery').append('<div class="col-12 col-sm-6 col-lg-4" id="imageGrid">'+
         '<h2>NO Frame Found</h2>'+
@@ -245,6 +265,7 @@ $.ajax({
      // function for search filter according to arigin, style, size, price, sold, missing, image
    function searchingAttributes(){
     $('#framesView_searchType').val('');
+      var artworkId=$('#artworkId').val();
       var centurySelectedValue=$('#__multiselect_centuryLookupables').val();
       var makerSelectedValue=$('#__multiselect_makerLookupables').val();
       var countrySelectedValue=$('#__multiselect_countryLookupables').val();
@@ -281,8 +302,8 @@ $.ajax({
         'sightHeightMax':sightHeighMaxSelectedValue,
         'sightWidthMin':sightWidthMinSelectedValue,
         'sightWidthMax':sightWidthMaxSelectedValue,
-        'sold':searchSoldValue,
-        'hide-missing-images':hideMissingImagesValue
+        'includeSold':searchSoldValue,
+        'hideMissingImages':hideMissingImagesValue
       });
       $('#cover-spin').show(0);
       var origin   = window.location.origin;
@@ -308,8 +329,14 @@ $.ajax({
         }else if(inventoryNumberCount==3){ imgInventoryNumber='L0'+SelectedValue.searchResult[i].inventoryNumber; inventoryNumber='0'+SelectedValue.searchResult[i].inventoryNumber;
         }else if(inventoryNumberCount>=4){ imgInventoryNumber='L'+SelectedValue.searchResult[i].inventoryNumber; inventoryNumber=SelectedValue.searchResult[i].inventoryNumber;
        }
+       if(artworkId!=''){
+        var imgSrc=SelectedValue.baseUri+'images/frames/'+imgInventoryNumber+'/'+artworkId;
+         
+       }else{
+        var imgSrc=SelectedValue.baseUri+'images/frames/web/'+imgInventoryNumber;
+       }
         $('#gallery').append('<div class="col-12 col-sm-6 col-lg-4" id="imageGrid">'+
-      '<img class="w-100" src="'+SelectedValue.baseUri+'images/frames/web/'+imgInventoryNumber+'" alt="'+imgInventoryNumber+'" onclick="openImgPopup(\''+imgInventoryNumber+'\', \''+SelectedValue.baseUri+'\', \''+inventoryNumber+'\');" data-slide-to="0" border="0">'+
+      '<img class="w-100" src="'+imgSrc+'" alt="'+imgInventoryNumber+'" onclick="openImgPopup(\''+imgInventoryNumber+'\', \''+SelectedValue.baseUri+'\', \''+inventoryNumber+'\');" data-slide-to="0" border="0">'+
       '<p><input type="checkbox" name="cartFramesChanges" value="'+inventoryNumber+'" id="box'+imgInventoryNumber+'">'+
          '<input type="hidden" id="__checkbox_box'+imgInventoryNumber+'" name="__checkbox_cartFramesChanges" value="'+inventoryNumber+'">'+ 
       '<span class=""><a id="framesAddToCartForm_" href="'+origin+'/frameAdminView.action?id='+inventoryNumber+'" target="_blank" class="checkit">'+imgInventoryNumber+'</a></span></p></div>');       
@@ -324,14 +351,21 @@ $.ajax({
  })
 }
 
-function openImgPopup(imgno,uri,inventoryNumber){
-  $( "#modal-body" ).empty();
-  $( "#modal-footer" ).empty();
-  $('#modal-body').append('<div class="zoom-area">'+
-  '<div class="large"></div>'+
-  '<img class="small" id="pic" src="'+uri+'images/frames/web/'+imgno+'" alt="'+imgno+'">'+
-  '</div>');
-  $('#modal-footer').append(' <div id="fancybox-title-under"> <a target="_blank" href="'+uri+'images/frames/web/'+imgno+'"> [Print]</a> <div style="float:left;">'+imgno+'&nbsp;</div> <a class="doRotate" href="#" data-toggle="modal" data-target="#rotateFramePopup" titledata="'+imgno+'">[Edit]</a> <a target="_blank" href="'+uri+'images/frames/web/'+imgno+'"> [E-mail]</a> <div id="lb-'+imgno+'" style="float:right;text-align:right;">18CFRRGDCCC838ST56/34X43/58 <br> LP0188T052P313H16</div> </div>')
-$('#exampleModal').modal('show');
- imageZoom();
- }
+     function openImgPopup(imgno,uri,inventoryNumber){
+      $( "#modal-body" ).empty();
+      $( "#modal-footer" ).empty();
+      var artworkId=$('#artworkId').val();
+      if(artworkId!=''){
+        var imgSrc=uri+'images/frames/'+imgno+'/'+artworkId;     
+       }else{
+        var imgSrc=uri+'images/frames/web/'+imgno;
+       }
+      $('#modal-body').append('<div class="zoom-area">'+
+      '<div class="large"></div>'+
+      '<img class="small" id="pic" src="'+imgSrc+'" alt="'+imgno+'">'+
+      '</div>');
+      $('#modal-footer').append(' <div id="fancybox-title-under"> <a target="_blank" href="'+imgSrc+'"> [Print]</a> <div style="float:left;">'+imgno+'&nbsp;</div> <a class="doRotate" href="#" data-toggle="modal"  titledata="'+imgno+'">[Edit]</a> <a target="_blank" href="'+imgSrc+'"> [E-mail]</a> <div id="lb-'+imgno+'" style="float:right;text-align:right;">18CFRRGDCCC838ST56/34X43/58 <br> LP0188T052P313H16</div> </div>')
+    $('#exampleModal').modal('show');
+     imageZoom();
+     }
+    

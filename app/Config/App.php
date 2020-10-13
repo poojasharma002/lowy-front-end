@@ -21,7 +21,7 @@ class App extends BaseConfig
 	| environments.
 	|
 	*/
-	public $baseURL = 'http://3.15.162.229/';
+	public $baseURL = 'http://localhost/lowy-front-end/';
 
 	/*
 	|--------------------------------------------------------------------------

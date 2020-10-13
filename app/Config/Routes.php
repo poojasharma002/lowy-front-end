@@ -40,6 +40,7 @@ $routes->get('/adminManageLookupablesView.action', 'Categories::index');
 $routes->post('/adminManageLookupablesSave.action', 'Categories::add_save');
 $routes->get('/imagesSyncImport.action', 'ImageImport::index');
 $routes->get('/framesSearch.action', 'FrameSearch::index');
+$routes->post('/framesSearch.artwork', 'FrameSearch::uploadArtwork');
 
 /**
  * --------------------------------------------------------------------

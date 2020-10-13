@@ -6,6 +6,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <?php 
+    echo link_tag('assets/css/style.css');
 echo link_tag('assets/css/bootstrap.min.css');
 echo link_tag('assets/css/image-grid.css');
 echo script_tag("assets/js/jquery-3.5.1.js");
@@ -16,6 +17,12 @@ echo script_tag("assets/js/bundle.min.js");
 echo script_tag("assets/js/ui-drowpdown-search.js");
 echo link_tag('assets/css/zoomIn.css');
 echo script_tag("assets/js/zoomIn.js");
+echo script_tag("assets/js/uploadArtwork.js");
+echo link_tag('assets/css/animate.min.css'); 
+echo script_tag('assets/js/notification.js');
+$session = session();
+$dataSession=$session->get('upload_artwork');
+// echo $fileName;
 ?>
 
 </head>
@@ -23,7 +30,6 @@ echo script_tag("assets/js/zoomIn.js");
 <body>
 
   <div class="d-flex" id="wrapper">
-
     <!-- Sidebar -->
     <div class="bg-light border-right" id="sidebar-wrapper">
       <div class="sidebar-heading"><a href="<?php echo base_url();?>"><img src="<?php echo base_url('assets/img/logo-client.jpg');?>"/></a></div>
@@ -48,59 +54,71 @@ echo script_tag("assets/js/zoomIn.js");
             <div class="collapse" id="artwork">
             <div class="card card-body">
             <div class="container">
-                <form action="">
+                <form action="<?php echo base_url('framesSearch.artwork');?>" method="POST" enctype="multipart/form-data" name="artworkupload" id="artworkupload">
                   <div class="form-group">
                     <label for="File">File:</label>
-                    <input type="file" name="artFile" value="" class="form-control" accept="image/jpeg,image/tiff,image/png" id="insertArtImage_artFile">
+                    <input type="file" name="artFile"  class="form-control" accept="image/jpeg,image/tiff,image/png" id="insertArtImage_artFile" required>
                   </div>
                   <div class="form-group">
                     <label for="Height">Height:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
-                    <input type="text" name="artHeightInt" class="" placeholder="Enter Height" value="" id="insertArtImage_artHeightInt" class="sizeFieldInt">
-                    <select name="sizeArtHeightFract" id="framesView_sizeMouldingArtHeightFract" class="">
-                          <option value="0.0" selected="selected">0</option>
-                          <option value="0.0625">1/16</option>
-                          <option value="0.125">1/8</option>
-                          <option value="0.1875">3/16</option>
-                          <option value="0.25">1/4</option>
-                          <option value="0.3125">5/16</option>
-                          <option value="0.375">3/8</option>
-                          <option value="0.4375">7/16</option>
-                          <option value="0.5">1/2</option>
-                          <option value="0.5625">9/16</option>
-                          <option value="0.625">5/8</option>
-                          <option value="0.6875">11/16</option>
-                          <option value="0.75">3/4</option>
-                          <option value="0.8125">13/16</option>
-                          <option value="0.875">7/8</option>
-                          <option value="0.9375">15/16</option>
+                    <input type="text" name="artHeightInt" class="" placeholder="Enter Height" value="" id="insertArtImage_artHeightInt" class="sizeFieldInt" style="width: 184px;" required>
+                    <select name="sizeArtHeightFract" id="framesView_sizeMouldingArtHeightFract" class="" >
+                          <option value="0" selected="selected">0</option>
+                          <option value="0625">1/16</option>
+                          <option value="125">1/8</option>
+                          <option value="1875">3/16</option>
+                          <option value="25">1/4</option>
+                          <option value="3125">5/16</option>
+                          <option value="375">3/8</option>
+                          <option value="4375">7/16</option>
+                          <option value="5">1/2</option>
+                          <option value="5625">9/16</option>
+                          <option value="625">5/8</option>
+                          <option value="6875">11/16</option>
+                          <option value="75">3/4</option>
+                          <option value="8125">13/16</option>
+                          <option value="875">7/8</option>
+                          <option value="9375">15/16</option>
                       </select>
                   </div>
                   <div class="form-group">
                     <label for="Width">Width:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
-                    <input type="text" name="artWidthInt" class="" placeholder="Enter Width" value="" id="insertArtImage_artWidthInt" class="sizeFieldInt">
+                    <input type="text" name="artWidthInt" class="" placeholder="Enter Width" value="" id="insertArtImage_artWidthInt" class="sizeFieldInt" style="width: 184px;" required>
                     <select name="sizeArtWidthFract" id="framesView_sizeMouldingArtWidthFract" class="">
-                          <option value="0.0" selected="selected">0</option>
-                          <option value="0.0625">1/16</option>
-                          <option value="0.125">1/8</option>
-                          <option value="0.1875">3/16</option>
-                          <option value="0.25">1/4</option>
-                          <option value="0.3125">5/16</option>
-                          <option value="0.375">3/8</option>
-                          <option value="0.4375">7/16</option>
-                          <option value="0.5">1/2</option>
-                          <option value="0.5625">9/16</option>
-                          <option value="0.625">5/8</option>
-                          <option value="0.6875">11/16</option>
-                          <option value="0.75">3/4</option>
-                          <option value="0.8125">13/16</option>
-                          <option value="0.875">7/8</option>
-                          <option value="0.9375">15/16</option>
+                          <option value="0" selected="selected">0</option>
+                          <option value="0625">1/16</option>
+                          <option value="125">1/8</option>
+                          <option value="1875">3/16</option>
+                          <option value="25">1/4</option>
+                          <option value="3125">5/16</option>
+                          <option value="375">3/8</option>
+                          <option value="4375">7/16</option>
+                          <option value="5">1/2</option>
+                          <option value="5625">9/16</option>
+                          <option value="625">5/8</option>
+                          <option value="6875">11/16</option>
+                          <option value="75">3/4</option>
+                          <option value="8125">13/16</option>
+                          <option value="875">7/8</option>
+                          <option value="9375">15/16</option>
                       </select>
-                  </div> 
-                  <input type="submit" id="insertArtImage_0" value="Add Art" class="buttonlink">
+                  </div>
+                  <input type="hidden" id="artworkId" name="artworkId" value="<?= $dataSession['response']->artworkId; ?>">
+                  <input type="submit" id="insertArtImage_0" value="Add Art"   class="buttonlink">
                   <!-- <input type="submit" id="insertArtImage_toggleArtImage" name="action:toggleArtImage" value="Hide Art" disabled="disabled" class="buttonlink"> -->
                   <input type="submit" id="insertArtImage_removeArtImage" name="action:removeArtImage" value="Remove Art" disabled="disabled" class="buttonlink">
                 </form>
+                </br>
+                <div class="form-group">
+                <div id="imagePreview"></div>
+                <?php if($dataSession['response']->artworkId!=""){ ?>
+                <img src="<?php echo base_url('assets/img/'.$dataSession['fileNmae']);?>" width="250" height="250"/>
+                <p style="font-size:11px;line-height: 1.1;"><strong>Name: </strong><?= $dataSession['fileNmae'];?></p>
+                <p style="font-size:11px;line-height: .2;"><strong>Pixels: </strong> <strong>Y: </strong><?= $dataSession['response']->imageHeight;?> <strong>X: </strong><?= $dataSession['response']->imageWidth;?></p>
+                <p style="font-size:11px;line-height: .2;"><strong>Inches: </strong> <strong>Y: </strong><?= $dataSession['response']->artHeightInches;?> <strong>X: </strong><?= $dataSession['response']->artWidthInches;?></p>
+                <p style="font-size:11px;line-height: .2;"><strong>Dpi: </strong> <strong>Y: </strong><?= $dataSession['response']->dpiY;?> <strong>X: </strong><?= $dataSession['response']->dpiX;?></p>
+                <?php }?>
+                </div>
               </div>
             </div>
             </div>
@@ -337,7 +355,7 @@ echo script_tag("assets/js/zoomIn.js");
              </div>
           </div>
         </div>
-           
+       
             <div id="serachSold">
             Search Sold<input type="checkbox" name="searchSold" value="true" id="framesView_searchSold" >
 <input type="hidden" id="__checkbox_framesView_searchSold" name="__checkbox_searchSold" value="true"> 
@@ -365,6 +383,7 @@ echo script_tag("assets/js/zoomIn.js");
       </nav>
 
 <div class="container-fluid">
+<div id="errorMessages"></div>
    </br>     
    <div id="cover-spin" class=""><strong class="loading-text">Please Wait...</strong></div> 
    <input type="hidden" id="__perPageLoadImageCount" name="__perPageLoadImageCount" value="0"> 

@@ -4,12 +4,30 @@ echo link_tag('assets/css/ui-dropdown.css');
 echo link_tag('assets/css/confirm-modal.css'); 
 echo script_tag("assets/js/bundle.min.js");
 echo script_tag("assets/js/ui-drowpdown.js");
+echo link_tag('assets/css/animate.min.css'); 
+echo script_tag('assets/js/notification.js');
 ?>
 <script>
     $(document).ready(function(){
         if(<?php echo $frameDetails->inventoryNumber; ?>==0){
         $("#myModal").modal('show');
         }
+
+        $('#frameAdminView_0').on('click', function(e){
+         e.preventDefault();
+      var searchType=$('#frameAdminView_id').val();
+      if($.isNumeric(searchType)==false){
+        var check= searchType.split('L');
+            if(check[0]!='L' && $.isNumeric(check[1])==false){
+              createAlert('','','Plaese Enter valid Inventory Number. Ex.(L0004,L0123 etc.)','danger',true,true,'errorMessages-2');
+              return;
+            }else{
+                $("#frameAdminView").submit();
+            }
+          }else{
+            $("#frameAdminView").submit();
+          }  
+   });
     });
 </script>
 <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"  crossorigin="anonymous">
@@ -22,7 +40,7 @@ echo script_tag("assets/js/ui-drowpdown.js");
     <div class="pagecontrol setbottomborder">
         <div class="detailnavigator">
             <form id="frameAdminView" name="frameAdminView" action="<?php echo base_url('frameAdminView.action');?>" method="GET">
-            <input type="text" name="id" value="<?= $invNo ?>" id="frameAdminView_id" style="width: 50px; float: left;"><input type="submit" id="frameAdminView_0" value="Show" class="inputsubmit" style="float:left;">
+            <input type="text" name="id" value="<?= $imgNo ?>" id="frameAdminView_id" style="width: 70px; float: left;"><input type="submit" id="frameAdminView_0" value="Show" class="inputsubmit" style="float:left;">
             </form>
         </div>
     </div>
@@ -30,6 +48,7 @@ echo script_tag("assets/js/ui-drowpdown.js");
     </div>
         <div class="row">
             <div class="col-8">
+            <div id="errorMessages-2"></div>
                 <div class="frameImage">
                 <?php if($frameDetails->deleted==true){?>
                 <div class="veryImportantText">
@@ -72,7 +91,7 @@ echo script_tag("assets/js/ui-drowpdown.js");
                     <?= csrf_field() ?>
                         <div class="detailheader">
                             <span class="<?php if($frameDetails->deleted ==true){echo 'frameSoldWrapper frameUnavaliableWrapper';} ?>">
-                                Inventory #  <?= $invNo ?>
+                                Inventory #  <?= $imgNo ?>
                             </span>
                         </div>
                         <table class="framedetailtable content" cellpadding="2" cellspacing="0" width="100%" border="0">

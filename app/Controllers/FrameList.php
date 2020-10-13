@@ -31,8 +31,9 @@ class FrameList extends BaseController
        
      }
    //--------------------------------------------------------------------
-     // function for create json data file  
-     public function json_create(){
+   
+    // function for create json data file  
+    public function json_create(){
       try{
          $baseURI = baseURI();
          $client = \Config\Services::curlrequest();
@@ -71,6 +72,5 @@ class FrameList extends BaseController
     
   }
 //--------------------------------------------------------------------
-   
 
 }

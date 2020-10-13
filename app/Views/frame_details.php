@@ -15,6 +15,21 @@ $(document).ready(function(){
     $('#details').addClass("show");
     createAlert('Opps!','Something went wrong','Plaese Contact to administrative.','danger',true,true,'errorMessages');
     createAlert('','Edit Frame Details!','Frame Details Update Successfully!.','success',true,true,'successMessages');
+    $('#frameAdminView_0').on('click', function(e){
+         e.preventDefault();
+      var searchType=$('#frameAdminView_id').val();
+      if($.isNumeric(searchType)==false){
+        var check= searchType.split('L');
+            if(check[0]!='L' && $.isNumeric(check[1])==false){
+              createAlert('','','Plaese Enter valid Inventory Number. Ex.(L0004,L0123 etc.)','danger',true,true,'errorMessages-2');
+              return;
+            }else{
+                $("#frameAdminView").submit();
+            }
+          }else{
+            $("#frameAdminView").submit();
+          }  
+    })
    });
 </script>
 <?php 
@@ -26,7 +41,7 @@ if(empty($frameDetails)){?>
     <div class="pagecontrol setbottomborder">
         <div class="detailnavigator">
             <form id="frameAdminView" name="frameAdminView" action="<?php echo base_url('frameAdminView.action');?>" method="GET">
-                  <input type="text" name="id" value="<?= $invNo ?>" id="frameAdminView_id" style="width: 50px; float: left;"><input type="submit" id="frameAdminView_0" value="Show" class="inputsubmit" style="float:left;">
+                  <input type="text" name="id" value="<?= $imgNo ?>" id="frameAdminView_id" style="width: 70px; float: left;"><input type="submit" id="frameAdminView_0" value="Show" class="inputsubmit" style="float:left;">
             </form>
         </div>
     </div>
@@ -34,6 +49,7 @@ if(empty($frameDetails)){?>
     </div>
     <p>Inventory number is not specified.</p>
     </div>
+    <div id="errorMessages-2"></div>
     </div>
 
 <?php die();}?>
@@ -79,7 +95,7 @@ if(empty($frameDetails)){?>
     <div class="pagecontrol setbottomborder">
         <div class="detailnavigator">
             <form id="frameAdminView" name="frameAdminView" action="<?php echo base_url('frameAdminView.action');?>" method="GET">
-                <input type="text" name="id" value="<?= $invNo ?>" id="frameAdminView_id" style="width: 50px; float: left;"><input type="submit" id="frameAdminView_0" value="Show" class="inputsubmit" style="float:left;">
+                <input type="text" name="id" value="<?= $imgNo ?>" id="frameAdminView_id" style="width: 70px; float: left;"><input type="submit" id="frameAdminView_0" value="Show" class="inputsubmit" style="float:left;">
             </form>
         </div>
     </div>
@@ -124,12 +140,12 @@ if(empty($frameDetails)){?>
                 </div>
             </div>
             <div class="col-4"><?php if($status_code == "200"){echo '<div id="successMessages"></div>';}else if($status_code!="200" && !empty($status_code)){echo '<div id="errorMessages"></div>';}?>
-           
+            <div id="errorMessages-2"></div>
                <div class="frameDetail">
                     <form id="frameAdminEdit" name="frameAdminEdit" action="<?php echo base_url('frameAdminEdit.action');?>" method="GET">
                         <div class="detailheader">
                             <span class="<?php if($frameDetails->deleted ==true){echo 'frameSoldWrapper frameUnavaliableWrapper';} ?>">
-                                Inventory # <?= $invNo ?>
+                                Inventory # <?= $imgNo ?>
                             </span>
                         </div>
                         <table class="framedetailtable content" cellpadding="2" cellspacing="0" width="100%" border="0">

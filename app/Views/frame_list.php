@@ -3,7 +3,7 @@
  <div class="tab-content">
     <div id="frame_list" class="container tab-pane active"><br>
     <div id="cover-spin" class=""><strong class="loading-text">Please Wait...</strong></div>
-    <table id="example" class="table table-striped table-bordered" style="width:100%">
+    <table id="example" class="table table-striped table-bordered " style="width:100%">
         <thead>
             <tr>
                 <th>INV.#</th>
@@ -62,6 +62,7 @@ $(document).ready(function(){
 				{     "data"     :     "locationName"}
            ]  
 	} );
+
 });
 </script>
    

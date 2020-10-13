@@ -1,5 +1,5 @@
 <?php namespace App\Controllers;
-
+use CodeIgniter\Controller;
 class FrameSearch extends BaseController
 {
 // show all search Frame
@@ -28,7 +28,6 @@ class FrameSearch extends BaseController
                               if($value!=""){
                                  $query=$query.$key.'='.$value.'&';
                               }
-                             
                            }
                   $query=rtrim($query, "&");
                    $response = $client->request('GET', ''.$baseURI.'/search?'.$query.'');
@@ -71,12 +70,13 @@ class FrameSearch extends BaseController
               $result = json_decode($result);
               $data=['inventoryNumber'=>$result->inventoryNumber, 'baseUri'=>$baseURI,'totalRecords'=>1];
               $data = json_encode($data);
+               // echo $response->getStatusCode();
                print_r($data);
               // echo 'hi';
           }
        }
     } catch (Error $e){
-
+            print_r($e);
     }
   
 }
@@ -96,25 +96,15 @@ public function multiDropdown(){
          {
              $responseDropdown = $client->request('GET', ''.$baseURI.'reference/'.$dropdwonValue.'');
              $resultDropdown= $responseDropdown->getBody();
-            //  $response = $client->request('GET', ''.$baseURI.'frames/'.$inventoryNo.'');
-            //  $result= $response->getBody();
-            // $result = json_decode($result);
             if( $dropdwonValue!='corners'){
               $dropdownVarible=$dropdwonValue.'s';
             }else{ $dropdownVarible=$dropdwonValue;}
-            
-            //  $dropdownSelectedValueArr=$result->$dropdownVarible;
-            //  $dropdownSelectedValue=array();
-            //  for($j=0; $j<count($dropdownSelectedValueArr); $j++){
-            //   array_push($dropdownSelectedValue,"".$dropdownSelectedValueArr[$j]->id."");
-            //  }
             $dropdownOption=array();
              $resultDropdown = json_decode($resultDropdown);
             for($i=0; $i<count($resultDropdown); $i++){
               array_push($dropdownOption, array("label"=>$resultDropdown[$i]->title,"value"=>"".$resultDropdown[$i]->id."",));
              
             }
-            // $results=[$dropdownSelectedValue,$dropdownOption,"dropdownListName"=>$dropdwonValue];
             $results=[$dropdownSelectedValue,$dropdownOption,"dropdownListName"=>$dropdwonValue];
              echo json_encode( $results);
          }
@@ -123,4 +113,48 @@ public function multiDropdown(){
 
   }
   }
+
+ // function for upload artwork image.
+ public function uploadArtwork(){
+   try{
+      $baseURI = baseURI();
+      $session = \Config\Services::session();
+         // $file =$_FILES["artFile"]["tmp_name"];
+         $path=FCPATH.'assets/img';
+         $file= $this->request->getFile('artFile');
+         $originalName = $file->getClientName();
+         $tempfile = $file->getTempName();
+         $artHeightWhole= (int)$this->request->getPost('artHeightInt');
+         $artHeightFraction= (int)$this->request->getPost('sizeArtHeightFract');
+         $artWidthWhole= (int)$this->request->getPost('artWidthInt');
+         $artWidthFraction= (int)$this->request->getPost('sizeArtWidthFract');
+            $curl = curl_init();
+            curl_setopt_array($curl, array(
+              CURLOPT_URL => ''.$baseURI.'images/art',
+              CURLOPT_RETURNTRANSFER => true,
+              CURLOPT_ENCODING => "",
+              CURLOPT_MAXREDIRS => 10,
+              CURLOPT_TIMEOUT => 0,
+              CURLOPT_FOLLOWLOCATION => true,
+              CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+              CURLOPT_CUSTOMREQUEST => "POST",
+              CURLOPT_POSTFIELDS => array('file'=> new \CURLFILE($tempfile),'artHeightWhole' => $artHeightWhole, 'artHeightFraction' => $artHeightFraction,'artWidthWhole' => $artWidthWhole,'artWidthFraction' => $artWidthFraction)
+            ));
+            
+            $response = curl_exec($curl);
+            curl_close($curl);
+            $response = json_decode($response);
+            $fileName =$originalName;
+             $sourceResult=['fileNmae'=>$fileName,'response'=>$response] ;
+             echo json_encode( $sourceResult);
+            $session->set('upload_artwork', $sourceResult);
+            //  print_r( $sourceResult);
+            $file->move($path);
+         
+   } catch (Error $e){
+      die($e->getMessage());
+   }
+ 
+}
+
 }

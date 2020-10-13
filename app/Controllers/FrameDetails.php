@@ -8,6 +8,7 @@ class FrameDetails extends BaseController
         try{
                 $baseURI = baseURI();
                 if($_GET['id']!=''){
+                  $_GET['id']=ltrim($_GET['id'], "L");
                 $client = \Config\Services::curlrequest();
                 $response = $client->request('GET', ''.$baseURI.'frames/'.$_GET['id'].'');
                 $result= $response->getBody();
@@ -159,7 +160,8 @@ class FrameDetails extends BaseController
                   require_once(APPPATH.'Controllers/FrameList.php');
                   $aObj = new FrameList();
                   $aObj->json_create();
-                }
+                 }
+
                 }
       } catch (Error $e){
 

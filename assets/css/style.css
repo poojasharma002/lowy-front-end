@@ -76,7 +76,7 @@ table a:hover {
     font-weight: bold;
 }
 
-#successMessages, #errorMessages {
+#successMessages, #errorMessages, #errorMessages-2 {
     position: fixed;
     bottom: 15px;
     right: 15px;
