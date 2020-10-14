@@ -3,7 +3,7 @@ $("#artworkupload").on('submit',(function(e) {
     e.preventDefault();
     var artworkId=$('#artworkId').val();
     var origin   = window.location.origin;
-    if(artworkId==''){
+    // if(artworkId==''){
     $('#cover-spin').show(0);
      $.ajax({
        url:origin+"/FrameSearch/uploadArtwork",
@@ -32,9 +32,9 @@ $("#artworkupload").on('submit',(function(e) {
        console.log(uploadData);
      }
  })
-}else{
-    createAlert('','','Plaese Remove Previous Image.','warning',true,true,'errorMessages');
-}
+// }else{
+//     createAlert('','','Please remove the previous image.','warning',true,true,'errorMessages');
+// }
 }));
 var artworkId=$('#artworkId').val();
 if(artworkId!='')
