@@ -13,7 +13,7 @@ $(document).ready(function(){
     $('.detail').addClass("active");
     $('#details').addClass("active");
     $('#details').addClass("show");
-    createAlert('Opps!','Something went wrong','Plaese Contact to administrative.','danger',true,true,'errorMessages');
+    createAlert('Opps!','Something went wrong','Please Contact to administrative.','danger',true,true,'errorMessages');
     createAlert('','Edit Frame Details!','Frame Details Update Successfully!.','success',true,true,'successMessages');
     $('#frameAdminView_0').on('click', function(e){
          e.preventDefault();

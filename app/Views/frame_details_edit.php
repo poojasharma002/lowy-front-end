@@ -19,7 +19,7 @@ echo script_tag('assets/js/notification.js');
       if($.isNumeric(searchType)==false){
         var check= searchType.split('L');
             if(check[0]!='L' && $.isNumeric(check[1])==false){
-              createAlert('','','Plaese Enter valid Inventory Number. Ex.(L0004,L0123 etc.)','danger',true,true,'errorMessages-2');
+              createAlert('','','Please Enter valid Inventory Number. Ex.(L0004,L0123 etc.)','danger',true,true,'errorMessages-2');
               return;
             }else{
                 $("#frameAdminView").submit();
