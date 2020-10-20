@@ -141,8 +141,8 @@ $.ajax({
       var searchData=[];
       searchData.push({
         'century':centurySelectedValue,
-        'maker':makerSelectedValue,
-        'country':countrySelectedValue,
+        'makerId':makerSelectedValue,
+        'countryId':countrySelectedValue,
         'style':styleSelectedValue,
         'ornament':ornamentSelectedValue,
         'color':colorSelectedValue,
@@ -155,8 +155,8 @@ $.ajax({
         'sightHeightMax':sightHeighMaxSelectedValue,
         'sightWidthMin':sightWidthMinSelectedValue,
         'sightWidthMax':sightWidthMaxSelectedValue,
-        'sold':searchSoldValue,
-        'hide-missing-images':hideMissingImagesValue
+        'includeSold':searchSoldValue,
+        'hideMissingImages':hideMissingImagesValue
       });
       $('#cover-spin').show(0);
       var origin   = window.location.origin;
@@ -288,8 +288,8 @@ $.ajax({
       var searchData=[];
       searchData.push({
         'century':centurySelectedValue,
-        'maker':makerSelectedValue,
-        'country':countrySelectedValue,
+        'makerId':makerSelectedValue,
+        'countryId':countrySelectedValue,
         'style':styleSelectedValue,
         'ornament':ornamentSelectedValue,
         'color':colorSelectedValue,
@@ -352,7 +352,7 @@ $.ajax({
 }
 
      function openImgPopup(imgno,uri,inventoryNumber){
-      $( "#modal-body" ).empty();
+      $( "#imagePopup" ).empty();
       $( "#modal-footer" ).empty();
       var artworkId=$('#artworkId').val();
       if(artworkId!=''){
@@ -360,7 +360,7 @@ $.ajax({
        }else{
         var imgSrc=uri+'images/frames/web/'+imgno;
        }
-      $('#modal-body').append('<div class="zoom-area">'+
+      $('#imagePopup').append('<div class="zoom-area">'+
       '<div class="large"></div>'+
       '<img class="small" id="pic" src="'+imgSrc+'" alt="'+imgno+'">'+
       '</div>');

@@ -405,7 +405,10 @@ This part is straight out of Bootstrap docs. Just a carousel inside a modal.
         </button>
       </div>
       <div class="modal-body" id="modal-body">
-         
+      <div class="row">
+        <div class="col-12 col-sm-6 col-lg-4" id="imagePopup">
+        </div>
+        </div> 
       </div>
       <div class="modal-footer" id="modal-footer">
      
