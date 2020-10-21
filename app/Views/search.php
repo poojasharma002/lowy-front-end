@@ -406,7 +406,7 @@ This part is straight out of Bootstrap docs. Just a carousel inside a modal.
       </div>
       <div class="modal-body" id="modal-body">
       <div class="row">
-        <div class="col-12 col-sm-6 col-lg-4" id="imagePopup">
+        <div class="col-12" id="imagePopup">
         </div>
         </div> 
       </div>
