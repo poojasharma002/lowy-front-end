@@ -11,7 +11,7 @@ echo link_tag('assets/css/style.css');
         <tbody><tr><td valign="top" class="headerWrapper">
     <h5>
         
-        <a href="#">Log out</a>
+        <a href="<?php echo base_url('logout'); ?>">Log out</a>
     </h5>
 
 </td></tr>

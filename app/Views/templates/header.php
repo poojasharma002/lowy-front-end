@@ -25,7 +25,7 @@ echo script_tag("assets/js/jquery-3.5.1.js");
           <div class="collapse navbar-collapse" id="navbarCollapse">
           <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-              <a class="nav-link" href="<?php echo base_url(); ?>">
+              <a class="nav-link" href="<?php echo base_url('adminDashboard'); ?>">
                   <img border="0" src="<?php echo base_url('assets/img/logo-admin.jpg');?>">
                 </a>
             </li>

@@ -16,7 +16,7 @@ if (file_exists(SYSTEMPATH . 'Config/Routes.php'))
  * --------------------------------------------------------------------
  */
 $routes->setDefaultNamespace('App\Controllers');
-$routes->setDefaultController('Home');
+$routes->setDefaultController('Users');
 $routes->setDefaultMethod('index');
 $routes->setTranslateURIDashes(false);
 $routes->set404Override();
@@ -30,17 +30,20 @@ $routes->setAutoRoute(true);
 
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
-$routes->get('/', 'Home::index');
-$routes->get('/adminShowAllFrames.action', 'FrameList::index');
-$routes->get('/frameAdminView.action', 'FrameDetails::index');
-$routes->get('/frameAdminEdit.action', 'FrameDetails::frame_get');
-$routes->post('/frameAdminEdit.action', 'FrameDetails::frame_edit');
-$routes->get('/imagesSyncNoImages.action', 'MissingImages::index');
-$routes->get('/adminManageLookupablesView.action', 'Categories::index');
-$routes->post('/adminManageLookupablesSave.action', 'Categories::add_save');
-$routes->get('/imagesSyncImport.action', 'ImageImport::index');
-$routes->get('/framesSearch.action', 'FrameSearch::index');
-$routes->post('/framesSearch.artwork', 'FrameSearch::uploadArtwork');
+$routes->get('/adminDashboard', 'Home::index',['filter' => 'auth']);
+$routes->get('/', 'Users::index', ['filter' => 'noauth']);
+$routes->get('/login', 'Users::index', ['filter' => 'noauth']);
+$routes->get('/logout', 'Users::logout');
+$routes->get('/adminShowAllFrames.action', 'FrameList::index',['filter' => 'auth']);
+$routes->get('/frameAdminView.action', 'FrameDetails::index',['filter' => 'auth']);
+$routes->get('/frameAdminEdit.action', 'FrameDetails::frame_get',['filter' => 'auth']);
+$routes->post('/frameAdminEdit.action', 'FrameDetails::frame_edit',['filter' => 'auth']);
+$routes->get('/imagesSyncNoImages.action', 'MissingImages::index',['filter' => 'auth']);
+$routes->get('/adminManageLookupablesView.action', 'Categories::index',['filter' => 'auth']);
+$routes->post('/adminManageLookupablesSave.action', 'Categories::add_save',['filter' => 'auth']);
+$routes->get('/imagesSyncImport.action', 'ImageImport::index',['filter' => 'auth']);
+$routes->get('/framesSearch.action', 'FrameSearch::index',['filter' => 'auth']);
+$routes->post('/framesSearch.artwork', 'FrameSearch::uploadArtwork',['filter' => 'auth']);
 
 /**
  * --------------------------------------------------------------------
