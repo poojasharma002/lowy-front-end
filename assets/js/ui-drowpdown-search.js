@@ -330,7 +330,7 @@ $.ajax({
         }else if(inventoryNumberCount>=4){ imgInventoryNumber='L'+SelectedValue.searchResult[i].inventoryNumber; inventoryNumber=SelectedValue.searchResult[i].inventoryNumber;
        }
        if(artworkId!=''){
-        var imgSrc=SelectedValue.baseUri+'images/frames/'+imgInventoryNumber+'/'+artworkId;
+        var imgSrc=SelectedValue.baseUri+'images/frames/'+imgInventoryNumber+'/'+artworkId+'?showArt=true';
          
        }else{
         var imgSrc=SelectedValue.baseUri+'images/frames/web/'+imgInventoryNumber;
@@ -356,7 +356,7 @@ $.ajax({
       $( "#modal-footer" ).empty();
       var artworkId=$('#artworkId').val();
       if(artworkId!=''){
-        var imgSrc=uri+'images/frames/'+imgno+'/'+artworkId;     
+        var imgSrc=uri+'images/frames/'+imgno+'/'+artworkId+'?showArt=true';     
        }else{
         var imgSrc=uri+'images/frames/web/'+imgno;
        }
