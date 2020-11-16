@@ -14,11 +14,11 @@ $(document).ready(function(){
    //function for hide Missing Images check box value change
    $( "#framesView_hideMissingImages" ).prop( "checked", true );
   $('#framesView_hideMissingImages').on('change', function(){
-    if($("#hideMissingImages").is(':checked')){
-        $('#hideMissingImages').val(true);
+    if($("#framesView_hideMissingImages").is(':checked')){
+        $('#framesView_hideMissingImages').val(true);
         $('#__checkbox_framesView_hideMissingImages').val(true);
     }else{
-      $('#hideMissingImages').val(false);
+      $('#framesView_hideMissingImages').val(false);
       $('#__checkbox_framesView_hideMissingImages').val(false);
     }
   })
