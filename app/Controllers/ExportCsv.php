@@ -34,7 +34,7 @@ class ExportCsv extends BaseController
      fputcsv($file,$data); 
      }
     fclose($file); 
-    echo 'hi';
+    
     exit; 
    }
    
