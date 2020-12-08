@@ -6,7 +6,7 @@ class ExportCsv extends BaseController
    // Export data in CSV format 
    public function exportCSV(){ 
     // file name 
-    $filename = 'Lowy_Front_End'.date('Ymd').'.csv'; 
+    $filename = 'Lowy_Front_End_'.date('Ymd').'.csv'; 
     header("Content-Description: File Transfer"); 
     header("Content-Disposition: attachment; filename=$filename"); 
     header("Content-Type: application/csv; ");
