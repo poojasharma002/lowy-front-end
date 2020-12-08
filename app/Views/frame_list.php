@@ -3,6 +3,7 @@
  <div class="tab-content">
     <div id="frame_list" class="container tab-pane active"><br>
     <div id="cover-spin" class=""><strong class="loading-text">Please Wait...</strong></div>
+    <a href='<?php echo base_url('ExportCsv/exportCSV'); ?>' id="">Export</a><br>
     <table id="example" class="table table-striped table-bordered " style="width:100%">
         <thead>
             <tr>
