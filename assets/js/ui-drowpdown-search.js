@@ -180,7 +180,7 @@ $.ajax({
         }else if(inventoryNumberCount>=4){ imgInventoryNumber='L'+SelectedValue.searchResult[i].inventoryNumber; inventoryNumber=SelectedValue.searchResult[i].inventoryNumber;
        }
        if(artworkId!=''){
-        var imgSrc=SelectedValue.baseUri+'images/frames/'+imgInventoryNumber+'/'+artworkId;
+        var imgSrc=SelectedValue.baseUri+'images/frames/'+imgInventoryNumber+'/'+artworkId+'?showArt=true';
          
        }else{
         var imgSrc=SelectedValue.baseUri+'images/frames/web/'+imgInventoryNumber;
@@ -235,7 +235,7 @@ $.ajax({
         }else if(inventoryNumberCount==3){ imgInventoryNumber='L0'+SelectedValue.inventoryNumber; inventoryNumber='0'+SelectedValue.inventoryNumber;
         }else if(inventoryNumberCount>=4){ imgInventoryNumber='L'+SelectedValue.inventoryNumber; inventoryNumber=SelectedValue.inventoryNumber;}
         if(artworkId!=''){
-          var imgSrc=SelectedValue.baseUri+'images/frames/'+imgInventoryNumber+'/'+artworkId;
+          var imgSrc=SelectedValue.baseUri+'images/frames/'+imgInventoryNumber+'/'+artworkId+'?showArt=true';
            
          }else{
           var imgSrc=SelectedValue.baseUri+'images/frames/web/'+imgInventoryNumber;
