@@ -312,7 +312,6 @@ $.ajax({
        method:"POST",
        data:{data_action:'fetch_all_frame_searching', page:perPageLoadImageCount,value:JSON.stringify(searchData)},
        success:function(data){
-        console.log(data);
         $('#cover-spin').hide(0); 
        var SelectedValue= $.parseJSON(data);
        if(SelectedValue.totalRecords<(parseInt(perPageLoadImageCount)+6)){
