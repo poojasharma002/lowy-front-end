@@ -176,9 +176,35 @@ margin-left: 0;
   margin-left: 20px;
 }
 
+
+div#searchSubmit {
+  margin-top: 30px;
+}
+
 #framesView_0{
-  float:left;
-  width: 135px;
+  float: left;
+  width: auto;
+  padding: 10px 20px;
+  background: #FFCD75;
+  outline: none;
+  border: none;
+  box-shadow: none;
+  color: #030811;
+  cursor: pointer;
+  transition: .2s all ease-in-out;
+}
+
+
+button#framesView_framesResetSearch {
+  background: none;
+  border: none;
+  outline: none;
+  color: #fff;
+}
+
+#framesView_0:hover{
+  background: #807461;
+  color: #fff;
 }
 #framesView_framesResetSearch{
   float:right;
