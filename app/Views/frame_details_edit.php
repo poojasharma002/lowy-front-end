@@ -245,7 +245,7 @@ echo script_tag('assets/js/notification.js');
                             </div>
                             </div>
                             </label><br>
-                            <textarea name="summary"  id="summary" cols="20" rows="2"><?php echo $frameDetails->summary;?></textarea>
+                            <textarea name="summary"  id="summary" cols="30" rows="2"><?php echo $frameDetails->summary;?></textarea>
                             </td>
         </tr>
         <tr class="odd">
