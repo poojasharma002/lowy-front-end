@@ -74,5 +74,20 @@ $.ajax({
     var corner= $('#cornerLookupables').val();
     $('#__multiselect_cornerLookupables').val(corner);
 
+    $('input.switched-item').on('change', function() {
+      if ($(this).is(':checked')) {
+        $('#autogenerateSummary').val(true);
+        $('#summary').css('display','none');
+        $(this).siblings('.on-off-wrap').addClass('switched-on');
+        $(this).siblings('.on-off-wrap').removeClass('switched-off');
+      }
+      else {
+        $('#autogenerateSummary').val(false);
+        $('#summary').css('display','block');
+        $(this).siblings('.on-off-wrap').removeClass('switched-on');
+        $(this).siblings('.on-off-wrap').addClass('switched-off');
+      }
+    });
+
      });
     

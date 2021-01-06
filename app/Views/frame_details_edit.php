@@ -2,6 +2,7 @@
 echo link_tag('assets/css/frame-details.css'); 
 echo link_tag('assets/css/ui-dropdown.css'); 
 echo link_tag('assets/css/confirm-modal.css'); 
+echo link_tag('assets/css/autogenerateSummary.css');  
 echo script_tag("assets/js/bundle.min.js");
 echo script_tag("assets/js/ui-drowpdown.js");
 echo link_tag('assets/css/animate.min.css'); 
@@ -232,6 +233,22 @@ echo script_tag('assets/js/notification.js');
             <td><textarea name="locationInternalNotes" cols="30" rows="6" id="frameAdminSave_locationInternalNotes"></textarea></td>
         </tr>
         <tr class="even">
+            <td>Autogenerate Summary</td>
+            <td><label>
+                            <div class="on-off-switch">
+                                <input value="false" class="switched-item" type="checkbox" name="autogenerateSummary" id="autogenerateSummary">
+                                <!-- On Off switch -->
+                                <div class="on-off-wrap switched-off">   
+                                <span class="on-off-icon"></span>  
+                                <span class="on-off-text on-text">On</span>  
+                                <span class="on-off-text off-text">Off</span>  
+                            </div>
+                            </div>
+                            </label><br>
+                            <textarea name="summary"  id="summary" cols="20" rows="2"><?php echo $frameDetails->summary;?></textarea>
+                            </td>
+        </tr>
+        <tr class="odd">
             <td class="first title">Default image:</td>
             <td class="last"><select name="defaultImageAttribute" id="frameAdminSave_defaultImageAttribute">
     <option value="default">default</option>
@@ -262,10 +279,7 @@ echo script_tag('assets/js/notification.js');
                             <br>
                             <?php if($frameDetails->inventoryNumber==0){
 
-                            }else{?>
-                            19CFRRGDCCC612ST42X35/12<br>
-                            AM0589T58P20T
-                           <?php }?>
+                            }else{ echo $frameDetails->summary;}?>
                            
                         </div>
                     </div>

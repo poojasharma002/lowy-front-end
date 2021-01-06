@@ -1,0 +1,92 @@
+.autogenerate{
+    margin-top: 10px;
+    padding-left: 10px;
+    }
+    .on-off-switch {
+      position: relative;
+      font-size: 12px;
+    }
+    .switched-on .on-off-icon {
+        margin: 7px 9px 0 !important;
+    }
+    .on-off-switch * {
+      line-height: normal;
+      vertical-align: top;
+    }
+    .on-off-switch input {
+      display: inline-block;
+      opacity: 0;
+    }
+    .on-off-switch .on-off-wrap {
+      position: relative;
+      display: inline-block;
+      height: 28px;
+      width: 57px;
+      padding: 1px 8px;
+      border-radius: 100px;
+      background-color: green;
+      transition: all .7s ease 0s;
+      cursor: pointer;
+    }
+    .on-off-switch .on-off-wrap.switched-on {
+      background-color: green;
+      text-align: left;
+      width: 56px;
+    }
+    .on-off-switch .on-off-wrap.switched-on .on-off-icon {
+      left: -webkit-calc(100% - 33px);
+      left: -moz-calc(100% - 33px);
+      left: calc(100% - 33px);
+      background-color: white;
+      background-position: right center;
+    }
+    .on-off-switch .on-off-wrap.switched-on .on-text {
+      display: inline-block;
+      font-size: inherit;
+      opacity: 1;
+      visibility: visible;
+    }
+    .on-off-switch .on-off-wrap.switched-on .off-text {
+      display: none;
+      font-size: 0;
+      opacity: 0;
+      visibility: hidden;
+    }
+    .on-off-switch .on-off-wrap.switched-off {
+      background-color: gray;
+      text-align: right;
+    }
+    .on-off-switch .on-off-wrap.switched-off .on-off-icon {
+      left: 6px;
+    }
+    .on-off-switch .on-off-wrap.switched-off .on-text {
+      display: none;
+      font-size: 0;
+      opacity: 0;
+      visibility: hidden;
+    }
+    .on-off-switch .on-off-wrap.switched-off .off-text {
+      display: inline-block;
+      font-size: inherit;
+      opacity: 1;
+      visibility: visible;
+    }
+    .on-off-switch .on-off-wrap .on-off-icon {
+      position: absolute;
+      top: 0;
+      display: inline-block;
+      height: 13px;
+      width: 13px;
+      margin: 7px 0 0;
+      border-radius: 100px;
+      background-color: white;
+      content: '';
+      transition: all .7s ease 0s;
+    }
+    .on-off-switch .on-off-wrap .on-off-text {
+      margin-top: 6px;
+      color: white;
+      font-size: 0;
+      text-transform: uppercase;
+      transition: all .7s ease 0s;
+    }

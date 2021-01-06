@@ -248,8 +248,7 @@ if(empty($frameDetails)){?>
                             <?= $imgNo ?>
                             </span>
                             <br>
-                            19CFRRGDCCC612ST42X35/12<br>
-                            AM0589T58P20T
+                            <?=  $frameDetails->summary?>
                         </div>
                     </div>
                     <div id="frameSold">

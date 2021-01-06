@@ -62,7 +62,7 @@ $(document).ready(function(){
            <td><div class="summarydetails">
                             <span class="frameSoldWrapper"><?= $imgNo; ?></span>
                             <br>
-                            <?= $importImageList[$i]->summaryString;?>
+                            <?= $importImageList[$i]->summary;?>
                             <!-- 19CFRRGDCCC612ST42X35/12<br>
                             AM0589T58P20T                            -->
                         </div></td>

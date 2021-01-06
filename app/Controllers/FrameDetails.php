@@ -121,7 +121,9 @@ class FrameDetails extends BaseController
               "location": "'.$this->request->getPost('locationDescription').'", 
               "buildingId": "'.$this->request->getPost('locationBuildingLookup').'", 
               "note": "'.$this->request->getPost('locationInternalNotes').'",
-              "defaultimageattribute":"'.$this->request->getPost('defaultImageAttribute').'" 
+              "defaultimageattribute":"'.$this->request->getPost('defaultImageAttribute').'" ,
+              "autogenerateSummary":"'.$this->request->getPost('autogenerateSummary').'",
+              "summary":"'.$this->request->getPost('summary').'"
                 }';
                 $curl = curl_init();
                 curl_setopt_array($curl, array(
