@@ -232,16 +232,16 @@ display:block !important;
     border-radius: 2px;
     -webkit-animation: spin 1s linear infinite;
     animation: spin 1s linear infinite;
+    margin-left: 3px !important;
 }
 .loading-text{
   position: relative;
   text-align: center;
   display: block;
   margin-top: 50vh;
-  color: #ffffff;
+  color: #5a4d39;
   font-weight: 300;
   letter-spacing: 2px;
-  left: 0;
 }
 
 

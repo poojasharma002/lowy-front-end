@@ -376,8 +376,8 @@ $dataSession=$session->get('upload_artwork');
 <input type="hidden" id="__checkbox_framesView_hideMissingImages" name="__checkbox_hideMissingImages" value="true"> 
         </div>
         <div id="searchSubmit">
-            <input type="image" alt="Search Frames" id="framesView_0" onclick="searchingAttributes();" value="Search Frames">Search
-            <a href="<?php echo base_url('framesSearch.action');?>"><input type="image" alt="Clear Search" id="framesView_framesResetSearch" name="action:framesResetSearch" value="Clear Search">Clear Search</a>
+            <input type="button" alt="Search Frames" id="framesView_0" onclick="searchingAttributes();" value="Search Frames">Search
+            <a href="<?php echo base_url('framesSearch.action');?>"><input type="button" alt="Clear Search" id="framesView_framesResetSearch" name="action:framesResetSearch" value="Clear Search">Clear Search</a>
         </div>
         
         </div>
