@@ -32,7 +32,7 @@ $dataSession=$session->get('upload_artwork');
   <div class="d-flex" id="wrapper">
     <!-- Sidebar -->
     <div class="bg-light border-right" id="sidebar-wrapper">
-      <div class="sidebar-heading"><a href="<?php echo base_url();?>"><img src="<?php echo base_url('assets/img/logo-client.jpg');?>"/></a></div>
+      <div class="sidebar-heading"><a href="<?php echo base_url();?>"><img src="<?php echo base_url('assets/img/LOWY-horizontal-digital-2019-v2.png');?>"/></a></div>
       <div class="list-group list-group-flush">
         <div id="searchOptionWapper">
           <!-- Actual search box -->
