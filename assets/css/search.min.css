@@ -80,7 +80,7 @@ margin-left: 0;
   color: #AF8B73;
   font-weight: bold;
   width: 100%;
-  border-radius: 5px;
+  border-radius: 1px;
 }
 #searchOptionWapper p{
   width: 100%;
@@ -123,7 +123,8 @@ margin-left: 0;
   background-color: transparent;
   margin-bottom: 20px;
   border-radius: 0;
-  border-left: 3px solid #e8c68a;
+  padding: 0;
+  
 }
 #searchOptionWapper{
   margin-right: 6px;
@@ -256,13 +257,15 @@ display:block !important;
 
 button.btn.btn-primary.search-btn {
   background: none;
-  border-bottom: 1px solid #fff;
+  border-bottom: 1px solid #FFCD75;
   text-align: left;
   font-weight: normal;
   padding-left: 0;
   color: #fff;
+  font-family: 'Lora';
+  font-size: 20px;
+  padding-bottom: 5px !important;
 }
-
 
 
 input, optgroup, select, textarea {
@@ -272,7 +275,7 @@ input, optgroup, select, textarea {
   line-height: inherit;
   height: 42px;
   padding-left: 10px;
-  padding-right: 10px;
+  padding-right: 0px;
   border-radius: 0 !important;
   outline: 0;
   border: none !important;
@@ -282,7 +285,7 @@ input, optgroup, select, textarea {
 select {
   background: transparent;
   border: 1px solid #ffcd75 !important;
-  border-radius: 3px !important;
+  border-radius: 1px !important;
   color: #d9be8e !important;
 }
 
@@ -312,4 +315,22 @@ input#insertArtImage_0 {
 
 #sidebar-wrapper .sidebar-heading {
   padding: 0 0 0 10px;
+}
+
+
+button.btn.btn-primary.search-btn:hover {
+  border-right: 3px solid #ffcd75 !important;
+}
+
+
+
+button.btn.btn-primary.search-btn {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+
+.card-body label {
+  display: block;
 }

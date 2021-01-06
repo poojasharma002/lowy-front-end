@@ -118,8 +118,8 @@ button#menu-toggle {
 
 input[type="text"] {
     background: #35312c;
-    border-bottom: 1px solid #fff !important;
-    height: 44px;
+    border-bottom: input[type="text"];
+    height: 42px;
 }
 
 input[type="file" i]::-webkit-file-upload-button {
@@ -132,7 +132,7 @@ input[type="file" i]::-webkit-file-upload-button {
     margin-right: 14px;
 }
 
-.select-pure__select {
+card.card-body.select-pure__select {
     align-items: center;
     background: transparent;
     border-radius: 0;
@@ -337,4 +337,9 @@ table.list.welcome-selection {
 .welcome-selection td.headerWrapper {
     text-align: right;
     padding: 20px;
+}
+
+
+button#menu-toggle:hover {
+    background: none !important;
 }
