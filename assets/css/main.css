@@ -177,18 +177,15 @@ iframe {
   justify-content: center;
   align-items: center;
   padding: 15px;
-  background: #172804;
-  background: -webkit-linear-gradient(-135deg, #504e4e, #395815);
-  background: -o-linear-gradient(-135deg, #504e4e, #395815);
-  background: -moz-linear-gradient(-135deg, #504e4e, #395815);
-  background: linear-gradient(-135deg, #504e4e, #395815);
+background: url('/Users/andreavenezia/Desktop/bk-stage-merge/lowy-front-end/assets/img/lowy1907-antique-frame-collection.jpg');
+background-size: cover !important;
 }
 
 .wrap-login100 {
   width: 40vw;
   border-radius: 0 !important;
   background: #FFF2DB;
-  border-radius: 10px;
+
   overflow: hidden;
   display: -webkit-box;
   display: -webkit-flex;
@@ -245,13 +242,13 @@ iframe {
   font-family: Poppins-Medium;
   font-size: 15px;
   line-height: 1.5;
-  color: #666666;
+  color: #403A30;
 
   display: block;
   width: 100%;
-  background: #e6e6e6;
+  background: #E6D1AE;
   height: 50px;
-  border-radius: 25px;
+  border-radius: 0px;
   padding: 0 30px 0 68px;
 }
 
@@ -261,14 +258,14 @@ iframe {
 .focus-input100 {
   display: block;
   position: absolute;
-  border-radius: 25px;
+  border-radius: 0px;
   bottom: 0;
   left: 0;
   z-index: -1;
   width: 100%;
   height: 100%;
   box-shadow: 0px 0px 0px 0px;
-  color: rgba(87,184,70, 0.8);
+  color: #807461;
 }
 
 .input100:focus + .focus-input100 {
@@ -291,7 +288,7 @@ iframe {
 }
 
 .symbol-input100 {
-  font-size: 15px;
+  font-size: 16px;
 
   display: -webkit-box;
   display: -webkit-flex;
@@ -300,14 +297,14 @@ iframe {
   display: flex;
   align-items: center;
   position: absolute;
-  border-radius: 25px;
+  border-radius: 0px;
   bottom: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  padding-left: 35px;
+  padding-left: 25px;
   pointer-events: none;
-  color: #666666;
+  color: #403A30;
 
   -webkit-transition: all 0.4s;
   -o-transition: all 0.4s;
@@ -316,7 +313,7 @@ iframe {
 }
 
 .input100:focus + .focus-input100 + .symbol-input100 {
-  color: #57b846;
+  color: #807461;
   padding-left: 28px;
 }
 
@@ -343,8 +340,8 @@ iframe {
 
   width: 100%;
   height: 50px;
-  border-radius: 25px;
-  background: #2a4a06;
+  border-radius: 0;
+  background: #FFCD75;
   display: -webkit-box;
   display: -webkit-flex;
   display: -moz-box;
@@ -361,7 +358,8 @@ iframe {
 }
 
 .login100-form-btn:hover {
-  background: #333333;
+  background: #807461;
+  color: #fff !important;
 }
 
 
