@@ -87,9 +87,6 @@ table a {
 .checkboxvalue {
     margin-top: 31px;
 }
-table a:hover {
-    font-weight: bold;
-}
 
 #successMessages,
 #errorMessages,
@@ -260,7 +257,7 @@ input[type="radio"]:checked:after {
 
 
 .container-login100 {
-    background: url(assets/img/lowy1907-antique-frame-collection.jpg);
+    background: url(/assets/img/lowy1907-antique-frame-collection.jpg);
 }
 
 
@@ -292,7 +289,10 @@ ul {
 }
 
 .welcome-selection ul li {
-    width: 50%;
+    width: 100%;
+    box-shadow: 0 0 24px -10px #000;
+    max-width: 500px;
+    margin: 0 auto !important;
     list-style: none;
     background: #E6D1AE;
     margin: 20px;
@@ -307,19 +307,31 @@ ul {
     font-family: 'Lora';
 }
 
+
+.welcome-selection ul li:nth-child(2) {
+    background: #807461 url(https://lowy1907.com/wp-content/uploads/L1560.png);
+}
+
 .welcome-selection a {
     color: #fff;
 }
 
 
 table.list.welcome-selection {
-    background: url(https://lowy1907.com/wp-content/uploads/1-Dubuffet-1-1.jpg);
+    background: url(/assets/img/LOWY-horizontal-digital-2019-v2.png);
     background-size: cover;
     margin: 0 auto;
     width: 100%;
     height: 100%;
 }
 
+
+.welcome-selection ul li:first-child {
+    background: #FFCD75 url(https://lowy1907.com/wp-content/uploads/L5812.png);
+    background-repeat: no-repeat;
+    background-position: top left;
+    background-size: 160%;
+}
 
 
 .welcome-selection td.headerWrapper {
