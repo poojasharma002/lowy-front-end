@@ -25,6 +25,15 @@
   src: url('../fonts/montserrat/Montserrat-Bold.ttf'); 
 }
 
+
+@font-face {
+  font-family: Montserrat-Regular;
+  src: url('../fonts/montserrat/Montserrat-Regular.ttf'); 
+}
+
+
+@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,700;1,400&display=swap');
+
 /*//////////////////////////////////////////////////////////////////
 [ RESTYLE TAG ]*/
 
@@ -176,25 +185,31 @@ iframe {
 }
 
 .wrap-login100 {
-  width: 960px;
-  background: #fff;
+  width: 40vw;
+  border-radius: 0 !important;
+  background: #FFF2DB;
   border-radius: 10px;
   overflow: hidden;
-
   display: -webkit-box;
   display: -webkit-flex;
   display: -moz-box;
   display: -ms-flexbox;
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
-  padding: 177px 130px 33px 95px;
+  flex-direction: column;
+  justify-content: space-around;
+  padding: 0;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
 }
 
 /*------------------------------------------------------------------
 [  ]*/
 .login100-pic {
-  width: 316px;
+  width: 250px;
 }
 
 .login100-pic img {
@@ -209,17 +224,14 @@ iframe {
 }
 
 .login100-form-title {
-  font-family: Poppins-Bold;
   font-size: 24px;
-  color: #172804;
+  color: #403A30;
   line-height: 1.2;
-  text-align: center;
-
+  text-align: left;
   width: 100%;
   display: block;
-  padding-bottom: 54px;
+  padding-bottom: 20px;
 }
-
 
 /*---------------------------------------------*/
 .wrap-input100 {
@@ -323,7 +335,7 @@ iframe {
 }
 
 .login100-form-btn {
-  font-family: Montserrat-Bold;
+  font-family: Montserrat-Regular;
   font-size: 15px;
   line-height: 1.5;
   color: #fff;
