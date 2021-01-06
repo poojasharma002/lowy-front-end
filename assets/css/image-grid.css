@@ -2,11 +2,14 @@
   /* height: 360px; */
 }
 #gallery p a {
-  color: #788B75;
+  color: #ffcd75;
   text-decoration: none;
-  font-family: verdana;
-  font-size: 20px;
+  font-size: 13px;
   margin-left: 10px;
+  letter-spacing: 1.5px;
+  margin-top: -5px !important;
+  display: inline-block;
+  vertical-align: middle;
 }
 #imageGrid{
   margin-bottom: 25px;
@@ -22,12 +25,15 @@
 }
 
 #loadMoreSearch{
-  height: 56px;
-  color: #AF8B73;
+  height: auto;
+  color: #cccccc;
   border-color: #2f4a27;
   font-size: 20px;
-  font-weight: bold;
-  width: 228px;
+  font-weight: normal;
+  background: transparent;
+  border: 1px solid #fff !important;
+  padding: 10px 38px;
+  width: auto;
 }
 
 #fancybox-title-under {

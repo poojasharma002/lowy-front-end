@@ -118,7 +118,7 @@ button#menu-toggle {
 
 input[type="text"] {
     background: #35312c;
-    border-bottom: input[type="text"];
+    border-bottom: none ;
     height: 42px;
 }
 
@@ -132,7 +132,7 @@ input[type="file" i]::-webkit-file-upload-button {
     margin-right: 14px;
 }
 
-card.card-body.select-pure__select {
+.card.card-body.select-pure__select {
     align-items: center;
     background: transparent;
     border-radius: 0;
@@ -177,8 +177,9 @@ card.card-body.select-pure__select {
 input[type="checkbox"],
 input[type="radio"] {
     outline: none;
-    width: 17px;
-    height: 17px;
+    width: 18px;
+    height: 18px;
+    border-radius: 2px !important;
     position: relative;
     background: transparent !important;
     border: 1px solid #ffcd75 !important;
@@ -190,8 +191,8 @@ input[type="radio"] {
 input[type="checkbox"]:checked,
 input[type="radio"]:checked {
     outline: none;
-    width: 17px;
-    height: 17px;
+    width: 18px;
+    height: 18px;
     position: relative;
     background: transparent !important;
     border: 1px solid #ffcd75 !important;
@@ -210,10 +211,9 @@ input[type="radio"]:checked:after {
     font-size: 14px;
     line-height: 12px;
     color: #ffffff;
-    position: absolute;
-    left: -1px;
+    position: relative;
     right: 0;
-    top: -.5px;
+    top: -6px;
     bottom: 0;
 }
 

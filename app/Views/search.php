@@ -378,7 +378,7 @@ $dataSession=$session->get('upload_artwork');
         <div id="searchSubmit">
             <button type="button" alt="Search Frames" id="framesView_0" onclick="searchingAttributes();" value="Search Frames">Search Frames</button>
 
-            <a href="<?php echo base_url('framesSearch.action');?>"><button type="button" alt="Clear Search" id="framesView_framesResetSearch" name="action:framesResetSearch" value="Clear Search"></button></a>
+            <a href="<?php echo base_url('framesSearch.action');?>"><button type="button" alt="Clear Search" id="framesView_framesResetSearch" name="action:framesResetSearch" value="Clear Search">Clear Search</button></a>
         </div>
         
         </div>

@@ -279,6 +279,7 @@ input, optgroup, select, textarea {
   border-radius: 0 !important;
   outline: 0;
   border: none !important;
+  color: #fff;
 }
 
 
