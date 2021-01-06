@@ -208,3 +208,9 @@ input[type=checkbox]:checked, input[type=radio]:checked {
 }
 
 input[type=checkbox]:checked:after, input[type=radio]:checked:after {content: '\f00c';font-family: 'FontAwesome';z-index: 99;font-size: 13px;color: #ffffff;position: absolute;left: 0;right: 0;top: auto;bottom: auto;}
+
+
+
+#cover-spin {
+    display: none !important;
+}
