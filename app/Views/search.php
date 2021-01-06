@@ -32,7 +32,7 @@ $dataSession=$session->get('upload_artwork');
   <div class="d-flex" id="wrapper">
     <!-- Sidebar -->
     <div class="bg-light border-right" id="sidebar-wrapper">
-      <div class="sidebar-heading"><a href="<?php echo base_url();?>"><img src="<?php echo base_url('assets/img/logo-client.jpg');?>"/></a></div>
+      <div class="sidebar-heading"><a href="<?php echo base_url();?>"><img src="<?php echo base_url('assets/img/lowy-logo-white.png');?>"/></a></div>
       <div class="list-group list-group-flush">
         <div id="searchOptionWapper">
           <!-- Actual search box -->
@@ -49,6 +49,8 @@ $dataSession=$session->get('upload_artwork');
                 <p>
             <button class="btn btn-primary search-btn" type="button" data-toggle="collapse" data-target="#artwork" aria-expanded="false" aria-controls="artwork">
             Artwork
+
+            <i class="fa fa-angle-down" aria-hidden="true"></i>
             </button>
             </p>
             <div class="collapse" id="artwork">
@@ -125,6 +127,8 @@ $dataSession=$session->get('upload_artwork');
             <p>
             <button class="btn btn-primary search-btn" type="button" data-toggle="collapse" data-target="#origin" aria-expanded="false" aria-controls="origin">
             Origin
+
+            <i class="fa fa-angle-down" aria-hidden="true"></i>
             </button>
             </p>
             <div class="collapse" id="origin">
@@ -152,6 +156,8 @@ $dataSession=$session->get('upload_artwork');
             <p>
             <button class="btn btn-primary search-btn" type="button" data-toggle="collapse" data-target="#style" aria-expanded="false" aria-controls="style">
             Style
+
+            <i class="fa fa-angle-down" aria-hidden="true"></i>
             </button>
             </p>
             <div class="collapse" id="style">
@@ -187,6 +193,8 @@ $dataSession=$session->get('upload_artwork');
             <p>
             <button class="btn btn-primary search-btn" type="button" data-toggle="collapse" data-target="#price" aria-expanded="false" aria-controls="price">
             Price
+
+            <i class="fa fa-angle-down" aria-hidden="true"></i>
             </button>
             </p>
             <div class="collapse" id="price">
@@ -210,6 +218,8 @@ $dataSession=$session->get('upload_artwork');
             <p>
             <button class="btn btn-primary search-btn" type="button" data-toggle="collapse" data-target="#size" aria-expanded="false" aria-controls="size">
             Size
+
+            <i class="fa fa-angle-down" aria-hidden="true"></i>
             </button>
             </p>
         <div class="collapse" id="size">
@@ -378,7 +388,7 @@ $dataSession=$session->get('upload_artwork');
     <!-- Page Content -->
     <div id="page-content-wrapper">
 
-      <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
+      <nav class="navbar navbar-expand-lg navbar-light">
         <button class="btn btn-primary" id="menu-toggle"> <span class="navbar-toggler-icon"></span></button>
       </nav>
 
