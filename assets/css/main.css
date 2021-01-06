@@ -166,7 +166,7 @@ iframe {
 }
 
 .container-login100 {
-  width: 100%;  
+  width: 100%;
   min-height: 100vh;
   display: -webkit-box;
   display: -webkit-flex;
@@ -177,8 +177,11 @@ iframe {
   justify-content: center;
   align-items: center;
   padding: 15px;
-background: url('assets/img/lowy1907-antique-frame-collection.jpg');
-background-size: cover !important;
+  background: url(http://lowy1907.com/wp-content/uploads/Antique-Frames.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: top right;
+  object-fit: cover;
 }
 
 .wrap-login100 {
