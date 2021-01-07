@@ -96,8 +96,8 @@ margin-left: 0;
   margin-left: 20px;
 }
 .btn-primary:not(:disabled):not(.disabled).active:focus, .btn-primary:not(:disabled):not(.disabled):active:focus, .show>.btn-primary.dropdown-toggle:focus {
-  box-shadow: 0 0 0 0.2rem #030811 !important;
   border: none !important;
+  color: #ffcd75;
 }
 .btn-primary:not(:disabled):not(.disabled).active, .btn-primary:not(:disabled):not(.disabled):active, .show>.btn-primary.dropdown-toggle {
   color: #030811;
@@ -110,7 +110,7 @@ margin-left: 0;
   border: none !important;
 }
 .btn-primary.focus, .btn-primary:focus {
-  box-shadow: 0 0 0 0.2rem #030811 !important;
+  box-shadow: 0 0px 14px -15px #222 !important;
 }
 .sidebar-heading img{
   width: 100%;
@@ -157,7 +157,7 @@ margin-left: 0;
 
 
 #serachSold, #hideMissingImages {
-  color: #ffcd75;
+  color: #cbcac9;
   font-size: 16px;
   display: flex;
   align-items: center;
@@ -200,6 +200,7 @@ button#framesView_framesResetSearch {
   border: none;
   outline: none;
   color: #fff;
+  opacity: .5;
 }
 
 #framesView_0:hover{
@@ -346,7 +347,8 @@ input#insertArtImage_0 {
 
 
 button.btn.btn-primary.search-btn:hover {
-  border-right: 3px solid #ffcd75 !important;
+  border-right: none !important;
+    background-color: transparent !important;
 }
 
 
@@ -360,4 +362,13 @@ button.btn.btn-primary.search-btn {
 
 .card-body label {
   display: block;
+}
+
+
+
+input#insertArtImage_removeArtImage {
+  width: auto !important;
+  width: 150px !important;
+  background: none;
+  opacity: .5;
 }
