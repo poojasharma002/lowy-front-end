@@ -225,7 +225,7 @@ button#framesView_framesResetSearch {
   position:fixed;
   width:100%;
   left:0;right:0;top:0;bottom:0;
-  background: linear-gradient(45deg, rgb(157 127 72), rgb(230 216 204 / 90%));
+  background:rgb(157 127 72);
   z-index:9999;
   display:none;
 }
@@ -371,4 +371,14 @@ input#insertArtImage_removeArtImage {
   width: 150px !important;
   background: none;
   opacity: .5;
+}
+
+
+div#imageGrid p {
+  text-align: center;
+}
+
+
+input#loadMoreSearch {
+    cursor: pointer;
 }

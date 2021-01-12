@@ -27,14 +27,21 @@
 #loadMoreSearch{
   height: auto;
   color: #cccccc;
-  border-color: #2f4a27;
+
   font-size: 20px;
   font-weight: normal;
   background: transparent;
   border: 1px solid #fff !important;
   padding: 10px 38px;
   width: auto;
+
+
 }
+
+#loadMoreSearch:hover {
+  color: #000 !important;
+}
+
 
 #fancybox-title-under {
   /* background-color: #000000; */

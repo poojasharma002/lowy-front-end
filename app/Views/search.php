@@ -401,7 +401,7 @@ $dataSession=$session->get('upload_artwork');
 <div class="row" id="gallery" >
 </div>
 <div id="loadMore">
-<input type="button" alt="load More" class="btn-primary" id="loadMoreSearch" name="loadMoreSearch" value="Load More Frame">
+<input type="button" alt="load More" class="btn-primary" id="loadMoreSearch" name="loadMoreSearch" value="Load More Frames">
 </div>
 <!-- Modal -->
 <!-- 
