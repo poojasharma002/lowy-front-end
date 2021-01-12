@@ -217,13 +217,6 @@ input[type="radio"]:checked:after {
     bottom: 0;
 }
 
-#cover-spin {
-    display: none !important;
-}
-
-
-
-
 .input100 {
     border-radius: 0;
     background: #FFCD75;
