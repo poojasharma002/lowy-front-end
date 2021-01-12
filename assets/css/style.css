@@ -338,3 +338,12 @@ button#menu-toggle:hover {
 }
 
 
+
+h1.form-inline.mt-2.mt-md-0.siteheader {
+    font-family: 'Lora';
+    font-size: 16px;
+    letter-spacing: 2px;
+    padding-right: 20px;
+}
+
+
