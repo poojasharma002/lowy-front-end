@@ -458,21 +458,3 @@ div#imagePopup #pic {
 }
 
 
-
-@media (max-width: 992px) {
-
-  .welcome-selection a {
-    color: #fff;
-    font-size: 41px;
-}
-
-  .welcome-selection ul {
-    display: flex;
-    flex-direction: column;
-}
-  .welcome-selection ul li {
-    max-width: 90%;
-
-    margin: 20px auto !important;
-  }
-}
