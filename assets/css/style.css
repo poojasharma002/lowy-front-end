@@ -346,4 +346,52 @@ h1.form-inline.mt-2.mt-md-0.siteheader {
     padding-right: 20px;
 }
 
+.table-striped tbody tr:nth-of-type(odd) {
+    background-color: #fff2dc;
+}
 
+
+.table-bordered td, .table-bordered th {
+    border: 1px solid #ffffff;
+}
+
+
+th.sorting {
+    font-size: 13px;
+    font-weight: 600;
+    color: #d19b2c;
+}
+
+
+
+tbody {
+    font-size: 13px;
+}
+
+.page-link {
+    border: none;
+    color: #cf9829;
+}
+
+
+.page-item.active .page-link {
+    z-index: 1;
+    color: #000;
+    background-color: #FFCD75;
+    border-color: #000000;
+}
+
+
+.export-link {
+    float: none;
+    width: auto;
+    padding: 10px 20px;
+    background: #FFCD75;
+    outline: none;
+    border: none;
+    box-shadow: none;
+    color: #030811;
+    cursor: pointer;
+    transition: .2s all ease-in-out;
+    margin-bottom: 20;
+}

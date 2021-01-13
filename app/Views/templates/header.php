@@ -35,7 +35,7 @@ echo script_tag("assets/js/jquery-3.5.1.js");
       </nav>
     </header>
      <!-- Begin page content -->
-     <main role="main" class="container">
+     <main role="main" class="container-fluid">
        <!-- Nav tabs -->
   <ul class="nav nav-tabs" role="tablist">
     <li class="nav-item">
