@@ -357,16 +357,24 @@ h1.form-inline.mt-2.mt-md-0.siteheader {
 
 
 th {
-    font-size: 13px;
+    font-size: 12px;
     font-weight: 600;
     color: #ffffff;
     background: #807461;
+    vertical-align: middle !important;
+}
+
+
+.dataTables_wrapper .table td, .dataTables_wrapper .table th {
+    padding: 8px 5px 8px 8px;
+    font-size: 12px;
+    vertical-align: middle !important;
 }
 
 
 
 tbody {
-    font-size: 13px;
+    font-size: 12px;
 }
 
 .page-link {
@@ -375,7 +383,7 @@ tbody {
 }
 
 
-.page-item.active .page-link {
+.dataTables_wrapper .page-item.active .page-link {
     z-index: 1;
     color: #000;
     background-color: #FFCD75;
