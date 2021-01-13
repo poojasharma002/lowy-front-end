@@ -364,7 +364,22 @@ button.btn.btn-primary.search-btn {
   display: block;
 }
 
+a {
+  color: #FFCD75;
+}
 
+a:hover {
+  color: #e6e6e6;
+}
+
+
+
+.close {
+  font-weight: 100;
+  font-size: 40px;
+  padding: 8px !important;
+  opacity: 1;
+}
 
 input#insertArtImage_removeArtImage {
   width: auto !important;
@@ -383,8 +398,22 @@ input#loadMoreSearch {
     cursor: pointer;
 }
 
-.modal-content {
+.modal .modal-content {
   background-color: #ececec;
+}
+
+
+.modal .modal-footer {
+  background: #807461;
+}
+
+
+div#fancybox-title-under {
+  color: #fff;
+  font-size: 14px;
+  width: 100%;
+  font-weight: normal;
+  letter-spacing: .5px;
 }
 
 
