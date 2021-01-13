@@ -382,7 +382,7 @@ tbody {
 
 body .page-link {
     border: none;
-    color: #cf9829;
+    color: #817361;
 }
 
 
@@ -401,22 +401,26 @@ div.dataTables_wrapper div.dataTables_length label, div.dataTables_wrapper div.d
 
 
 .export-link {
-    float: none;
     width: auto;
-    padding: 10px 20px;
+    padding: 5px 17px;
     background: #FFCD75;
     outline: none;
     border: none;
+    font-size: 13px;
     box-shadow: none;
-    color: #030811;
+    color: #100f0c;
     cursor: pointer;
     transition: .2s all ease-in-out;
-    margin-bottom: 20;
+    clear: both !important;
+    float: left;
+    margin-top: 28px;
 }
 
 
 .tab-content {
     padding-top: 20px;
+    padding-bottom: 20px;
+    font-size: 13px;
 }
 
 
@@ -434,6 +438,26 @@ div.dataTables_wrapper div.dataTables_filter input {
 
 ul.nav.nav-tabs {
     margin-top: 20px;
+}
+
+
+
+footer.footer {
+    font-size: 13px;
+    text-align: center;
+    line-height: 140%;
+    padding-top: 10px;
+}
+
+.footer-copyright {
+    text-align: center;
+    opacity: .4;
+}
+
+
+.lowy-footer {
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 
 @media (max-width: 992px) {

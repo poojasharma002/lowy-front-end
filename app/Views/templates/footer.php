@@ -1,8 +1,8 @@
 <footer class="footer">
-      <div class="container">
-        <span class="text-muted">Lowy1907</span>
-      </div>
-      <div class="lowy-footer">
+      
+      <div class="lowy-footer container">
+      Lowy 1907
+      <br>
       43-14 37th St
 Long Island City, NY 11101
 <br>
