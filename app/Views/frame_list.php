@@ -1,9 +1,9 @@
 <?php  echo view('templates/header'); ?>
  <!-- Tab panes -->
  <div class="tab-content">
-    <div id="frame_list" class="tab-pane active"><br>
+    <div id="frame_list" class="tab-pane active">
     <div id="cover-spin" class=""><strong class="loading-text">Please Wait...</strong></div>
-    <a class="export-link" href='<?php echo base_url('ExportCsv/exportCSV'); ?>' id="">Export</a><br><br>
+    <a class="export-link" href='<?php echo base_url('ExportCsv/exportCSV'); ?>' id="">Export</a><br>
     <table id="example" class="table table-striped table-bordered " style="width:100%">
         <thead>
             <tr>

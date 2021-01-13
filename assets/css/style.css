@@ -380,7 +380,7 @@ tbody {
     font-size: 12px;
 }
 
-.page-link {
+body .page-link {
     border: none;
     color: #cf9829;
 }
@@ -428,4 +428,24 @@ select.custom-select.custom-select-sm.form-control.form-control-sm {
 
 div.dataTables_wrapper div.dataTables_filter input {
     border: 1px solid #817361;
+}
+
+
+
+ul.nav.nav-tabs {
+    margin-top: 20px;
+}
+
+@media (max-width: 992px) {
+
+    div#example_length {
+        text-align: left;
+    }
+
+    div#example_filter {
+        text-align: left;
+    }
+    table#example {
+        overflow: scroll;
+    }
 }

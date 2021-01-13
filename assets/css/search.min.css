@@ -423,6 +423,11 @@ div#imagePopup {
 }
 
 
+:focus {
+  outline: none !important;
+}
+
+
 div#imagePopup #pic {
   width: auto;
   height: auto;
@@ -430,6 +435,7 @@ div#imagePopup #pic {
   margin: 0 auto;
   text-align: center;
   margin-left: auto;
+  max-width: 100%;
 }
 
 

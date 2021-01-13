@@ -21,7 +21,7 @@ echo script_tag("assets/js/jquery-3.5.1.js");
 
     <header>
       <!-- Fixed navbar -->
-      <nav class="navbar navbar-expand-md navbar-dark fixed-top heade-nav">
+      <nav class="navbar navbar-expand-md navbar-dark heade-nav">
           <div class="collapse navbar-collapse" id="navbarCollapse">
           <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
