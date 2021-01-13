@@ -356,10 +356,11 @@ h1.form-inline.mt-2.mt-md-0.siteheader {
 }
 
 
-th.sorting {
+th {
     font-size: 13px;
     font-weight: 600;
-    color: #d19b2c;
+    color: #ffffff;
+    background: #807461;
 }
 
 
@@ -394,4 +395,20 @@ tbody {
     cursor: pointer;
     transition: .2s all ease-in-out;
     margin-bottom: 20;
+}
+
+
+.tab-content {
+    padding-top: 20px;
+}
+
+
+select.custom-select.custom-select-sm.form-control.form-control-sm {
+    border-radius: 0;
+    border: 1px solid #817361;
+}
+
+
+div.dataTables_wrapper div.dataTables_filter input {
+    border: 1px solid #817361;
 }
