@@ -4,6 +4,8 @@
 <?php 
 echo link_tag('assets/css/style.css');
 ?>
+<link rel="icon" type="image/png" href="assets/img/Lowy-Favicon-32x32.png"/>
+<link rel="icon" type="image/png" href="assets/img/Lowy-Favicon-32x32.png"/>
 
 </head>
 <body>

@@ -4,6 +4,9 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <title></title>
+    <link rel="icon" type="image/png" href="assets/img/Lowy-Favicon-32x32.png"/>
+<link rel="icon" type="image/png" href="assets/img/Lowy-Favicon-32x32.png"/>
+
     <!-- Bootstrap core CSS -->
     <?php 
 // ini_set('display_errors', '1');
