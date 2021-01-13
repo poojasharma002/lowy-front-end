@@ -1,7 +1,22 @@
 <footer class="footer">
       <div class="container">
-        <span class="text-muted">Lowy Front End</span>
+        <span class="text-muted">Lowy1907</span>
       </div>
+      <div class="lowy-footer">
+      43-14 37th St
+Long Island City, NY 11101
+<br>
+212-861-8585
+<br>
+info@lowy1907.com
+      </div>
+
+
+      <div class="footer-copyright">
+      ©Julius Lowy Frame and Restoring Company, 2021
+      </div>
+
+      
     </footer>
 
     <!-- Bootstrap core JavaScript
