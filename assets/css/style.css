@@ -383,6 +383,12 @@ tbody {
 }
 
 
+div.dataTables_wrapper div.dataTables_length label, div.dataTables_wrapper div.dataTables_filter label {
+
+    font-size: 12px;
+}
+
+
 .dataTables_wrapper .page-item.active .page-link {
     z-index: 1;
     color: #000;
