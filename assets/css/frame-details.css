@@ -138,12 +138,11 @@ table.content th {
 
 #frameSold,
 #deleteUndelete {
-    background-color: #B3CEAF;
-    border: 2px solid #000000;
+    border: 1px solid #413a30;
     float: right;
     text-align: center;
     margin-bottom: 100px;
-    padding: .2em 1em;
+    padding: 8px 10px;
 }
 
 #frameSold a,
