@@ -236,7 +236,7 @@ if(empty($frameDetails)){?>
                         <div style="border-top: 0pt none; border-bottom: 1px solid rgb(93, 119, 91); text-align: right;"
                             class="detailheader">
                             <input type="hidden" name="id" value="<?= $frameDetails->inventoryNumber ?>" id="frameAdminEdit_id">
-                            <input type="image" alt="Edit" src="<?php echo base_url('assets/img/edit.jpg');?>" id="frameAdminEdit_0"
+                            <input type="image" alt="Edit" src="<?php echo base_url('assets/img/edit-btn.svg');?>" id="frameAdminEdit_0"
                                 value="Edit" class="buttonlink">
 
                         </div>

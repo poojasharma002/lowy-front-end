@@ -36,7 +36,12 @@ table .titleText {
     font-family: sans-serif;
     font-weight: bold;
     font-size: 20pt;
-    color: gray;
+    color: #3d4144;
+    font-weight: normal;
+    font-family: 'Lora';
+    font-size: 13px;
+    text-align: left;
+    padding-top: 11px !important;
 }
 
 .searchFrameWrapper,
@@ -69,7 +74,7 @@ table .titleText {
 }
 
 .bigImageViewer img {
-    border: 1px black solid;
+    border: none;
 }
 
 .frameDetail {
@@ -81,33 +86,53 @@ table .titleText {
 .detailheader {
     width: auto;
     padding: 10px;
-    font-weight: bold;
-    color: #000;
-    background-color: #B3CEAF;
+    color: #000000;
+    background-color: transparent;
     text-align: center;
-    border: 1px solid #5D775B;
+    border: none;
     border-bottom: 0;
+    font-weight: normal;
+    text-align: left;
+    font-family: auto;
+    font-size: 16px;
+    font-family: Montserrat-Regular;
+    font-weight: 600;
+    border-bottom: 1px solid #000;
+    margin-bottom: 20px;
+    padding-left: 0;
 }
+
+
+
 
 .framedetailtable {
     width: 100%;
-    border-right: 1px solid #5D775B;
+    border-right: none;
+}
+
+
+table tr.odd, table tr.even {
+    background-color: transparent;
+    border-bottom: 1px solid #f5f5f5;
 }
 
 table.manageList tr.odd,
 table.framedetailtable tr.odd {
-    background-color: #DEE5DD;
+    background-color: transparent;
+    /* border-bottom: 1px solid #f5f5f5; */
 }
 
 table.manageList tr.even,
 table.framedetailtable tr.even {
-    background-color: white;
+    background-color: transparent;
 }
 
 table.content td,
 table.content th {
     padding: 5px;
-    border-left: 1px solid #5D775B;
+    border-left: none;
+    font-size: 13px;
+    font-family: 'Lora';
 }
 
 .framedetailtable td {
@@ -116,24 +141,29 @@ table.content th {
 }
 
 .summary {
-    border: 1px solid #5D775B;
-    height: 131px;
-    margin: 50px auto;
+    border: none;
+    height: auto;
+    margin: 20px auto;
+    padding-top: 0px;
     width: 400px;
+    background: #f9f2e2;
+    padding-bottom: 10px;
 }
 
 .summaryheading {
     width: auto;
     padding: 10px;
-    text-align: center;
-    background-color: #DEE5DD;
     font-weight: bold;
+    border-bottom: 1px solid #d4d4d4;
+    text-align: left;
+    font-family: Montserrat-Regular;
 }
 
 .summarydetails {
-    font-weight: bold;
-    margin-left: 70px;
-    margin-top: 16px;
+    font-weight: normal;
+    margin-left: 10px;
+    margin-top: 10px;
+    font-family: Montserrat-Regular;
 }
 
 #frameSold,
