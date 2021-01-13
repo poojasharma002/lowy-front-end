@@ -437,7 +437,12 @@ div.dataTables_wrapper div.dataTables_filter input {
 
 
 ul.nav.nav-tabs {
-    margin-top: 20px;
+    padding-top: 20px;
+    background: #f9f2e2;
+    margin-left: -20px;
+    margin-right: -20px;
+    padding-left: 20px;
+    padding-right: 20px;
 }
 
 
@@ -445,8 +450,10 @@ ul.nav.nav-tabs {
 footer.footer {
     font-size: 13px;
     text-align: center;
-    line-height: 140%;
+    line-height: 150%;
+    height: auto;
     padding-top: 10px;
+    padding-bottom: 10px;
 }
 
 .footer-copyright {
@@ -457,7 +464,26 @@ footer.footer {
 
 .lowy-footer {
     margin-top: 10px;
-    margin-bottom: 10px;
+    text-align: left;
+    padding-left: 20px;
+    color: #817361;
+    opacity: .8;
+}
+
+
+.nav-tabs .nav-link {
+    border: 1px solid transparent;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    font-family: Montserrat-Regular;
+    color: #000;
+    font-size: 14px;
+    letter-spacing: .5px;
+}
+
+
+.heade-nav {
+  background-color: #f1e9d9;
 }
 
 @media (max-width: 992px) {

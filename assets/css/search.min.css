@@ -3,11 +3,19 @@
  * Copyright 2013-2020 Start Bootstrap
  * Licensed under MIT (https://github.com/StartBootstrap/startbootstrap-simple-sidebar/blob/master/LICENSE)
  */
+
+
+ @font-face {
+  font-family: Montserrat-Regular;
+  src: url('../fonts/montserrat/Montserrat-Regular.ttf'); 
+}
+
  body {
   background-color: #030810 !important;
   margin: 0;
   padding: 0;
   color: #fff!important;
+  font-family: Montserrat-Regular;
 }
  #wrapper {
   overflow-x: hidden;
@@ -437,6 +445,9 @@ div#imagePopup #pic {
   margin-left: auto;
   max-width: 100%;
 }
+
+
+
 
 
 @media (min-width: 576px) {
