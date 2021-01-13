@@ -16,6 +16,9 @@
   padding: 0;
   color: #fff!important;
   font-family: Montserrat-Regular;
+  font-size: 13px;
+  font-weight: normal;
+  letter-spacing: 1.25px;
 }
  #wrapper {
   overflow-x: hidden;
@@ -28,6 +31,7 @@ margin-left: -19rem;
 -moz-transition: margin .25s ease-out;
 -o-transition: margin .25s ease-out;
 transition: margin .25s ease-out;
+padding-right: 10px;
 }
 
 #sidebar-wrapper .sidebar-heading {
@@ -74,10 +78,10 @@ margin-left: 0;
 
 }
 .border-right {
-  border-right: 7px solid #353028 !important;
+  border-right: 7px solid #000000 !important;
 }
 .border-bottom {
-  border-bottom: 7px solid #353028 !important;
+  border-bottom: 7px solid #000000 !important;
 }
 
 .search-btn {
@@ -135,6 +139,7 @@ margin-left: 0;
   
 }
 #searchOptionWapper{
+ padding-top: 10px;
   margin-right: 6px;
 }
 
@@ -233,7 +238,7 @@ button#framesView_framesResetSearch {
   position:fixed;
   width:100%;
   left:0;right:0;top:0;bottom:0;
-  background:rgb(157 127 72);
+  background:rgb(66 66 66);
   z-index:9999;
   display:none;
 }
@@ -292,7 +297,7 @@ display:block !important;
 
 button.btn.btn-primary.search-btn {
   background: none;
-  border-bottom: 1px solid #FFCD75;
+  border-bottom: 1px solid #33312c;
   text-align: left;
   font-weight: normal;
   padding-left: 0;
@@ -300,6 +305,7 @@ button.btn.btn-primary.search-btn {
   font-family: 'Lora';
   font-size: 20px;
   padding-bottom: 5px !important;
+  transition: all .2s ease-in-out;
 }
 
 
