@@ -381,7 +381,7 @@ button#menu-toggle:hover {
 
 h1.form-inline.mt-2.mt-md-0.siteheader {
     font-family: 'Lora';
-    font-size: 16px;
+    font-size: 13px;
     letter-spacing: 2px;
     padding-right: 20px;
 }
@@ -514,7 +514,7 @@ footer.footer {
     border-top-right-radius: 0;
     font-family: Montserrat-Regular;
     color: #000;
-    font-size: 14px;
+    font-size: 13px;
     letter-spacing: .5px;
 }
 
@@ -524,6 +524,18 @@ footer.footer {
 }
 
 @media (max-width: 992px) {
+
+
+    div#frame_list {
+        position: relative;
+    }
+
+
+    .export-link {
+        position: absolute;
+    top: -56px;
+}
+    }
 
 
     .welcome-selection a {

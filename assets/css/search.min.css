@@ -36,7 +36,7 @@ padding-right: 10px;
 
 #sidebar-wrapper .sidebar-heading {
 padding: 0.875rem 1.25rem;
-font-size: 1.2rem;
+font-size: 18px;
 }
 
 #sidebar-wrapper .list-group {
@@ -78,10 +78,10 @@ margin-left: 0;
 
 }
 .border-right {
-  border-right: 7px solid #000000 !important;
+  border-right: 7px solid #24211d !important;
 }
 .border-bottom {
-  border-bottom: 7px solid #000000 !important;
+  border-bottom: 7px solid #24211d !important;
 }
 
 .search-btn {
@@ -127,7 +127,7 @@ margin-left: 0;
 .sidebar-heading img{
   width: 100%;
   margin-left: 0;
-  max-width: 285px;
+  max-width: 155px;
   margin-bottom: 20px;
   margin-top: 10px;
 }
@@ -171,7 +171,7 @@ margin-left: 0;
 
 #serachSold, #hideMissingImages {
   color: #cbcac9;
-  font-size: 16px;
+  font-size: 13px;
   display: flex;
   align-items: center;
   font-weight: normal;
@@ -238,7 +238,7 @@ button#framesView_framesResetSearch {
   position:fixed;
   width:100%;
   left:0;right:0;top:0;bottom:0;
-  background:rgb(66 66 66);
+  background: rgb(35 35 35);
   z-index:9999;
   display:none;
 }
@@ -274,15 +274,18 @@ display:block !important;
     -webkit-animation: spin 1s linear infinite;
     animation: spin 1s linear infinite;
     margin-left: 3px !important;
+    text-shadow: none;
 }
 .loading-text{
   position: relative;
   text-align: center;
   display: block;
   margin-top: 50vh;
-  color: #5a4d39;
-  font-weight: 300;
-  letter-spacing: 2px;
+  color: #afa491;
+  font-weight: normal;
+  letter-spacing: 0;
+  font-size: 13px;
+  letter-spacing: .2px;
 }
 
 
@@ -290,7 +293,7 @@ display:block !important;
 .navbar-light .navbar-toggler-icon {
   filter: invert(1);
   width: 2em;
-  height: 4em;
+  height: 35px;
 }
 
 
@@ -303,7 +306,7 @@ button.btn.btn-primary.search-btn {
   padding-left: 0;
   color: #fff;
   font-family: 'Lora';
-  font-size: 20px;
+  font-size: 18px;
   padding-bottom: 5px !important;
   transition: all .2s ease-in-out;
 }
@@ -312,7 +315,7 @@ button.btn.btn-primary.search-btn {
 input, optgroup, select, textarea {
   margin: 0;
   font-family: inherit;
-  font-size: inherit;
+  font-size: 13px;
   line-height: inherit;
   height: 42px;
   padding-left: 10px;
@@ -321,6 +324,11 @@ input, optgroup, select, textarea {
   outline: 0;
   border: none !important;
   color: #fff;
+}
+
+
+::placeholder {
+  font-size: 13px;
 }
 
 
@@ -376,8 +384,12 @@ button.btn.btn-primary.search-btn {
 
 .card-body label {
   display: block;
+  text-transform: uppercase;
+  font-size: 12px;
+  font-weight: 800;
+  opacity: .6;
+  margin-bottom: 2px;
 }
-
 a {
   color: #FFCD75;
 }
@@ -424,7 +436,7 @@ input#loadMoreSearch {
 
 div#fancybox-title-under {
   color: #fff;
-  font-size: 14px;
+  font-size: 13px;
   width: 100%;
   font-weight: normal;
   letter-spacing: .5px;
