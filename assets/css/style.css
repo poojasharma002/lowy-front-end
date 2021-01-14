@@ -216,8 +216,8 @@ input[type="file" i]::-webkit-file-upload-button {
 input[type="checkbox"],
 input[type="radio"] {
     outline: none;
-    width: 18px;
-    height: 18px;
+    width: 16px;
+    height: 16px;
     border-radius: 2px !important;
     position: relative;
     background: transparent !important;
@@ -230,8 +230,8 @@ input[type="radio"] {
 input[type="checkbox"]:checked,
 input[type="radio"]:checked {
     outline: none;
-    width: 18px;
-    height: 18px;
+    width: 16px;
+    height: 16px;
     position: relative;
     background: transparent !important;
     border: 1px solid #ffcd75 !important;
@@ -247,14 +247,14 @@ input[type="radio"]:checked:after {
     content: "\f00c";
     font-family: "FontAwesome";
     z-index: 99;
-    font-size: 10px;
+    font-size: 13px;
     line-height: 12px;
     color: #ffffff;
     position: relative;
     right: 0;
-    top: -5.5px;
+    top: -3.2px;
     bottom: 0;
-    left: 3.5px;
+    left: 1.2px;
 }
 
 .input100 {

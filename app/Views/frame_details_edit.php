@@ -41,7 +41,7 @@ echo script_tag('assets/js/notification.js');
     <div class="pagecontrol setbottomborder">
         <div class="detailnavigator">
             <form id="frameAdminView" name="frameAdminView" action="<?php echo base_url('frameAdminView.action');?>" method="GET">
-            <input type="text" name="id" value="<?= $imgNo ?>" id="frameAdminView_id" style="width: 70px; float: left;"><input type="submit" id="frameAdminView_0" value="Show" class="inputsubmit" style="float:left;">
+            <input type="text" name="id" value="<?= $imgNo ?>" id="frameAdminView_id" style="width: 120px; float: left;"><input type="submit" id="frameAdminView_0" value="Show" class="inputsubmit" style="float:left;">
             </form>
         </div>
     </div>
