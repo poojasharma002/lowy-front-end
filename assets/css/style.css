@@ -531,10 +531,14 @@ footer.footer {
     }
 
 
+    a.nav-link {
+        padding: 5px;
+    }
+
+
     .export-link {
-        position: absolute;
-    top: -56px;
-}
+    
+
     }
 
 
