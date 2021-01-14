@@ -130,6 +130,8 @@ table a {
         letter-spacing: 0;
         font-size: 13px;
         letter-spacing: .2px;
+        color: #fff;
+        opacity: .6;
       }
   
 .checkboxvalue {
