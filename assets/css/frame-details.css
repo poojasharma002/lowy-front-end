@@ -14,7 +14,7 @@ table {
 
 body,
 table {
-
+    font-family: Montserrat-Regular;
     font-size: 13px;
 }
 
@@ -35,11 +35,11 @@ table {
 table .titleText {
     font-family: sans-serif;
     font-weight: bold;
-    font-size: 20pt;
+    font-size: 13px;
     color: #3d4144;
     font-weight: normal;
     font-family: 'Lora';
-    font-size: 13px;
+    
     text-align: left;
     padding-top: 11px !important;
 }
@@ -137,7 +137,7 @@ table.content th {
 
 .framedetailtable td {
     padding: .3em;
-    font-size: 16px;
+    font-size: 13px;
 }
 
 .summary {
@@ -184,17 +184,17 @@ table.content th {
 }
 
 table a {
-    color: #739670;
+    color: #e9c78c;
     text-decoration: none;
 }
 .veryImportantText {
-    font-size: 30pt;
-    color: red;
+    font-size: 13px;
+    color: #e9c78c;
     text-decoration: underline;
     text-align: center;
 }
 .frameSoldWrapper, .frameUnavaliableWrapper, table.frameSoldWrapper, table.titleText.frameSoldWrapper {
-    color: red;
+    color: #e9c78c;
 }
 
   .setbottomborder {
