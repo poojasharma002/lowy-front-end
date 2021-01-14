@@ -449,8 +449,8 @@ div.dataTables_wrapper div.dataTables_length label, div.dataTables_wrapper div.d
     cursor: pointer;
     transition: .2s all ease-in-out;
     clear: both !important;
-    float: left;
-    margin-top: 28px;
+    display: inline-block;
+    margin-bottom: 20px;
 }
 
 
