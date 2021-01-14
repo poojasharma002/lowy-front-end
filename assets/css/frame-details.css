@@ -24,47 +24,53 @@ table {
 
 .frameImage img {
     height: auto;
-    margin-top: 36px;
-    width: 500px;
+    margin-top: 0;
+    width: 100%;
+    max-width: 700px;
 }
 
 .bigImageViewer img {
-    border: 1px black solid;
+    border: none;
 }
 
 table .titleText {
-    font-family: sans-serif;
-    font-weight: bold;
     font-size: 13px;
     color: #3d4144;
     font-weight: normal;
     font-family: 'Lora';
-    
-    text-align: left;
+    text-align: center;
     padding-top: 11px !important;
+    padding-bottom: 20px;
 }
 
 .searchFrameWrapper,
 .alternativeImagesSelector .imageWrapper {
     float: left;
     margin: 7px;
+    padding: 10px;
 }
 
 .imageWrapper {
-    border: 1px black solid;
+    border: none;
     text-align: center;
-    font-weight: bold;
-    background-color: #DEE5DD;
+    font-weight: normal;
+    background-color: #f9f2e2;
 }
 
 .frameImage .alternativeImagesSelector img {
     height: auto;
-    margin-top: 36px;
+    margin-top: 0;
     width: 151px;
 }
 
 .alternativeImagesSelector .selected {
-    border: 2px #5D775B solid;
+    border: none;
+    box-shadow: -3px 10px 10px -15px;
+}
+
+
+.alternativeImagesSelector img {
+    margin-bottom: 5px;
 }
 
 .frameImage img {
@@ -86,18 +92,14 @@ table .titleText {
 .detailheader {
     width: auto;
     padding: 10px;
-    color: #000000;
+    font-family: 'Lora';
+    color: #2f2e2a;
     background-color: transparent;
-    text-align: center;
     border: none;
-    border-bottom: 0;
-    font-weight: normal;
     text-align: left;
-    font-family: auto;
-    font-size: 16px;
-    font-family: Montserrat-Regular;
-    font-weight: 600;
-    border-bottom: 1px solid #000;
+    font-size: 26px;
+    font-weight: normal;
+    border-bottom: 1px solid #9c9a94;
     margin-bottom: 20px;
     padding-left: 0;
 }
@@ -197,25 +199,18 @@ table a {
     color: #e9c78c;
 }
 
-  .setbottomborder {
-    border-bottom: 1px solid #5D775B;
-    margin-top: -40px;
-}
+
 .pagecontrol {
-    width: auto;
-    background-color: #f9f2e2;
+    background-color: #f5f5f5;
     padding: 0px;
-    border-top: 1px solid #f1e9d9;
-    border-left: 1px solid #f1e9d9;
-    border-right: 1px solid #f1e9d9;
-    border-bottom: 1px solid #f1e9d9;
     height: 52px;
     margin-bottom: 20px;
     display: flex;
     align-items: center;
+    border: none;
 }
 .detailnavigator {
-    width: 200px;
+    width: auto;
     margin-top: 0px;
     height: 100%;
     float: none;
@@ -256,8 +251,10 @@ table a {
 
 
 input#frameAdminView_0 {
-    background: #000;
-    color: #fff;
-    padding: 10px 15px;
+    background: transparent;
+    color: #000;
+    padding: 8px 15px;
+    border: 1px solid #000;
+    margin-left: 10px;
 }
 
