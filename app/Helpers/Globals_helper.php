@@ -1,5 +1,5 @@
 <?php if(!function_exists('baseURI')) {
        function baseURI(){
-           return 'http://52.15.204.44/frameapp/';
+           return 'http://3.139.74.184/frameapp/';
        }
 }
