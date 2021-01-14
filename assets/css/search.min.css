@@ -40,7 +40,7 @@
     #cover-spin::after {
       content: '';
         position: absolute;
-        background: url('assets/img/frame-spin.png');
+        background: url('/assets/img/frame-spin.png');
         right: auto;
         display: block;
         top: 40vh;
