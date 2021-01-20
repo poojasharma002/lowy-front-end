@@ -66,7 +66,7 @@ $(document).ready(function(){
 				{     "data"     :     "locationName"}
            ]  
 	} );
-
+    $('#cover-spin').hide(0);
 });
 </script>
    
