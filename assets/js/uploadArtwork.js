@@ -42,7 +42,7 @@ $(document).ready(function (e) {
       // if(artworkId==''){
       $('#cover-spin').show(0);
        $.ajax({
-         url:origin+"/lowy-front-end/FrameSearch/uploadArtwork",
+         url:origin+"/FrameSearch/uploadArtwork",
          type: "POST",
          data:  new FormData(this),
          contentType: false,

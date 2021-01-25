@@ -63,11 +63,11 @@ $dataSession=$session->get('upload_artwork');
                 <form action="<?php echo base_url('framesSearch.artwork');?>" method="POST" enctype="multipart/form-data" name="artworkupload" id="artworkupload">
                   <div class="form-group">
                     <label for="File">File:</label>
-                    <input type="file" name="artFile"  class="form-control" accept="image/jpeg,image/tiff,image/png" id="insertArtImage_artFile" required>
+                    <input type="file" name="artFile"  class="form-control" accept="image/jpeg,image/tiff,image/png" id="insertArtImage_artFile" >
                   </div>
                   <div class="form-group">
                     <label for="Height">Height:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
-                    <input type="text" name="artHeightInt" class="" placeholder="Enter Height" value="" id="insertArtImage_artHeightInt" class="sizeFieldInt" style="width: 184px;" required>
+                    <input type="text" name="artHeightInt" class="" placeholder="Enter Height" value="" id="insertArtImage_artHeightInt" class="sizeFieldInt" style="width: 184px;" >
                     <select name="sizeArtHeightFract" id="framesView_sizeMouldingArtHeightFract" class="" >
                           <option value="0" selected="selected">0</option>
                           <option value="0625">1/16</option>
@@ -89,7 +89,7 @@ $dataSession=$session->get('upload_artwork');
                   </div>
                   <div class="form-group">
                     <label for="Width">Width:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
-                    <input type="text" name="artWidthInt" class="" placeholder="Enter Width" value="" id="insertArtImage_artWidthInt" class="sizeFieldInt" style="width: 184px;" required>
+                    <input type="text" name="artWidthInt" class="" placeholder="Enter Width" value="" id="insertArtImage_artWidthInt" class="sizeFieldInt" style="width: 184px;" >
                     <select name="sizeArtWidthFract" id="framesView_sizeMouldingArtWidthFract" class="">
                           <option value="0" selected="selected">0</option>
                           <option value="0625">1/16</option>
