@@ -153,5 +153,5 @@ $(document).ready(function(){
 });
     
   }
-
+  setInterval(function(){$('#cover-spin').hide(0);}, 3000);
 </script>
