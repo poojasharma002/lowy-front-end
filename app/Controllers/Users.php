@@ -15,24 +15,39 @@ class Users extends BaseController
 			    'password' => 'validateUser[email,password]',
 			];
 
-			$errors = [
-				'password' => [
-					'validateUser' => 'Email or Password don\'t match'
-				]
-			];
+			// $errors = [
+			// 	'password' => [
+			// 		'validateUser' => 'Email or Password don\'t match'
+			// 	]
+			// ];
 
-			if (! $this->validate($rules, $errors)) {
-				$data['validation'] = $this->validator;
-			}else{
-				$model = new UserModel();
+			// if (! $this->validate($rules, $errors)) {
+			// 	$data['validation'] = $this->validator;
+			// }else{
+			// 	$model = new UserModel();
 
-				$user = $model->where('email', $this->request->getVar('email'))
-											->first();
+			// 	$user = $model->where('email', $this->request->getVar('email'))
+			// 								->first();
 
-				$this->setUserSession($user);
-				//$session->setFlashdata('success', 'Successful Registration');
+			// 	$this->setUserSession($user);
+			// 	//$session->setFlashdata('success', 'Successful Registration');
+			// 	return redirect()->route('adminDashboard');
+
+			// }
+			if($this->request->getVar('email')== "tracy@gmail.com" && password_verify($this->request->getVar('password'), '$2y$10$xikGQ31IO/9y8BhSt2hU0e0TbXpCtmYQGMFaWHgCLQWJrz0yVr92i')){
+				$data = [
+					'id' => 1,
+					'firstname' => 'tracy',
+					'lastname' => "tracy",
+					'email' => 'tracy@gmail.com',
+					'isLoggedIn' => true,
+				];
+		
+				session()->set($data);
 				return redirect()->route('adminDashboard');
-
+			}else{
+				$session = session();
+				$session->setFlashdata('error', 'Invalid credentials.');
 			}
 		}		
 		echo view('login',$data);

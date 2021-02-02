@@ -33,6 +33,13 @@
 					<span class="login100-form-title">
 						Member Login
 					</span>
+					<?php if (!empty(session('error'))): ?>
+					<div class="col-12" style="padding-right:0px;padding-left:0px">
+					<div class="alert alert-danger" role="alert">
+					<?= session('error'); ?>
+					</div>
+                    </div>
+						<?php endif; ?>
                     <?php if (isset($validation)): ?>
                         <div class="col-12">
                         <div class="alert alert-danger" role="alert">
