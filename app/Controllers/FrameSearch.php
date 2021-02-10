@@ -119,7 +119,7 @@ public function multiDropdown(){
    try{
       $baseURI = baseURI();
       $session = \Config\Services::session();
-        // $file =$_FILES["artFile"]["tmp_name"];
+         // $file =$_FILES["artFile"]["tmp_name"];
          // $path=FCPATH.'assets/img';
          $file= $this->request->getFile('artFile');
          $originalName = $file->getClientName();
@@ -152,7 +152,6 @@ public function multiDropdown(){
             $session->set('upload_artwork', $sourceResult);
             //  print_r( $sourceResult);
             // $file->move($path);
-         
    } catch (Error $e){
       die($e->getMessage());
    }

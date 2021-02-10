@@ -58,14 +58,14 @@ $(document).ready(function (e) {
           $("#insertArtImage_artWidthInt").val('');
           $("#framesView_sizeMouldingArtWidthFract").val('');
           $('#artworkId').val(uploadData.response.artworkId)
-          $("#imagePreview").append('<img src="data:image/png;base64,'+uploadData.img+'" width="250" height="250">'+
+          $("#imagePreview").append('<img src="data:image/*;base64,'+uploadData.img+'" width="250" height="250">'+
                   '<p style="font-size:11px;line-height: 1.1;"><strong>Name: </strong>'+uploadData.fileNmae+'</p>'+
                   '<p style="font-size:11px;line-height: .2;"><strong>Pixels: </strong> <strong>Y: </strong>'+uploadData.response.imageHeight+' <strong>X: </strong>'+uploadData.response.imageWidth+'</p>'+
                   '<p style="font-size:11px;line-height: .2;"><strong>Inches: </strong> <strong>Y: </strong>'+uploadData.response.artHeightInches+'<strong>X: </strong>'+uploadData.response.artWidthInches+'</p>'+
                   '<p style="font-size:11px;line-height: .2;"><strong>Dpi: </strong> <strong>Y: </strong>'+uploadData.response.dpiY+' <strong>X: </strong>'+uploadData.response.dpiX+'</p>');
           $('#insertArtImage_removeArtImage').prop('disabled', false);
           searchingAttributes();
-        //  console.log(uploadData);
+         console.log(data);
        }
    })
   // }else{

@@ -118,7 +118,7 @@ $dataSession=$session->get('upload_artwork');
                 <div class="form-group">
                 <div id="imagePreview">
                 <?php if($dataSession['response']->artworkId!=""){ ?>
-                <img src="data:image/png;base64,<?= $dataSession['img'];?>" width="250" height="250"/>
+                <img src="data:image/*;base64,<?= $dataSession['img'];?>" width="250" height="250"/>
                 <p style="font-size:11px;line-height: 1.1;"><strong>Name: </strong><?= $dataSession['fileNmae'];?></p>
                 <p style="font-size:11px;line-height: .2;"><strong>Pixels: </strong> <strong>Y: </strong><?= $dataSession['response']->imageHeight;?> <strong>X: </strong><?= $dataSession['response']->imageWidth;?></p>
                 <p style="font-size:11px;line-height: .2;"><strong>Inches: </strong> <strong>Y: </strong><?= $dataSession['response']->artHeightInches;?> <strong>X: </strong><?= $dataSession['response']->artWidthInches;?></p>
