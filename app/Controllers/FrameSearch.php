@@ -119,11 +119,13 @@ public function multiDropdown(){
    try{
       $baseURI = baseURI();
       $session = \Config\Services::session();
-         // $file =$_FILES["artFile"]["tmp_name"];
-         $path=FCPATH.'assets/img';
+        // $file =$_FILES["artFile"]["tmp_name"];
+         // $path=FCPATH.'assets/img';
          $file= $this->request->getFile('artFile');
          $originalName = $file->getClientName();
          $tempfile = $file->getTempName();
+         $data = file_get_contents($tempfile);
+         $base64 = base64_encode($data);
          $artHeightWhole= (int)$this->request->getPost('artHeightInt');
          $artHeightFraction= (int)$this->request->getPost('sizeArtHeightFract');
          $artWidthWhole= (int)$this->request->getPost('artWidthInt');
@@ -145,11 +147,11 @@ public function multiDropdown(){
             curl_close($curl);
             $response = json_decode($response);
             $fileName =$originalName;
-             $sourceResult=['fileNmae'=>$fileName,'response'=>$response] ;
+             $sourceResult=['fileNmae'=>$fileName,'response'=>$response,'img'=>$base64] ;
              echo json_encode( $sourceResult);
             $session->set('upload_artwork', $sourceResult);
             //  print_r( $sourceResult);
-            $file->move($path);
+            // $file->move($path);
          
    } catch (Error $e){
       die($e->getMessage());

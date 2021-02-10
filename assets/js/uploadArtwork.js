@@ -16,8 +16,8 @@ $(document).ready(function (e) {
       createAlert('','','Required, only .png and .jpg files allowed','danger',true,true,'errorMessages');
       $("#insertArtImage_artFile").focus();
       return;
-    }else if(size > 1048576) {
-      createAlert('','','Required, only less than 1MB files size allowed','danger',true,true,'errorMessages');
+    }else if(size > 10485760) {
+      createAlert('','','Required, only less than 10MB files size allowed','danger',true,true,'errorMessages');
       $("#insertArtImage_artFile").focus();
       return;
     }else if(HeightInt==''){
@@ -58,7 +58,7 @@ $(document).ready(function (e) {
           $("#insertArtImage_artWidthInt").val('');
           $("#framesView_sizeMouldingArtWidthFract").val('');
           $('#artworkId').val(uploadData.response.artworkId)
-          $("#imagePreview").append('<img src="'+origin+'/lowy-front-end/assets/img/'+uploadData.fileNmae+'" width="250" height="250">'+
+          $("#imagePreview").append('<img src="data:image/png;base64,'+uploadData.img+'" width="250" height="250">'+
                   '<p style="font-size:11px;line-height: 1.1;"><strong>Name: </strong>'+uploadData.fileNmae+'</p>'+
                   '<p style="font-size:11px;line-height: .2;"><strong>Pixels: </strong> <strong>Y: </strong>'+uploadData.response.imageHeight+' <strong>X: </strong>'+uploadData.response.imageWidth+'</p>'+
                   '<p style="font-size:11px;line-height: .2;"><strong>Inches: </strong> <strong>Y: </strong>'+uploadData.response.artHeightInches+'<strong>X: </strong>'+uploadData.response.artWidthInches+'</p>'+
