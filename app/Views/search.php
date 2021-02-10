@@ -116,7 +116,7 @@ $dataSession=$session->get('upload_artwork');
                 </form>
                 </br>
                 <div class="form-group">
-                <div id="imagePreview"></div>
+                <div id="imagePreview">
                 <?php if($dataSession['response']->artworkId!=""){ ?>
                 <img src="data:image/png;base64,<?= $dataSession['img'];?>" width="250" height="250"/>
                 <p style="font-size:11px;line-height: 1.1;"><strong>Name: </strong><?= $dataSession['fileNmae'];?></p>
