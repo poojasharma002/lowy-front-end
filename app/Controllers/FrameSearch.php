@@ -158,4 +158,16 @@ public function multiDropdown(){
  
 }
 
+// function for upload artwork image.
+public function artView(){
+   try{
+      $baseURI = baseURI();
+      echo view('artview', ['imageNo'=>$_GET['inventoryNumber'],'baseUri'=>$baseURI]);
+
+   }catch (Error $e){
+      die($e->getMessage());
+   }
+ 
+}
+
 }

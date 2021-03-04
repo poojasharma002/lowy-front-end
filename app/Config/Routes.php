@@ -44,7 +44,7 @@ $routes->post('/adminManageLookupablesSave.action', 'Categories::add_save',['fil
 $routes->get('/imagesSyncImport.action', 'ImageImport::index',['filter' => 'auth']);
 $routes->get('/framesSearch.action', 'FrameSearch::index',['filter' => 'auth']);
 $routes->post('/framesSearch.artwork', 'FrameSearch::uploadArtwork',['filter' => 'auth']);
-
+$routes->get('/framesSearch.artview', 'FrameSearch::artView',['filter' => 'auth']);
 /**
  * --------------------------------------------------------------------
  * Additional Routing

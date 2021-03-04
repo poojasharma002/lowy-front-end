@@ -355,8 +355,10 @@ $.ajax({
       $( "#imagePopup" ).empty();
       $( "#modal-footer" ).empty();
       var artworkId=$('#artworkId').val();
+      var url=origin+"/lowy-front-end/framesSearch.artview?inventoryNumber="+imgno;
       if(artworkId!=''){
-        var imgSrc=uri+'images/frames/'+imgno+'/'+artworkId+'?showArt=true';     
+        var imgSrc=uri+'images/frames/'+imgno+'/'+artworkId+'?showArt=true';  
+        $('#modal-footer').append('<a href="'+url+'" target="_blank">Go Artview</a>');    
        }else{
         var imgSrc=uri+'images/frames/web/'+imgno;
        }

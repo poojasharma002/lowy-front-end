@@ -1,0 +1,140 @@
+/* art view custom css */
+@import url("https://fonts.googleapis.com/css?family=Black+Han+Sans|Do+Hyeon|Gaegu|Lato|Merriweather|Montserrat|Muli|Open+Sans|Oswald|Raleway|Roboto|Roboto+Slab|Slabo+27px|Source+Sans+Pro|Tajawal");
+.welcome {
+  text-align: center; }
+  .welcome button {
+    position: absolute;
+    top: 50%; }
+
+/* 100% = dialog height, 120px = header + footer */
+#preview-box {
+  max-height: 100%;
+  height: 100%; }
+  #preview-box .modal-lg {
+    max-width: 1080px;
+    height: 100%;
+    max-height: 100%;
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-top: 1.5%; }
+  #preview-box .preview-box-header {
+    border-bottom: 3px solid black;
+    font-family: 'Lato', sans-serif; }
+    #preview-box .preview-box-header .logo {
+      display: block; }
+    #preview-box .preview-box-header .preview-box-title {
+      font-size: 20px;
+      font-weight: 600;
+      margin: 0 auto;
+      width: 100%;
+      padding-top: 20px;
+      padding-left: 0;
+      text-align: center; 
+    color:black !important;}
+    #preview-box .preview-box-header .btn-group {
+      float: right;
+      padding-top: 10px; }
+      #preview-box .preview-box-header .btn-group .btn-login,
+      #preview-box .preview-box-header .btn-group .btn-sign-up {
+        padding: 10px 20px;
+        background: transparent;
+        border: 2px solid transparent;
+        box-sizing: border-box;
+        color: black;
+        font-size: 20px;
+        font-weight: 500; }
+      #preview-box .preview-box-header .btn-group .btn-login:hover,
+      #preview-box .preview-box-header .btn-group .btn-sign-up:hover {
+        border-color: black; }
+    #preview-box .preview-box-header .close {
+      color: black;
+      font-size: 30px;
+      opacity: 1;
+      padding: 0; }
+  #preview-box .preview-box-body {
+    height: 100%;
+    max-height: 100%;
+    max-width: 100%; }
+    #preview-box .preview-box-body .gallery {
+      max-width: 100%;
+      height: 100%;
+      max-height: 100%; }
+      #preview-box .preview-box-body .gallery .show-case {
+        margin: 0 auto;
+        position: relative;
+        height: 100%;
+        max-width: 70%;
+        padding: 0 10% 0 10%;
+        box-sizing: border-box;
+        border-right: 2px solid black; }
+        #preview-box .preview-box-body .gallery .show-case .art {
+          max-height: 60%;
+          width: 100%; }
+          #preview-box .preview-box-body .gallery .show-case .art img {
+            width: 100%; }
+          #preview-box .preview-box-body .gallery .show-case .art .art-text {
+            font-family: 'Lato', sans-serif;
+            padding: 5px 0 5px 0; }
+            #preview-box .preview-box-body .gallery .show-case .art .art-text .art-title {
+              font-size: 18px;
+              font-weight: 700; 
+              color:black !important;
+            }
+            #preview-box .preview-box-body .gallery .show-case .art .art-text .art-description > p {
+              font-size: 12px;
+              font-weight: 600;
+              margin-bottom: 0; }
+    #preview-box .preview-box-body .drawing-canvas {
+      height: 100%;
+      max-height: 100%;
+      border: 2px solid #bcbcbc; }
+      #preview-box .preview-box-body .drawing-canvas .active {
+        display: block !important; }
+      #preview-box .preview-box-body .drawing-canvas .information {
+        z-index: 10;
+        width: 100%; }
+        #preview-box .preview-box-body .drawing-canvas .information .measurement-section {
+          width: 100%;
+          display: inline-flex; }
+          #preview-box .preview-box-body .drawing-canvas .information .measurement-section .btn {
+            padding: 5px 18px;
+            color: #ffffff;
+            background-color: black;
+            font-size: 16px;
+            text-transform: uppercase;
+            border: none;
+            font-weight: 600; }
+          #preview-box .preview-box-body .drawing-canvas .information .measurement-section .btn-round {
+            background-color: white;
+            border: 1px solid black;
+            color: black;
+            outline: none !important;
+            padding: 20px 10px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 10px;
+            cursor: pointer;
+            border-radius: 50%;
+            position: absolute;
+            bottom: 20%;
+            right: 20px; }
+        #preview-box .preview-box-body .drawing-canvas .information .upload-section {
+          width: 31%;
+          margin: 0 auto; }
+          #preview-box .preview-box-body .drawing-canvas .information .upload-section img {
+            margin-left: 70px;
+            width: 30%; }
+          #preview-box .preview-box-body .drawing-canvas .information .upload-section p {
+            text-align: center;
+            margin: 0; }
+          #preview-box .preview-box-body .drawing-canvas .information .upload-section .btn-upload {
+            padding: 5px 18px;
+            color: #ffffff;
+            background-color: black;
+            font-size: 16px;
+            text-transform: uppercase;
+            border: none;
+            font-weight: 600; }
+
+/*# sourceMappingURL=art-view.css.map */
