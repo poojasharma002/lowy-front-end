@@ -355,7 +355,7 @@ $.ajax({
       $( "#imagePopup" ).empty();
       $( "#modal-footer" ).empty();
       var artworkId=$('#artworkId').val();
-      var url=origin+"/lowy-front-end/framesSearch.artview?inventoryNumber="+imgno;
+      var url=origin+"/framesSearch.artview?inventoryNumber="+imgno;
       if(artworkId!=''){
         var imgSrc=uri+'images/frames/'+imgno+'/'+artworkId+'?showArt=true';  
         $('#modal-footer').append('<a href="'+url+'" target="_blank">Go Artview</a>');    
