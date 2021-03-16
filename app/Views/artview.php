@@ -19,7 +19,7 @@
         ?>
   <!-- remove this if you use Modernizr -->
   <!-- script for feature detection -->
-  
+
 
 </head>
 
@@ -34,7 +34,7 @@
       <div class="modal-content">
         <div class="modal-header preview-box-header">
         <span class="col-2 logo">
-            <img src="<?php echo base_url('assets/artview/img/Bitmap.png');?>" alt="logo" class="img img-responsive" width="50" />
+            <img src="<?php echo base_url('assets/artview/img/lowy.png');?>" alt="logo" class="img img-responsive" width="50" />
             <br />
             <img src="<?php echo base_url('assets/artview/img/ART VIEW.png');?>" alt="art-view-text" class='img img-responsive' width="50" />
           </span>
@@ -47,10 +47,13 @@
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
-            <span class="btn-group">
+            <input type="hidden" name="baseUrl" id="baseUrl" value="<?= $baseUri?>">
+            <input type="hidden" name="imgNo" id="imgNo" value="<?= $imageNo?>">
+            <input type="hidden" name="artworkid" id="artworkid" value="<?= $dataSession['response']->artworkId?>">
+            <!-- <span class="btn-group">
               <button type="button" class="btn-login">Login</button>
               <button type="button" class="btn-sign-up">Sign-up</button>
-            </span>
+            </span> -->
           </span>
         </div>
         <div class="modal-body preview-box-body">
@@ -64,10 +67,8 @@
                         <img src='<?= $url ?>' class="img-responsive" id='art' alt="" draggable="true" data-width='46' data-height='46'>
                         <div class="art-text mt-2">
                           <h5 class="art-title">Tommy May</h5>
-                          <div class="art-description text-muted">
-                            <p><strong>Pixels: </strong> <strong>Y: </strong><?= $dataSession['response']->imageHeight;?> <strong>X: </strong><?= $dataSession['response']->imageWidth;?></p>
-                            <p><strong>Inches: </strong> <strong>Y: </strong><?= $dataSession['response']->artHeightInches;?> <strong>X: </strong><?= $dataSession['response']->artWidthInches;?></p>
-                            <p><strong>Dpi: </strong> <strong>Y: </strong><?= $dataSession['response']->dpiY;?> <strong>X: </strong><?= $dataSession['response']->dpiX;?></p>
+                          <div class="art-description text-muted" id="artworksize">
+                            
                           </div>
                         </div>
                       </div>
@@ -120,6 +121,21 @@ echo script_tag('assets/artview/js/art-view.js');
     });
     });
 </script>
+<script>
+  var baseUri=jQuery('#baseUrl').val();
+  var imgNo=jQuery('#imgNo').val();
+  var artworkid=jQuery('#artworkid').val();
+   var imgVirtual = new Image();
+                  imgVirtual.onload = function() {
+                  var imageWidth= this.width / 72;
+                  var imgHeight= this.height / 72;
+                  var imageWidthCm= this.width * 2.54 / 72;
+                  var imgHeightCm= this.height * 2.54 / 72;
+                  jQuery("#artworksize").append('<p>'+imgHeight.toFixed(2)+' x '+imageWidth.toFixed(2)+' in</p>'+
+                  '<p>'+imgHeightCm.toFixed(2)+' x '+imageWidthCm.toFixed(2)+' cm</p>');
+          }
+          imgVirtual.src = baseUri+"images/frames/"+imgNo+"/"+artworkid+"?showArt=true";
+  </script>
 </body>
 
 </html>
