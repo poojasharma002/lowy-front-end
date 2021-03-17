@@ -161,8 +161,13 @@ public function multiDropdown(){
 // function for upload artwork image.
 public function artView(){
    try{
-      $baseURI = baseURI();
-      echo view('artview', ['imageNo'=>$_GET['inventoryNumber'],'baseUri'=>$baseURI]);
+            $baseURI = baseURI();
+            $inventoryNum = ltrim($_GET['inventoryNumber'], 'L');
+            $client = \Config\Services::curlrequest();
+            $response = $client->request('GET', ''.$baseURI.'frames/'.$inventoryNum.'');
+            $result= $response->getBody();
+            $result = json_decode($result);
+      echo view('artview', ['imageNo'=>$_GET['inventoryNumber'],'baseUri'=>$baseURI, 'response'=>$result]);
 
    }catch (Error $e){
       die($e->getMessage());
