@@ -75,7 +75,7 @@
                   <div class="gallery">
                     <div class="show-case">
                       <div class="art">
-                        <img src='<?= $url ?>' class="img-responsive" id='art' alt="" draggable="true" data-width='46' data-height='46'>
+                        <img src='<?= $url ?>' class="img-responsive" id='art' alt="" draggable="true" data-width='<?= $totalDimesionsWidth;?>' data-height='<?= $totalDimesionsHeight;?>'>
                         <div class="art-text mt-2">
                           <h5 class="art-title"><?= $productNmae; ?></h5>
                           <div class="art-description text-muted" id="artworksize">
