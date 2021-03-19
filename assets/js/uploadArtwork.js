@@ -4,6 +4,8 @@ $(document).ready(function (e) {
      var artFile= $('#insertArtImage_artFile').val();
      var HeightInt= $('#insertArtImage_artHeightInt').val();
      var WidthInt= $('#insertArtImage_artWidthInt').val();
+     var perPageLoadImageCount=$('#__perPageLoadImageCount').val();
+     perPageLoadImageCount=0;
      var ext= $('#insertArtImage_artFile').val().split('.').pop().toLowerCase();
      if(artFile!=''){
      var size= $("#insertArtImage_artFile")[0].files[0].size;
@@ -64,8 +66,34 @@ $(document).ready(function (e) {
                   '<p style="font-size:11px;line-height: .2;"><strong>Inches: </strong> <strong>Y: </strong>'+uploadData.response.artHeightInches+'<strong>X: </strong>'+uploadData.response.artWidthInches+'</p>'+
                   '<p style="font-size:11px;line-height: .2;"><strong>Dpi: </strong> <strong>Y: </strong>'+uploadData.response.dpiY+' <strong>X: </strong>'+uploadData.response.dpiX+'</p>');
           $('#insertArtImage_removeArtImage').prop('disabled', false);
-          searchingAttributes();
-         console.log(data);
+        //   searchingAttributes();
+        //  console.log(data);
+        if(uploadData.totalRecords<(parseInt(perPageLoadImageCount)+6)){
+          $("#loadMore").css("display", "none");
+         }else{ $("#loadMore").css("display", "block");}
+         $('#__perPageLoadImageCount').val(perPageLoadImageCount)
+         $( "#gallery" ).empty();
+         if(uploadData.totalRecords!=0){
+          for(var i=0; i<uploadData.searchResult.length; i++){
+             var inventoryNumberCount= (uploadData.searchResult[i].inventoryNumber + "").length;
+             var imgInventoryNumber, inventoryNumber;
+             if(inventoryNumberCount==1){imgInventoryNumber='L000'+uploadData.searchResult[i].inventoryNumber;inventoryNumber='000'+uploadData.searchResult[i].inventoryNumber;
+           }else if(inventoryNumberCount==2){ imgInventoryNumber='L00'+uploadData.searchResult[i].inventoryNumber; inventoryNumber='00'+uploadData.searchResult[i].inventoryNumber;
+           }else if(inventoryNumberCount==3){ imgInventoryNumber='L0'+uploadData.searchResult[i].inventoryNumber; inventoryNumber='0'+uploadData.searchResult[i].inventoryNumber;
+           }else if(inventoryNumberCount>=4){ imgInventoryNumber='L'+uploadData.searchResult[i].inventoryNumber; inventoryNumber=uploadData.searchResult[i].inventoryNumber;
+          }
+          var imgSrc=uploadData.baseUri+'images/frames/'+imgInventoryNumber+'/'+uploadData.response.artworkId+'?showArt=true';
+          $('#gallery').append('<div class="col-12 col-sm-6 col-lg-4" id="imageGrid">'+
+        '<img class="w-100" id="frameImg" src="'+imgSrc+'" alt="'+imgInventoryNumber+'" onclick="openImgPopup(\''+imgInventoryNumber+'\', \''+uploadData.baseUri+'\', \''+inventoryNumber+'\');" data-slide-to="0" border="0"  data-inventoryno="'+imgInventoryNumber+'">'+
+        '<p><input type="checkbox" name="cartFramesChanges" value="'+inventoryNumber+'" id="box'+imgInventoryNumber+'">'+
+           '<input type="hidden" id="__checkbox_box'+imgInventoryNumber+'" name="__checkbox_cartFramesChanges" value="'+inventoryNumber+'">'+ 
+        '<span class=""><a id="framesAddToCartForm_" href="'+origin+'/frameAdminView.action?id='+inventoryNumber+'" target="_blank" class="checkit">'+imgInventoryNumber+'</a></span></p></div>');       
+         }
+           }else{
+          $('#gallery').append('<div class="col-12 col-sm-6 col-lg-4" id="imageGrid">'+
+          '<h2>NO Frame Found</h2>'+
+          '</div>');
+        }
        }
    })
   // }else{

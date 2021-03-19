@@ -115,87 +115,51 @@ $.ajax({
 
 
 // function for load more Frame
-    $("#loadMoreSearch").on('click',function(){
-      $('#framesView_searchType').val('');
-      var artworkId=$('#artworkId').val();
-      var centurySelectedValue=$('#__multiselect_centuryLookupables').val();
-      var makerSelectedValue=$('#__multiselect_makerLookupables').val();
-      var countrySelectedValue=$('#__multiselect_countryLookupables').val();
-      var styleSelectedValue=$('#__multiselect_styleLookupables').val();
-      var ornamentSelectedValue=$('#__multiselect_ornamentLookupables').val();
-      var colorSelectedValue=$('#__multiselect_colorLookupables').val();
-      var cornersSelectedValue=$('#__multiselect_cornersLookupables').val();
-      var perPageLoadImageCount=$('#__perPageLoadImageCount').val();
-      var minPrice= $('#framesView_minPrice').val();
-      var maxPrice= $('#framesView_maxPrice').val();
-      var WidthMinSelectedValue=parseFloat(parseInt($('#framesView_sizeMouldingWidthMinInt').val()) + parseFloat($('#framesView_sizeMouldingWidthMinFract').val()));
-      var WidthMaxSelectedValue=parseFloat(parseInt($('#framesView_sizeMouldingWidthMaxInt').val()) + parseFloat($('#framesView_sizeMouldingWidthMaxFract').val()));
-      var sightHeighMinSelectedValue=parseFloat(parseInt($('#framesView_sizeSightHeightMinInt').val()) + parseFloat($('#framesView_sizeSightHeightMinFract').val()));
-      var sightHeighMaxSelectedValue=parseFloat(parseInt($('#framesView_sizeSightHeightMaxInt').val()) + parseFloat($('#framesView_sizeSightHeightMaxFract').val()));
-      var sightWidthMinSelectedValue=parseFloat(parseInt($('#framesView_sizeSightWidthMinInt').val()) + parseFloat($('#framesView_sizeSightWidthMinFract').val()));
-      var sightWidthMaxSelectedValue=parseFloat(parseInt($('#framesView_sizeSightWidthMaxInt').val()) + parseFloat($('#framesView_sizeSightWidthMaxFract').val()));
-      var searchSoldValue=$('#__checkbox_framesView_searchSold').val();
-      var hideMissingImagesValue=$('#__checkbox_framesView_hideMissingImages').val();
-       perPageLoadImageCount=parseInt(perPageLoadImageCount)+6;
-      // $.session.set('centurySelectedValue', centurySelectedValue);
-      var searchData=[];
-      searchData.push({
-        'century':centurySelectedValue,
-        'makerId':makerSelectedValue,
-        'countryId':countrySelectedValue,
-        'styleId':styleSelectedValue,
-        'ornamentId':ornamentSelectedValue,
-        'colorId':colorSelectedValue,
-        'cornerId':cornersSelectedValue,
-        'priceMin':minPrice,
-        'priceMax':maxPrice,
-        'frameWidthMin':WidthMinSelectedValue,
-        'frameWidthMax':WidthMaxSelectedValue,
-        'sightHeightMin':sightHeighMinSelectedValue,
-        'sightHeightMax':sightHeighMaxSelectedValue,
-        'sightWidthMin':sightWidthMinSelectedValue,
-        'sightWidthMax':sightWidthMaxSelectedValue,
-        'includeSold':searchSoldValue,
-        'hideMissingImages':hideMissingImagesValue
-      });
-      $('#cover-spin').show(0);
-      var origin   = window.location.origin;
-      $.ajax({
-       url:origin+"/FrameSearch/search",
-       method:"POST",
-       data:{data_action:'fetch_all_frame_searching', page:perPageLoadImageCount,value:JSON.stringify(searchData)},
-       success:function(data){
-        var SelectedValue= $.parseJSON(data);
-        if(SelectedValue.totalRecords<(parseInt(perPageLoadImageCount)+6)){
-          $("#loadMore").css("display", "none");
-         }else{ $("#loadMore").css("display", "block");}
-        $('#cover-spin').hide(0); 
-        $('#__perPageLoadImageCount').val(perPageLoadImageCount);
-       for(var i=0; i<SelectedValue.searchResult.length; i++){
-          var inventoryNumberCount= (SelectedValue.searchResult[i].inventoryNumber + "").length;
-          var imgInventoryNumber, inventoryNumber;
-          if(inventoryNumberCount==1){imgInventoryNumber='L000'+SelectedValue.searchResult[i].inventoryNumber;inventoryNumber='000'+SelectedValue.searchResult[i].inventoryNumber;
-        }else if(inventoryNumberCount==2){ imgInventoryNumber='L00'+SelectedValue.searchResult[i].inventoryNumber; inventoryNumber='00'+SelectedValue.searchResult[i].inventoryNumber;
-        }else if(inventoryNumberCount==3){ imgInventoryNumber='L0'+SelectedValue.searchResult[i].inventoryNumber; inventoryNumber='0'+SelectedValue.searchResult[i].inventoryNumber;
-        }else if(inventoryNumberCount>=4){ imgInventoryNumber='L'+SelectedValue.searchResult[i].inventoryNumber; inventoryNumber=SelectedValue.searchResult[i].inventoryNumber;
-       }
-       if(artworkId!=''){
-        var imgSrc=SelectedValue.baseUri+'images/frames/'+imgInventoryNumber+'/'+artworkId+'?showArt=true';
-         
-       }else{
-        var imgSrc=SelectedValue.baseUri+'images/frames/web/'+imgInventoryNumber;
-       }
-        $('#gallery').append('<div class="col-12 col-sm-6 col-lg-4" id="imageGrid">'+
-      '<img class="w-100" src="'+imgSrc+'" alt="'+imgInventoryNumber+'" onclick="openImgPopup(\''+imgInventoryNumber+'\', \''+SelectedValue.baseUri+'\', \''+inventoryNumber+'\');" data-slide-to="0" border="0">'+
-      '<p><input type="checkbox" name="cartFramesChanges" value="'+inventoryNumber+'" id="box'+imgInventoryNumber+'">'+
-         '<input type="hidden" id="__checkbox_box'+imgInventoryNumber+'" name="__checkbox_cartFramesChanges" value="'+inventoryNumber+'">'+ 
-         '<span class=""><a id="framesAddToCartForm_" href="'+origin+'/frameAdminView.action?id='+inventoryNumber+'" target="_blank" class="checkit">'+imgInventoryNumber+'</a></span></p></div>');
-       }
-    
-      //  console.log(SelectedValue.searchResult);
-     }
- })
-    });
+$("#loadMoreSearch").on('click',function(){
+  $('#framesView_searchType').val('');
+  var artworkId=$('#artworkId').val();
+  var perPageLoadImageCount=$('#__perPageLoadImageCount').val();
+   perPageLoadImageCount=parseInt(perPageLoadImageCount)+6;
+  // $.session.set('centurySelectedValue', centurySelectedValue);
+  $('#cover-spin').show(0);
+  var origin   = window.location.origin;
+  $.ajax({
+   url:origin+"/FrameSearch/loadMoreFrame",
+   method:"POST",
+   data:{data_action:'fetch_all_frame_Load_more', page:perPageLoadImageCount},
+   success:function(data){
+     console.log(data);
+    var SelectedValue= $.parseJSON(data);
+    if(SelectedValue.totalRecords<(parseInt(perPageLoadImageCount)+6)){
+      $("#loadMore").css("display", "none");
+     }else{ $("#loadMore").css("display", "block");}
+    $('#cover-spin').hide(0); 
+    $('#__perPageLoadImageCount').val(perPageLoadImageCount);
+   for(var i=0; i<SelectedValue.searchResult.length; i++){
+      var inventoryNumberCount= (SelectedValue.searchResult[i].inventoryNumber + "").length;
+      var imgInventoryNumber, inventoryNumber;
+      if(inventoryNumberCount==1){imgInventoryNumber='L000'+SelectedValue.searchResult[i].inventoryNumber;inventoryNumber='000'+SelectedValue.searchResult[i].inventoryNumber;
+    }else if(inventoryNumberCount==2){ imgInventoryNumber='L00'+SelectedValue.searchResult[i].inventoryNumber; inventoryNumber='00'+SelectedValue.searchResult[i].inventoryNumber;
+    }else if(inventoryNumberCount==3){ imgInventoryNumber='L0'+SelectedValue.searchResult[i].inventoryNumber; inventoryNumber='0'+SelectedValue.searchResult[i].inventoryNumber;
+    }else if(inventoryNumberCount>=4){ imgInventoryNumber='L'+SelectedValue.searchResult[i].inventoryNumber; inventoryNumber=SelectedValue.searchResult[i].inventoryNumber;
+   }
+   if(artworkId!=''){
+    var imgSrc=SelectedValue.baseUri+'images/frames/'+imgInventoryNumber+'/'+artworkId+'?showArt=true';
+     
+   }else{
+    var imgSrc=SelectedValue.baseUri+'images/frames/web/'+imgInventoryNumber;
+   }
+    $('#gallery').append('<div class="col-12 col-sm-6 col-lg-4" id="imageGrid">'+
+  '<img class="w-100"  src="'+imgSrc+'" alt="'+imgInventoryNumber+'" onclick="openImgPopup(\''+imgInventoryNumber+'\', \''+SelectedValue.baseUri+'\', \''+inventoryNumber+'\');" data-slide-to="0" border="0" data-inventoryno="'+imgInventoryNumber+'">'+
+  '<p><input type="checkbox" name="cartFramesChanges" value="'+inventoryNumber+'" id="box'+imgInventoryNumber+'">'+
+     '<input type="hidden" id="__checkbox_box'+imgInventoryNumber+'" name="__checkbox_cartFramesChanges" value="'+inventoryNumber+'">'+ 
+     '<span class=""><a id="framesAddToCartForm_" href="'+origin+'/frameAdminView.action?id='+inventoryNumber+'" target="_blank" class="checkit">'+imgInventoryNumber+'</a></span></p></div>');
+   }
+
+  //  console.log(SelectedValue.searchResult);
+ }
+})
+});
 
     // function for searching by inventory number 
       $('#searchByInvNo').on('click', function(){

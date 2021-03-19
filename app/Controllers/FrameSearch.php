@@ -13,6 +13,7 @@ class FrameSearch extends BaseController
          try{
             $baseURI = baseURI();
             $client = \Config\Services::curlrequest();
+            $session = \Config\Services::session();
             if($this->request->getPost('data_action'))
             {
                $data_action= $this->request->getPost('data_action');
@@ -33,6 +34,7 @@ class FrameSearch extends BaseController
                    $response = $client->request('GET', ''.$baseURI.'/search?'.$query.'');
                    $result= $response->getBody();
                    $result = json_decode($result);
+                   $session->set('searchResults', $result);
                    $totalRecords=count($result);
                    $results=array();
                    for($i=$page; $i<($page+6);$i++){
@@ -51,6 +53,38 @@ class FrameSearch extends BaseController
          }
        
      }
+   //=======================Load More Frame============================
+   public function loadMoreFrame(){
+      try{
+         $baseURI = baseURI();
+         $client = \Config\Services::curlrequest();
+         $session = \Config\Services::session();
+         if($this->request->getPost('data_action'))
+         {
+            $data_action= $this->request->getPost('data_action');
+            $page= $this->request->getPost('page');
+            if($data_action == "fetch_all_frame_Load_more")
+            {  
+               $searchResults= $session->get('searchResults');
+                $totalRecords=count($searchResults);
+                $results=array();
+                for($i=$page; $i<($page+6);$i++){
+                     array_push($results,$searchResults[$i]);
+                 
+                }
+                $data=['searchResult'=>array_filter($results), 'baseUri'=>$baseURI,'totalRecords'=>$totalRecords];
+                $data = json_encode($data);  
+                print_r($data);
+               // echo 'hi';
+            }
+         }
+      } catch (Error $e){
+
+      }
+    
+  }
+
+   //------------------------------------------------------------------
   //--------------------------------------------------------------------
 
    // function for searching Frame by inventory number 
@@ -146,18 +180,25 @@ public function multiDropdown(){
             $response = curl_exec($curl);
             curl_close($curl);
             $response = json_decode($response);
+            $searchResults= $session->get('searchResults');
+                $totalRecords=count($searchResults);
+                $results=array();
+                for($i=0; $i<(6);$i++){
+                     array_push($results,$searchResults[$i]);
+                 
+                }
             $fileName =$originalName;
-             $sourceResult=['fileNmae'=>$fileName,'response'=>$response,'img'=>$base64] ;
+             $sourceResult=['fileNmae'=>$fileName,'response'=>$response,'img'=>$base64, 'baseUri'=> $baseURI, 'searchResult'=>$results,'totalRecords'=>$totalRecords] ;
              echo json_encode( $sourceResult);
             $session->set('upload_artwork', $sourceResult);
             //  print_r( $sourceResult);
             // $file->move($path);
+         
    } catch (Error $e){
       die($e->getMessage());
    }
  
 }
-
 // function for upload artwork image.
 public function artView(){
    try{
