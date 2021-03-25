@@ -63,12 +63,13 @@ class FrameSearch extends BaseController
          {
             $data_action= $this->request->getPost('data_action');
             $page= $this->request->getPost('page');
+            $selectLoadMoreCount= $this->request->getPost('selectLoadMoreCount');
             if($data_action == "fetch_all_frame_Load_more")
             {  
                $searchResults= $session->get('searchResults');
                 $totalRecords=count($searchResults);
                 $results=array();
-                for($i=$page; $i<($page+6);$i++){
+                for($i=$page; $i<($page+$selectLoadMoreCount);$i++){
                      array_push($results,$searchResults[$i]);
                  
                 }

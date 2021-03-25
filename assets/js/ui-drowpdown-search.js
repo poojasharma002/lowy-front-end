@@ -119,18 +119,19 @@ $("#loadMoreSearch").on('click',function(){
   $('#framesView_searchType').val('');
   var artworkId=$('#artworkId').val();
   var perPageLoadImageCount=$('#__perPageLoadImageCount').val();
-   perPageLoadImageCount=parseInt(perPageLoadImageCount)+6;
+  var selectLoadMoreCount=$('#loadMoreCount').val();
+  perPageLoadImageCount=parseInt(perPageLoadImageCount)+parseInt(selectLoadMoreCount);
   // $.session.set('centurySelectedValue', centurySelectedValue);
   $('#cover-spin').show(0);
   var origin   = window.location.origin;
   $.ajax({
    url:origin+"/FrameSearch/loadMoreFrame",
    method:"POST",
-   data:{data_action:'fetch_all_frame_Load_more', page:perPageLoadImageCount},
+   data:{data_action:'fetch_all_frame_Load_more', page:perPageLoadImageCount,selectLoadMoreCount:selectLoadMoreCount},
    success:function(data){
      console.log(data);
     var SelectedValue= $.parseJSON(data);
-    if(SelectedValue.totalRecords<(parseInt(perPageLoadImageCount)+6)){
+    if(SelectedValue.totalRecords<(parseInt(perPageLoadImageCount)+parseInt(selectLoadMoreCount))){
       $("#loadMore").css("display", "none");
      }else{ $("#loadMore").css("display", "block");}
     $('#cover-spin').hide(0); 

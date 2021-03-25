@@ -406,7 +406,13 @@ $dataSession=$session->get('upload_artwork');
 <div class="row" id="gallery" >
 </div>
 <div id="loadMore">
-<input type="button" alt="load More" class="btn-primary" id="loadMoreSearch" name="loadMoreSearch" value="Load More Frames">
+<input type="button" alt="load More" class="btn-primary loadMoreSearch" id="loadMoreSearch" name="loadMoreSearch" value="Load More Frames">
+<select class="form-select btn-primary loadMoreSearch" id="loadMoreCount" name="loadMoreCount" aria-label="Default select example">
+  <option value="6" selected>Load 6</option>
+  <option value="12">Load 12</option>
+  <option value="20">Load 20</option>
+  <option value="30">Load 30</option>
+</select>
 </div>
 <!-- Modal -->
 <!-- 
