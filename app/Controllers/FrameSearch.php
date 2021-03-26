@@ -131,11 +131,22 @@ public function multiDropdown(){
          {
              $responseDropdown = $client->request('GET', ''.$baseURI.'reference/'.$dropdwonValue.'');
              $resultDropdown= $responseDropdown->getBody();
+             $resultDropdown=json_decode($resultDropdown);
+             $sortArray = array();
+            foreach($resultDropdown as $rd){
+               foreach($rd as $key=>$value){
+                  if(!isset($sortArray[$key])){
+                        $sortArray[$key] = array();
+                  }
+                  $sortArray[$key][] = $value;
+               }
+            }
+            $orderby = "title"; 
+            array_multisort($sortArray[$orderby],SORT_ASC,$resultDropdown);
             if( $dropdwonValue!='corners'){
               $dropdownVarible=$dropdwonValue.'s';
             }else{ $dropdownVarible=$dropdwonValue;}
             $dropdownOption=array();
-             $resultDropdown = json_decode($resultDropdown);
             for($i=0; $i<count($resultDropdown); $i++){
               array_push($dropdownOption, array("label"=>$resultDropdown[$i]->title,"value"=>"".$resultDropdown[$i]->id."",));
              

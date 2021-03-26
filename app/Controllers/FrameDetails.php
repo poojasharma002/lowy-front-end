@@ -187,6 +187,18 @@ class FrameDetails extends BaseController
                  $resultDropdown= $responseDropdown->getBody();
                  $response = $client->request('GET', ''.$baseURI.'frames/'.$inventoryNo.'');
                  $result= $response->getBody();
+                 $resultDropdown = json_decode($resultDropdown);
+                $sortArray = array();
+                foreach($resultDropdown as $rd){
+                    foreach($rd as $key=>$value){
+                        if(!isset($sortArray[$key])){
+                              $sortArray[$key] = array();
+                        }
+                        $sortArray[$key][] = $value;
+                    }
+                  }
+                  $orderby = "title"; 
+                  array_multisort($sortArray[$orderby],SORT_ASC,$resultDropdown);
                 $result = json_decode($result);
                 if( $dropdwonValue!='corners'){
                   $dropdownVarible=$dropdwonValue.'s';
@@ -198,7 +210,6 @@ class FrameDetails extends BaseController
                   array_push($dropdownSelectedValue,"".$dropdownSelectedValueArr[$j]->id."");
                  }
                 $dropdownOption=array();
-                 $resultDropdown = json_decode($resultDropdown);
                 for($i=0; $i<count($resultDropdown); $i++){
                   array_push($dropdownOption, array("label"=>$resultDropdown[$i]->title,"value"=>"".$resultDropdown[$i]->id."",));
                  
