@@ -45,6 +45,7 @@ $routes->get('/imagesSyncImport.action', 'ImageImport::index',['filter' => 'auth
 $routes->get('/framesSearch.action', 'FrameSearch::index',['filter' => 'auth']);
 $routes->post('/framesSearch.artwork', 'FrameSearch::uploadArtwork',['filter' => 'auth']);
 $routes->get('/framesSearch.artview', 'FrameSearch::artView',['filter' => 'auth']);
+$routes->get('/woocommerce.integration', 'WoocommerceIntegration::insertProduct',['filter' => 'noauth']);
 /**
  * --------------------------------------------------------------------
  * Additional Routing
