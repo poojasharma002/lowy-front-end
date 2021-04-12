@@ -6,11 +6,11 @@ class WoocommerceIntegration extends BaseController
     public function insertProduct(){
       $baseURI = baseURI();
       $client = \Config\Services::curlrequest();
-      $responseDetails = $client->request('GET', ''.$baseURI.'frames/inv');
-      $resultDetails= $responseDetails->getBody();
-      $result = json_decode($resultDetails);
-      //  $json = file_get_contents('./exportCsvData.json');
-      //  $result  = json_decode($json);
+      // $responseDetails = $client->request('GET', ''.$baseURI.'frames/inv');
+      // $resultDetails= $responseDetails->getBody();
+      // $result = json_decode($resultDetails);
+       $json = file_get_contents('./exportCsvData.json');
+       $result  = json_decode($json);
        for($i=$_GET['start']; $i<$_GET['end']; $i++){
         $numlength = strlen((string)$result[$i]->inventoryNumber);
         if($result[$i]->activeStatus==true ){
@@ -139,7 +139,7 @@ class WoocommerceIntegration extends BaseController
     $url = 'https://staging15.lowy1907.com/antique-picture-frames/'.strtolower($invNo.'/'.$slug);
    $data= ["name" =>$productNmae,
       "type"=>"simple",
-      "sku"=>$invNo,
+      "sku"=>'2000',
       "permalink"=>$url,
       "slug"=>$slug,
       "stock_quantity"=> 1,
@@ -186,7 +186,10 @@ class WoocommerceIntegration extends BaseController
      ));
      
      $responseUpdate = curl_exec($curl);
-    print_r($responseUpdate);
+     $responseUpdate =json_decode($responseUpdate);
+    echo "Product Update======= Product Id =".$responseUpdate->id.", ". "SKU =".$responseUpdate->sku."</br>";
+    }else{
+      echo "Product Insert======= Product Id =".$response->id.", ". "SKU =".$response->sku."</br>";
     }
     curl_close($ch);
     }
