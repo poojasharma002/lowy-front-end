@@ -6,7 +6,7 @@ class WoocommerceIntegration extends BaseController
     public function insertProduct(){
       $baseURI = baseURI();
       $client = \Config\Services::curlrequest();
-      $responseDetails = $client->request('GET', 'http://18.217.85.36/frameapp/frames/inv');
+      $responseDetails = $client->request('GET', ''.$baseURI.'frames/inv');
       $resultDetails= $responseDetails->getBody();
       $result = json_decode($resultDetails);
       //  $json = file_get_contents('./exportCsvData.json');
