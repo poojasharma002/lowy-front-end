@@ -6,28 +6,28 @@ class ExportCsv extends BaseController
    // Export data in CSV format 
    public function createJsonFile(){ 
    
-        $result= $this->getInventoryNumber($_GET['startRow'],$_GET['endRow']); 
-        if(!empty($result)){
-          if($_GET['startRow']==0){
-          unlink('./exportCsvData.json');
-          }else{
-            $json = file_get_contents('./exportCsvData.json');
-            $obj  = json_decode($json);
-          }
+        // $result= $this->getInventoryNumber($_GET['startRow'],$_GET['endRow']); 
+        // if(!empty($result)){
+        //   if($_GET['startRow']==0){
+        //   unlink('./exportCsvData.json');
+        //   }else{
+        //     $json = file_get_contents('./exportCsvData.json');
+        //     $obj  = json_decode($json);
+        //   }
           
-          $data=array();
-          $baseURI = baseURI();
-          $client = \Config\Services::curlrequest();
-          for($i=0; $i< count($result); $i++){  
-          $responseDetails = $client->request('GET', ''.$baseURI.'frames/'.$result[$i]->inventoryNumber);
-          $resultDetails= $responseDetails->getBody();
-          $resultDetails = json_decode($resultDetails);
-          array_push($data,$resultDetails); 
-         }
+        //   $data=array();
+        $baseURI = baseURI();
+        $client = \Config\Services::curlrequest();
+      //   for($i=0; $i< count($result); $i++){  
+        $responseDetails = $client->request('GET', ''.$baseURI.'frames/inv');
+        $resultDetails= $responseDetails->getBody();
+        $resultDetails = json_decode($resultDetails);
+      //   array_push($data,$resultDetails); 
+      //  }
 
-         if(!empty($obj)){$totalData=array_merge($obj,$data);}else{$totalData=$data;}
-          write_file('./exportCsvData.json',json_encode($totalData), 'w');
-          }
+      //  if(!empty($obj)){$totalData=array_merge($obj,$data);}else{$totalData=$data;}
+        write_file('./exportCsvData.json',json_encode($resultDetails), 'w');
+      //   }
         
    }
    public function getInventoryNumber($startRow,$endRow){ 
