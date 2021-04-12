@@ -139,7 +139,7 @@ class WoocommerceIntegration extends BaseController
     $url = 'https://staging15.lowy1907.com/antique-picture-frames/'.strtolower($invNo.'/'.$slug);
    $data= ["name" =>$productNmae,
       "type"=>"simple",
-      "sku"=>'2000',
+      "sku"=>$invNo,
       "permalink"=>$url,
       "slug"=>$slug,
       "stock_quantity"=> 1,
@@ -187,7 +187,7 @@ class WoocommerceIntegration extends BaseController
      
      $responseUpdate = curl_exec($curl);
      $responseUpdate =json_decode($responseUpdate);
-    echo "Product Update======= Product Id =".$responseUpdate->id.", ". "SKU =".$responseUpdate->sku."</br>";
+     echo "Product Update======= Product Id =".$responseUpdate->id.", ". "SKU =".$responseUpdate->sku."</br>";
     }else{
       echo "Product Insert======= Product Id =".$response->id.", ". "SKU =".$response->sku."</br>";
     }
