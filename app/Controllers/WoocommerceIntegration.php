@@ -13,11 +13,12 @@ class WoocommerceIntegration extends BaseController
        $result  = json_decode($json);
        for($i=$_GET['start']; $i<$_GET['end']; $i++){
         $numlength = strlen((string)$result[$i]->inventoryNumber);
-        if($result[$i]->activeStatus==true ){
+       
         if($numlength==1){ $invNo='L000'.$result[$i]->inventoryNumber;
         }elseif($numlength==2){ $invNo='L00'.$result[$i]->inventoryNumber;
         }elseif($numlength==3){ $invNo='L0'.$result[$i]->inventoryNumber; 
         }elseif($numlength>=4){ $invNo='L'.$result[$i]->inventoryNumber;  }
+        if($result[$i]->activeStatus==true ){
               $century= $result[$i]->century.'th Century';
               $countryName=$result[$i]->countryName;
               $frameWidth=$result[$i]->frameWidth;
@@ -148,7 +149,11 @@ class WoocommerceIntegration extends BaseController
           "id"=>24
         ]
       ],
-     
+      'images' => [
+        [
+            'src' => $result[$i]->imageURL
+        ]
+        ],
         "attributes"=>$attributes
               ];
      $ch = curl_init();
@@ -192,26 +197,53 @@ class WoocommerceIntegration extends BaseController
       echo "Product Insert======= Product Id =".$response->id.", ". "SKU =".$response->sku."</br>";
     }
     curl_close($ch);
+    }else{
+      $response = $client->request('GET', 'https://staging15.lowy1907.com//wp-json/wc/v3/products?sku='.$invNo.'&consumer_key=ck_9d78fc365b45d234a132cc51e57c80b37e2224bf&consumer_secret=cs_830f033b32c54bd745a2681b30d07fae33062cec');
+      $result= $response->getBody();
+      $result = json_decode($result);
+    if($result[0]->id!=''){
+      $curl = curl_init();
+      $productId=$result[0]->id;
+      curl_setopt_array($curl, array(
+        CURLOPT_URL => "https://staging15.lowy1907.com/wp-json/wc/v3/products/$productId?force=true&consumer_key=ck_9d78fc365b45d234a132cc51e57c80b37e2224bf&consumer_secret=cs_830f033b32c54bd745a2681b30d07fae33062cec",
+        CURLOPT_RETURNTRANSFER => true,
+        CURLOPT_ENCODING => "",
+        CURLOPT_MAXREDIRS => 10,
+        CURLOPT_TIMEOUT => 30,
+        CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+        CURLOPT_CUSTOMREQUEST => "DELETE",
+        CURLOPT_HTTPHEADER => array(
+          "cache-control: no-cache",
+        ),
+      ));
+      
+      $response = curl_exec($curl);
+      $err = curl_error($curl);
+      echo "Product Delete======= Product Id =".$productId.", ". "SKU =".$response->sku."</br>";
+      curl_close($curl);
     }
+    
+}
   }
     }
-// product insert by current date according 
+	
+
     public function insertProductByAutomatic(){
       $baseURI = baseURI();
       $currentDate=date("Y-m-d");
       $client = \Config\Services::curlrequest();
-      // $responseDetails = $client->request('GET', ''.$baseURI.'frames/inv');
-      // $resultDetails= $responseDetails->getBody();
-      // $result = json_decode($resultDetails);
-       $json = file_get_contents('./exportCsvData.json');
-       $result  = json_decode($json);
+      $responseDetails = $client->request('GET', ''.$baseURI.'frames/inv');
+      $resultDetails= $responseDetails->getBody();
+      $result = json_decode($resultDetails);
+      //  $json = file_get_contents('./exportCsvData.json');
+      //  $result  = json_decode($json);
        for($i=0; $i<count($result); $i++){
         $numlength = strlen((string)$result[$i]->inventoryNumber);
-        if($result[$i]->activeStatus==true && $result[$i]->lastModified == $currentDate){
         if($numlength==1){ $invNo='L000'.$result[$i]->inventoryNumber;
         }elseif($numlength==2){ $invNo='L00'.$result[$i]->inventoryNumber;
         }elseif($numlength==3){ $invNo='L0'.$result[$i]->inventoryNumber; 
         }elseif($numlength>=4){ $invNo='L'.$result[$i]->inventoryNumber;  }
+        if($result[$i]->activeStatus==true && $result[$i]->lastModified == $currentDate){
               $century= $result[$i]->century.'th Century';
               $countryName=$result[$i]->countryName;
               $frameWidth=$result[$i]->frameWidth;
@@ -342,7 +374,11 @@ class WoocommerceIntegration extends BaseController
           "id"=>24
         ]
       ],
-     
+      'images' => [
+        [
+            'src' => $result[$i]->imageURL
+        ]
+        ],
         "attributes"=>$attributes
               ];
      $ch = curl_init();
@@ -386,8 +422,76 @@ class WoocommerceIntegration extends BaseController
       echo "Product Insert======= Product Id =".$response->id.", ". "SKU =".$response->sku."</br>";
     }
     curl_close($ch);
+    }else{
+      $response = $client->request('GET', 'https://staging15.lowy1907.com//wp-json/wc/v3/products?sku='.$invNo.'&consumer_key=ck_9d78fc365b45d234a132cc51e57c80b37e2224bf&consumer_secret=cs_830f033b32c54bd745a2681b30d07fae33062cec');
+      $result= $response->getBody();
+      $result = json_decode($result);
+    if($result[0]->id!=''){
+      $curl = curl_init();
+      $productId=$result[0]->id;
+      curl_setopt_array($curl, array(
+        CURLOPT_URL => "https://staging15.lowy1907.com/wp-json/wc/v3/products/$productId?force=true&consumer_key=ck_9d78fc365b45d234a132cc51e57c80b37e2224bf&consumer_secret=cs_830f033b32c54bd745a2681b30d07fae33062cec",
+        CURLOPT_RETURNTRANSFER => true,
+        CURLOPT_ENCODING => "",
+        CURLOPT_MAXREDIRS => 10,
+        CURLOPT_TIMEOUT => 30,
+        CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+        CURLOPT_CUSTOMREQUEST => "DELETE",
+        CURLOPT_HTTPHEADER => array(
+          "cache-control: no-cache",
+        ),
+      ));
+      
+      $response = curl_exec($curl);
+      $err = curl_error($curl);
+      echo "Product Delete======= Product Id =".$productId.", ". "SKU =".$response->sku."</br>";
+      curl_close($curl);
     }
+    
+}
   }
     }
-	
+function deleteInActiveProduct(){
+  $client = \Config\Services::curlrequest();
+  $json = file_get_contents('./exportCsvData.json');
+  $result  = json_decode($json);
+  for($i=$_GET['start']; $i<$_GET['end']; $i++){
+   $numlength = strlen((string)$result[$i]->inventoryNumber);
+  
+   if($numlength==1){ $invNo='L000'.$result[$i]->inventoryNumber;
+   }elseif($numlength==2){ $invNo='L00'.$result[$i]->inventoryNumber;
+   }elseif($numlength==3){ $invNo='L0'.$result[$i]->inventoryNumber; 
+   }elseif($numlength>=4){ $invNo='L'.$result[$i]->inventoryNumber;  }
+   if($result[$i]->activeStatus== false ){
+      $response = $client->request('GET', 'https://staging15.lowy1907.com//wp-json/wc/v3/products?sku='.$invNo.'&consumer_key=ck_9d78fc365b45d234a132cc51e57c80b37e2224bf&consumer_secret=cs_830f033b32c54bd745a2681b30d07fae33062cec');
+      $result= $response->getBody();
+      $result = json_decode($result);
+      echo $result[0]->id;
+    if($result[0]->id!=''){
+      $curl = curl_init();
+      $productId=$result[0]->id;
+      curl_setopt_array($curl, array(
+        CURLOPT_URL => "https://staging15.lowy1907.com/wp-json/wc/v3/products/$productId?force=true&consumer_key=ck_9d78fc365b45d234a132cc51e57c80b37e2224bf&consumer_secret=cs_830f033b32c54bd745a2681b30d07fae33062cec",
+        CURLOPT_RETURNTRANSFER => true,
+        CURLOPT_ENCODING => "",
+        CURLOPT_MAXREDIRS => 10,
+        CURLOPT_TIMEOUT => 30,
+        CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+        CURLOPT_CUSTOMREQUEST => "DELETE",
+        CURLOPT_HTTPHEADER => array(
+          "cache-control: no-cache",
+        ),
+      ));
+      
+      $response = curl_exec($curl);
+      $err = curl_error($curl);
+      echo "Product Delete======= Product Id =".$productId.", ". "SKU =".$response->sku."</br>";
+      curl_close($curl);
+    }
+    
+
+   }
+  }
+}
+
 }
