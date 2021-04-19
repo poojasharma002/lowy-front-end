@@ -1,5 +1,5 @@
 <?php if(!function_exists('baseURI')) {
        function baseURI(){
-           return 'https://lowyfs.com/frameapp/';
+           return 'http://3.12.162.12/frameapp/';
        }
 }
