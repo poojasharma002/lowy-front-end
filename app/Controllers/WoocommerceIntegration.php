@@ -12,7 +12,7 @@ class WoocommerceIntegration extends BaseController
        $json = file_get_contents('./exportCsvData.json');
        $result  = json_decode($json);
        for($i=$_GET['start']; $i<$_GET['end']; $i++){
-        if($result[$i]->activeStatus==true ){
+        if($result[$i]->activeStatus==true && $result[$i]->imageURL!=''){
         $numlength = strlen((string)$result[$i]->inventoryNumber);
         if($numlength==1){ $invNo='L000'.$result[$i]->inventoryNumber;
         }elseif($numlength==2){ $invNo='L00'.$result[$i]->inventoryNumber;
@@ -217,7 +217,7 @@ class WoocommerceIntegration extends BaseController
         }elseif($numlength==2){ $invNo='L00'.$result[$i]->inventoryNumber;
         }elseif($numlength==3){ $invNo='L0'.$result[$i]->inventoryNumber; 
         }elseif($numlength>=4){ $invNo='L'.$result[$i]->inventoryNumber;  }
-        if($result[$i]->activeStatus==true && $result[$i]->lastModified == $currentDate){
+        if($result[$i]->activeStatus==true && $result[$i]->lastModified == $currentDate && $result[$i]->imageURL!=''){
               $century= $result[$i]->century.'th Century';
               $countryName=$result[$i]->countryName;
               $frameWidth=$result[$i]->frameWidth;
@@ -397,12 +397,12 @@ class WoocommerceIntegration extends BaseController
     }
     curl_close($ch);
     }else{
-      $response = $client->request('GET', 'https://staging15.lowy1907.com//wp-json/wc/v3/products?sku='.$invNo.'&consumer_key=ck_9d78fc365b45d234a132cc51e57c80b37e2224bf&consumer_secret=cs_830f033b32c54bd745a2681b30d07fae33062cec');
-      $result= $response->getBody();
-      $result = json_decode($result);
-    if($result[0]->id!=''){
+      $responseGetId = $client->request('GET', 'https://staging15.lowy1907.com/wp-json/api/v3/product?sku='.$invNo);
+      $resultId= $responseGetId->getBody();
+      $resultId = json_decode($resultId);
+    if($resultId[0]->id!=''){
       $curl = curl_init();
-      $productId=$result[0]->id;
+      $productId=$resultId[0]->id;
       curl_setopt_array($curl, array(
         CURLOPT_URL => "https://staging15.lowy1907.com/wp-json/wc/v3/products/$productId?force=true&consumer_key=ck_9d78fc365b45d234a132cc51e57c80b37e2224bf&consumer_secret=cs_830f033b32c54bd745a2681b30d07fae33062cec",
         CURLOPT_RETURNTRANSFER => true,
@@ -417,6 +417,7 @@ class WoocommerceIntegration extends BaseController
       ));
       
       $response = curl_exec($curl);
+      $response =json_decode($response);
       $err = curl_error($curl);
       echo "Product Delete======= Product Id =".$productId.", ". "SKU =".$response->sku."</br>";
       curl_close($curl);
@@ -436,13 +437,15 @@ function deleteInActiveProduct(){
    }elseif($numlength==2){ $invNo='L00'.$result[$i]->inventoryNumber;
    }elseif($numlength==3){ $invNo='L0'.$result[$i]->inventoryNumber; 
    }elseif($numlength>=4){ $invNo='L'.$result[$i]->inventoryNumber;  }
-   if($result[$i]->activeStatus== false ){
-      $response = $client->request('GET', 'https://staging15.lowy1907.com//wp-json/wc/v3/products?sku='.$invNo.'&consumer_key=ck_9d78fc365b45d234a132cc51e57c80b37e2224bf&consumer_secret=cs_830f033b32c54bd745a2681b30d07fae33062cec');
-      $result= $response->getBody();
-      $result = json_decode($result);
-    if($result[0]->id!=''){
+  
+   if($result[$i]->activeStatus== false || $result[$i]->imageURL==''){
+   
+      $responseProductId = $client->request('GET', 'https://staging15.lowy1907.com/wp-json/api/v3/product?sku='.$invNo);
+      $resultId= $responseProductId->getBody();
+      $resultId = json_decode($resultId);
+     if($resultId!=''){
       $curl = curl_init();
-      $productId=$result[0]->id;
+      $productId=$resultId;
       curl_setopt_array($curl, array(
         CURLOPT_URL => "https://staging15.lowy1907.com/wp-json/wc/v3/products/$productId?force=true&consumer_key=ck_9d78fc365b45d234a132cc51e57c80b37e2224bf&consumer_secret=cs_830f033b32c54bd745a2681b30d07fae33062cec",
         CURLOPT_RETURNTRANSFER => true,
@@ -457,13 +460,15 @@ function deleteInActiveProduct(){
       ));
       
       $response = curl_exec($curl);
+      $response =json_decode($response);
       $err = curl_error($curl);
       echo "Product Delete======= Product Id =".$productId.", ". "SKU =".$response->sku."</br>";
       curl_close($curl);
-    }
+     }
     
 
-   }
+    }
+   
   }
 }
 
