@@ -233,13 +233,13 @@ if(empty($frameDetails)){?>
                                 </tr>
                             </tbody>
                         </table>
-                        <div style="border-top: 0pt none; border-bottom: 1px solid rgb(93, 119, 91); text-align: right;"
+                       <!--  <div style="border-top: 0pt none; border-bottom: 1px solid rgb(93, 119, 91); text-align: right;"
                             class="detailheader">
                             <input type="hidden" name="id" value="<?= $frameDetails->inventoryNumber ?>" id="frameAdminEdit_id">
                             <input type="image" alt="Edit" src="<?php echo base_url('assets/img/edit-btn.svg');?>" id="frameAdminEdit_0"
                                 value="Edit" class="buttonlink">
 
-                        </div>
+                        </div> -->
                     </form>
                     <div class="summary">
                         <div class="summaryheading">Summary:</div>
@@ -251,19 +251,19 @@ if(empty($frameDetails)){?>
                             <?=  $frameDetails->summary?>
                         </div>
                     </div>
-                    <div id="frameSold">
+                 <!--    <div id="frameSold">
                         <a href="#framesoldForm" id="framesoldLink">
                             Frame Sold </a>
-                    </div>
+                    </div> -->
 
                     <div style="float:right;width:40px;">
                         &nbsp;
                     </div>
 
-                    <div id="deleteUndelete">
+                 <!--    <div id="deleteUndelete">
                         <a href="#deleteUndeleteForm" id="deleteUndeleteLink"><?php if($frameDetails->deleted ==true){echo 'Undelete Frame';}else{echo 'Delete Frame';} ?>
                            </a>
-                    </div>
+                    </div> -->
 
                 </div>
             </div>
