@@ -397,12 +397,12 @@ class WoocommerceIntegration extends BaseController
     }
     curl_close($ch);
     }else{
-      $responseGetId = $client->request('GET', 'https://staging15.lowy1907.com/wp-json/api/v3/product?sku='.$invNo);
-      $resultId= $responseGetId->getBody();
+      $responseProductId = $client->request('GET', 'https://staging15.lowy1907.com/wp-json/api/v3/product?sku='.$invNo);
+      $resultId= $responseProductId->getBody();
       $resultId = json_decode($resultId);
-    if($resultId[0]->id!=''){
+     if($resultId!=''){
       $curl = curl_init();
-      $productId=$resultId[0]->id;
+      $productId=$resultId;
       curl_setopt_array($curl, array(
         CURLOPT_URL => "https://staging15.lowy1907.com/wp-json/wc/v3/products/$productId?force=true&consumer_key=ck_9d78fc365b45d234a132cc51e57c80b37e2224bf&consumer_secret=cs_830f033b32c54bd745a2681b30d07fae33062cec",
         CURLOPT_RETURNTRANSFER => true,
@@ -421,7 +421,8 @@ class WoocommerceIntegration extends BaseController
       $err = curl_error($curl);
       echo "Product Delete======= Product Id =".$productId.", ". "SKU =".$response->sku."</br>";
       curl_close($curl);
-    }
+     }
+    
     
 }
   }
