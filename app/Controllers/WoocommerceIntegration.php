@@ -396,7 +396,7 @@ class WoocommerceIntegration extends BaseController
       echo "Product Insert======= Product Id =".$response->id.", ". "SKU =".$response->sku."</br>";
     }
     curl_close($ch);
-    }else{
+    }else if($result[$i]->activeStatus==false && $result[$i]->lastModified == $currentDate && $result[$i]->imageURL==''){
       $responseProductId = $client->request('GET', 'https://staging15.lowy1907.com/wp-json/api/v3/product?sku='.$invNo);
       $resultId= $responseProductId->getBody();
       $resultId = json_decode($resultId);
