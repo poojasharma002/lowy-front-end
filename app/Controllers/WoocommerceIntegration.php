@@ -202,7 +202,7 @@ class WoocommerceIntegration extends BaseController
     }
 	
 
-    public function insertProductByAutomatic(){
+    public function insertProductAuto(){
       $baseURI = baseURI();
       $currentDate=date("Y-m-d");
       $client = \Config\Services::curlrequest();
