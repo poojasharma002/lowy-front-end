@@ -134,7 +134,8 @@ class WoocommerceIntegration extends BaseController
                           "visible"=>"true",
                           "options"=> [
                            (string)$sellingPrice
-                            ]));  
+                            ])); 
+    if($result[$i]->century=="21"){$category=1682;}else{ $category=24; } 
     $slug=str_replace(' ', '-', preg_replace('/\s+/', ' ', $productNmae));      
     $url = 'https://staging15.lowy1907.com/antique-picture-frames/'.strtolower($invNo.'/'.$slug);
    $data= ["name" =>$productNmae,
@@ -145,7 +146,7 @@ class WoocommerceIntegration extends BaseController
       "stock_quantity"=> 1,
       "categories"=> [
         [
-          "id"=>24
+          "id"=>$category
         ]
       ],
       'images' => [
@@ -170,8 +171,9 @@ class WoocommerceIntegration extends BaseController
     
     $response = curl_exec($ch);
     $response =json_decode($response);
+    $httpcode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
     $err = curl_error($ch);
-    if($response->data->status==400){
+    if($httpcode=='400'){
      $resource_id= $response->data->resource_id;
      $curl = curl_init();
      curl_setopt_array($curl, array(
@@ -192,7 +194,7 @@ class WoocommerceIntegration extends BaseController
      $responseUpdate = curl_exec($curl);
      $responseUpdate =json_decode($responseUpdate);
      echo "Product Update======= Product Id =".$responseUpdate->id.", ". "SKU =".$responseUpdate->sku."</br>";
-    }else{
+    }else if($httpcode=="201"){
       echo "Product Insert======= Product Id =".$response->id.", ". "SKU =".$response->sku."</br>";
     }
     curl_close($ch);
@@ -334,7 +336,8 @@ class WoocommerceIntegration extends BaseController
                           "visible"=>"true",
                           "options"=> [
                            (string)$sellingPrice
-                            ]));  
+                            ])); 
+    if($result[$i]->century=="21"){$category=1682;}else{ $category=24; }                          
     $slug=str_replace(' ', '-', preg_replace('/\s+/', ' ', $productNmae));      
     $url = 'https://staging15.lowy1907.com/antique-picture-frames/'.strtolower($invNo.'/'.$slug);
    $data= ["name" =>$productNmae,
@@ -345,7 +348,7 @@ class WoocommerceIntegration extends BaseController
       "stock_quantity"=> 1,
       "categories"=> [
         [
-          "id"=>24
+          "id"=>$category
         ]
       ],
       'images' => [
@@ -370,8 +373,9 @@ class WoocommerceIntegration extends BaseController
     
     $response = curl_exec($ch);
     $response =json_decode($response);
+    $httpcode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
     $err = curl_error($ch);
-    if($response->data->status==400){
+    if($httpcode=='400'){
      $resource_id= $response->data->resource_id;
      $curl = curl_init();
      curl_setopt_array($curl, array(
@@ -392,7 +396,7 @@ class WoocommerceIntegration extends BaseController
      $responseUpdate = curl_exec($curl);
      $responseUpdate =json_decode($responseUpdate);
      echo "Product Update======= Product Id =".$responseUpdate->id.", ". "SKU =".$responseUpdate->sku."</br>";
-    }else{
+    }else if($httpcode=="201"){
       echo "Product Insert======= Product Id =".$response->id.", ". "SKU =".$response->sku."</br>";
     }
     curl_close($ch);
