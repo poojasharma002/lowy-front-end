@@ -6,11 +6,11 @@ class WoocommerceIntegration extends BaseController
     public function insertProduct(){
       $baseURI = baseURI();
       $client = \Config\Services::curlrequest();
-      $responseDetails = $client->request('GET', ''.$baseURI.'frames/inv');
-      $resultDetails= $responseDetails->getBody();
-      $result = json_decode($resultDetails);
-      //  $json = file_get_contents('./exportCsvData.json');
-      //  $result  = json_decode($json);
+      // $responseDetails = $client->request('GET', ''.$baseURI.'frames/inv');
+      // $resultDetails= $responseDetails->getBody();
+      // $result = json_decode($resultDetails);
+       $json = file_get_contents('./exportCsvData.json');
+       $result  = json_decode($json);
        for($i=$_GET['start']; $i<$_GET['end']; $i++){
         if($result[$i]->activeStatus==true && $result[$i]->imageURL!=''){
         $numlength = strlen((string)$result[$i]->inventoryNumber);
