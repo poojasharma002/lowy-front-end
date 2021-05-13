@@ -156,6 +156,19 @@ class WoocommerceIntegration extends BaseController
         ],
         "attributes"=>$attributes
               ];
+     $dataUpdate= ["name" =>$productNmae,
+              "type"=>"simple",
+              "sku"=>$invNo,
+              "permalink"=>$url,
+              "slug"=>$slug,
+              "stock_quantity"=> 1,
+              "categories"=> [
+                [
+                  "id"=>$category
+                ]
+              ],
+                "attributes"=>$attributes
+                      ];
      $ch = curl_init();
     curl_setopt($ch, CURLOPT_URL, "https://staging15.lowy1907.com/wp-json/wc/v3/products?consumer_key=ck_9d78fc365b45d234a132cc51e57c80b37e2224bf&consumer_secret=cs_830f033b32c54bd745a2681b30d07fae33062cec");
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
@@ -184,7 +197,7 @@ class WoocommerceIntegration extends BaseController
        CURLOPT_TIMEOUT => 30,
        CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
        CURLOPT_CUSTOMREQUEST => "PUT",
-       CURLOPT_POSTFIELDS => json_encode($data),
+       CURLOPT_POSTFIELDS => json_encode($dataUpdate),
        CURLOPT_HTTPHEADER => array(
          "cache-control: no-cache",
          "content-type: application/json"
@@ -358,6 +371,19 @@ class WoocommerceIntegration extends BaseController
         ],
         "attributes"=>$attributes
               ];
+    $dataUpdate= ["name" =>$productNmae,
+              "type"=>"simple",
+              "sku"=>$invNo,
+              "permalink"=>$url,
+              "slug"=>$slug,
+              "stock_quantity"=> 1,
+              "categories"=> [
+                [
+                  "id"=>$category
+                ]
+              ],
+                "attributes"=>$attributes
+                      ];
      $ch = curl_init();
     curl_setopt($ch, CURLOPT_URL, "https://staging15.lowy1907.com/wp-json/wc/v3/products?consumer_key=ck_9d78fc365b45d234a132cc51e57c80b37e2224bf&consumer_secret=cs_830f033b32c54bd745a2681b30d07fae33062cec");
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
@@ -386,7 +412,7 @@ class WoocommerceIntegration extends BaseController
        CURLOPT_TIMEOUT => 30,
        CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
        CURLOPT_CUSTOMREQUEST => "PUT",
-       CURLOPT_POSTFIELDS => json_encode($data),
+       CURLOPT_POSTFIELDS => json_encode($dataUpdate),
        CURLOPT_HTTPHEADER => array(
          "cache-control: no-cache",
          "content-type: application/json"
