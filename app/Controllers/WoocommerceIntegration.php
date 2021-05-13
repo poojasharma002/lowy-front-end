@@ -6,11 +6,11 @@ class WoocommerceIntegration extends BaseController
     public function insertProduct(){
       $baseURI = baseURI();
       $client = \Config\Services::curlrequest();
-      // $responseDetails = $client->request('GET', ''.$baseURI.'frames/inv');
-      // $resultDetails= $responseDetails->getBody();
-      // $result = json_decode($resultDetails);
-       $json = file_get_contents('./exportCsvData.json');
-       $result  = json_decode($json);
+      $responseDetails = $client->request('GET', ''.$baseURI.'frames/inv');
+      $resultDetails= $responseDetails->getBody();
+      $result = json_decode($resultDetails);
+      //  $json = file_get_contents('./exportCsvData.json');
+      //  $result  = json_decode($json);
        for($i=$_GET['start']; $i<$_GET['end']; $i++){
         if($result[$i]->activeStatus==true && $result[$i]->imageURL!=''){
         $numlength = strlen((string)$result[$i]->inventoryNumber);
@@ -170,7 +170,7 @@ class WoocommerceIntegration extends BaseController
                 "attributes"=>$attributes
                       ];
      $ch = curl_init();
-    curl_setopt($ch, CURLOPT_URL, "https://staging15.lowy1907.com/wp-json/wc/v3/products?consumer_key=ck_9d78fc365b45d234a132cc51e57c80b37e2224bf&consumer_secret=cs_830f033b32c54bd745a2681b30d07fae33062cec");
+    curl_setopt($ch, CURLOPT_URL, "https://staging15.lowy1907.com/wp-json/wc/v3/products?consumer_key=ck_8fac0526976eb4827a7100ffb987584d2458fdb5&consumer_secret=cs_0fd410a81412340cb6151f58c9c2a7a417cecca4");
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
     curl_setopt($ch, CURLOPT_HEADER, FALSE);
     
@@ -190,7 +190,7 @@ class WoocommerceIntegration extends BaseController
      $resource_id= $response->data->resource_id;
      $curl = curl_init();
      curl_setopt_array($curl, array(
-       CURLOPT_URL => "https://staging15.lowy1907.com/wp-json/wc/v3/products/$resource_id?consumer_key=ck_9d78fc365b45d234a132cc51e57c80b37e2224bf&consumer_secret=cs_830f033b32c54bd745a2681b30d07fae33062cec",
+       CURLOPT_URL => "https://staging15.lowy1907.com/wp-json/wc/v3/products/$resource_id?consumer_key=ck_8fac0526976eb4827a7100ffb987584d2458fdb5&consumer_secret=cs_0fd410a81412340cb6151f58c9c2a7a417cecca4",
        CURLOPT_RETURNTRANSFER => true,
        CURLOPT_ENCODING => "",
        CURLOPT_MAXREDIRS => 10,
@@ -385,7 +385,7 @@ class WoocommerceIntegration extends BaseController
                 "attributes"=>$attributes
                       ];
      $ch = curl_init();
-    curl_setopt($ch, CURLOPT_URL, "https://staging15.lowy1907.com/wp-json/wc/v3/products?consumer_key=ck_9d78fc365b45d234a132cc51e57c80b37e2224bf&consumer_secret=cs_830f033b32c54bd745a2681b30d07fae33062cec");
+    curl_setopt($ch, CURLOPT_URL, "https://staging15.lowy1907.com/wp-json/wc/v3/products?consumer_key=ck_8fac0526976eb4827a7100ffb987584d2458fdb5&consumer_secret=cs_0fd410a81412340cb6151f58c9c2a7a417cecca4");
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
     curl_setopt($ch, CURLOPT_HEADER, FALSE);
     
@@ -405,7 +405,7 @@ class WoocommerceIntegration extends BaseController
      $resource_id= $response->data->resource_id;
      $curl = curl_init();
      curl_setopt_array($curl, array(
-       CURLOPT_URL => "https://staging15.lowy1907.com/wp-json/wc/v3/products/$resource_id?consumer_key=ck_9d78fc365b45d234a132cc51e57c80b37e2224bf&consumer_secret=cs_830f033b32c54bd745a2681b30d07fae33062cec",
+       CURLOPT_URL => "https://staging15.lowy1907.com/wp-json/wc/v3/products/$resource_id?consumer_key=ck_8fac0526976eb4827a7100ffb987584d2458fdb5&consumer_secret=cs_0fd410a81412340cb6151f58c9c2a7a417cecca4",
        CURLOPT_RETURNTRANSFER => true,
        CURLOPT_ENCODING => "",
        CURLOPT_MAXREDIRS => 10,
@@ -434,7 +434,7 @@ class WoocommerceIntegration extends BaseController
       $curl = curl_init();
       $productId=$resultId;
       curl_setopt_array($curl, array(
-        CURLOPT_URL => "https://staging15.lowy1907.com/wp-json/wc/v3/products/$productId?force=true&consumer_key=ck_9d78fc365b45d234a132cc51e57c80b37e2224bf&consumer_secret=cs_830f033b32c54bd745a2681b30d07fae33062cec",
+        CURLOPT_URL => "https://staging15.lowy1907.com/wp-json/wc/v3/products/$productId?force=true&consumer_key=ck_8fac0526976eb4827a7100ffb987584d2458fdb5&consumer_secret=cs_0fd410a81412340cb6151f58c9c2a7a417cecca4",
         CURLOPT_RETURNTRANSFER => true,
         CURLOPT_ENCODING => "",
         CURLOPT_MAXREDIRS => 10,
@@ -448,8 +448,11 @@ class WoocommerceIntegration extends BaseController
       
       $response = curl_exec($curl);
       $response =json_decode($response);
+      $httpcode = curl_getinfo($curl, CURLINFO_HTTP_CODE);
       $err = curl_error($curl);
-      echo "Product Delete======= Product Id =".$productId.", ". "SKU =".$response->sku."</br>";
+      if($httpcode=="200"){
+        echo "Product Delete======= Product Id =".$productId.", ". "SKU =".$response->sku."</br>";
+      }
       curl_close($curl);
      }
     
@@ -478,7 +481,7 @@ function deleteInActiveProduct(){
       $curl = curl_init();
       $productId=$resultId;
       curl_setopt_array($curl, array(
-        CURLOPT_URL => "https://staging15.lowy1907.com/wp-json/wc/v3/products/$productId?force=true&consumer_key=ck_9d78fc365b45d234a132cc51e57c80b37e2224bf&consumer_secret=cs_830f033b32c54bd745a2681b30d07fae33062cec",
+        CURLOPT_URL => "https://staging15.lowy1907.com/wp-json/wc/v3/products/$productId?force=true&consumer_key=ck_8fac0526976eb4827a7100ffb987584d2458fdb5&consumer_secret=cs_0fd410a81412340cb6151f58c9c2a7a417cecca4",
         CURLOPT_RETURNTRANSFER => true,
         CURLOPT_ENCODING => "",
         CURLOPT_MAXREDIRS => 10,
@@ -491,9 +494,11 @@ function deleteInActiveProduct(){
       ));
       
       $response = curl_exec($curl);
-      $response =json_decode($response);
+      $httpcode = curl_getinfo($curl, CURLINFO_HTTP_CODE);
       $err = curl_error($curl);
-      echo "Product Delete======= Product Id =".$productId.", ". "SKU =".$response->sku."</br>";
+      if($httpcode=="200"){
+        echo "Product Delete======= Product Id =".$productId.", ". "SKU =".$response->sku."</br>";
+      }
       curl_close($curl);
      }
     
