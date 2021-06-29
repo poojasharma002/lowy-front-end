@@ -468,11 +468,18 @@ div#imagePopup {
 div#imagePopup #pic {
   width: auto;
   height: auto;
-  max-height: 80vh;
+
   margin: 0 auto;
   text-align: center;
   margin-left: auto;
   max-width: 100%;
+}
+
+
+
+.large {
+  zoom: 150%;
+  box-shadow: none !important;
 }
 
 
